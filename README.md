@@ -3,7 +3,7 @@ Installation
 
 ### Quick Start
 
-1. Search and replace "emptytheme" to your theme name "megatheme"
+1. Search and replace `emptytheme` to your theme name `mega-theme`
 
 
 ### Setup
