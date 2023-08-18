@@ -277,3 +277,8 @@ require get_template_directory() . '/inc/acf.php';
  * Custom functionality.
  */
 require get_template_directory() . '/inc/custom-functions.php';
+
+/**
+ * Customizer.
+ */
+require get_template_directory() . '/inc/customizer.php';

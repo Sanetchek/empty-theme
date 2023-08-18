@@ -26,7 +26,13 @@
 		<div id="preloader">
 			<div id="ctn-preloader" class="ctn-preloader">
 				<div class="animation-preloader">
-					<div class="icon"><img src="<?= assets('img/logo.svg') ?>" alt="logo" width="38"></div>
+					<div class="icon">
+						<?php if (theme_logo()) : ?>
+							<?= theme_logo(); // you can set logo in Appearance -> Customize -> Site Identity -> Logo field ?>
+						<?php else : ?>
+							<img src="<?= assets('img/logo.svg') ?>" alt="logo" width="38">
+						<?php endif; ?>
+					</div>
 					<div class="txt-loading mt-2">
 						<?php
 							$text = strtoupper(get_bloginfo('name'));
