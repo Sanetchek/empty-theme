@@ -174,9 +174,8 @@ function emptytheme_scripts() {
 	wp_enqueue_style( 'emptytheme-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_style_add_data( 'emptytheme-style', 'rtl', 'replace' );
 
-	// main scripts
+	// script - jquery
 	wp_enqueue_script('jquery');
-	wp_enqueue_script( 'emptytheme-script', get_template_directory_uri() . '/assets/js/script.min.js', array('jquery'), _S_VERSION, true );
 
 	// script - form validation https://jqueryvalidation.org/
 	wp_enqueue_script('jquery-validate', get_template_directory_uri() . '/assets/js/jquery.validate.min.js');
@@ -192,6 +191,9 @@ function emptytheme_scripts() {
 
 	// script - slick slider https://kenwheeler.github.io/slick/
 	wp_enqueue_script( 'slick', get_template_directory_uri() . '/assets/js/slick/slick.min.js', array(), _S_VERSION, true  );
+
+	// script - theme
+	wp_enqueue_script( 'emptytheme-script', get_template_directory_uri() . '/assets/js/script.min.js', array('jquery'), _S_VERSION, true );
 
 	// script - comment reply
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
