@@ -9,6 +9,7 @@
  * @return void
  */
 function str_word($text, $counttext = 30, $sep = ' ') {
+	$text = wp_strip_all_tags( $text );
 	$words = explode($sep, $text);
 
 	if ( count($words) > $counttext )
