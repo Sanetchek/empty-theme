@@ -56,8 +56,13 @@
 		<header id="masthead">
 			<div class="site-header">
 				<div class="container header__wrap">
-					<a href="/" class="site-branding">
-					</a><!-- .site-branding -->
+					<?php if (theme_logo()) : ?>
+						<?= theme_logo(); // you can set logo in Appearance -> Customize -> Site Identity -> Logo field ?>
+					<?php else : ?>
+						<a href="/" class="site-branding">
+							<img src="<?= assets('img/logo.svg') ?>" alt="logo" width="38">
+						</a><!-- .site-branding -->
+					<?php endif; ?>
 
 					<nav class="main-navigation">
 						<?php

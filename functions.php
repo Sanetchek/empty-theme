@@ -183,9 +183,6 @@ function emptytheme_scripts() {
 	// script - aos animation https://michalsnik.github.io/aos/
 	wp_enqueue_script( 'aos', get_template_directory_uri() . '/assets/js/aos-next/aos.js', array(), _S_VERSION, true  );
 
-	// script - waypoints http://imakewebthings.com/waypoints/ example: https://codepen.io/ayinloya/pen/ZxOwOB
-	wp_enqueue_script( 'waypoints', get_template_directory_uri() . '/assets/js/waypoints.min.js', array(), _S_VERSION, true  );
-
 	// script - counter up https://github.com/bfintal/Counter-Up
 	wp_enqueue_script( 'counterup', get_template_directory_uri() . '/assets/js/jquery.counterup.min.js', array(), _S_VERSION, true  );
 
@@ -193,7 +190,7 @@ function emptytheme_scripts() {
 	wp_enqueue_script( 'slick', get_template_directory_uri() . '/assets/js/slick/slick.min.js', array(), _S_VERSION, true  );
 
 	// script - theme
-	wp_enqueue_script( 'emptytheme-script', get_template_directory_uri() . '/assets/js/script.min.js', array('jquery'), _S_VERSION, true );
+	wp_enqueue_script( 'emptytheme-script', get_template_directory_uri() . '/assets/js/script.js', array('jquery'), _S_VERSION, true );
 
 	// script - comment reply
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {

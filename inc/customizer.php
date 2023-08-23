@@ -27,7 +27,7 @@ function theme_logo() {
   // Display the logo if it's set
   if ( $header_logo ) {
     $template .= '<a href="/" class="site-logo-link" rel="home" aria-current="page">';
-    $template .= '<img src="' . esc_url( $header_logo ) . '" class="site-logo" alt="GeffenMedikal" decoding="async">';
+    $template .= '<img src="' . esc_url( $header_logo ) . '" width="300" class="site-logo" alt="GeffenMedikal" decoding="async">';
     $template .= '</a>';
   }
 
