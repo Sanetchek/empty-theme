@@ -182,6 +182,16 @@ function get_image($img = '', $thumb = 'large', $attr = [])
 }
 
 /**
+ * show image
+ */
+function show_image($img = '', $thumb = 'large', $attr = [])
+{
+	if ($img) {
+		echo wp_get_attachment_image($img, $thumb, '', $attr);
+	}
+}
+
+/**
  * Social Share
  *
  * @param [string] $url
@@ -237,12 +247,3 @@ function showYoutubeVideo( $link ) {
 		<img src="https://img.youtube.com/vi/<?php $video ?>/default.jpg" class="br-40" alt="youtube">
 	<?php endif;
 }
-
-/**
- * Allow SVG
- */
-add_action('upload_mimes', function ($mimes) {
-	$mimes['svg-xml']  = 'image/svg+xml';
-	$mimes['svg']  = 'image/svg';
-	return $mimes;
-});
