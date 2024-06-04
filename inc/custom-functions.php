@@ -8,11 +8,12 @@
  * @param string $sep
  * @return void
  */
-function str_word($text, $counttext = 30, $sep = ' ') {
-	$text = wp_strip_all_tags( $text );
+function str_word($text, $counttext = 30, $sep = ' ')
+{
+	$text = wp_strip_all_tags($text);
 	$words = explode($sep, $text);
 
-	if ( count($words) > $counttext )
+	if (count($words) > $counttext)
 		$text = join($sep, array_slice($words, 0, $counttext));
 
 	return $text;
@@ -54,8 +55,10 @@ add_action('wp_head', function ($args = []) {
 	if ($do_count && $rg->exclude_bots) {
 		$notbot = 'Mozilla|Opera'; // Chrome|Safari|Firefox|Netscape - all equal Mozilla
 		$bot = 'Bot/|robot|Slurp/|yahoo';
-		if (!preg_match("/$notbot/i", $_SERVER['HTTP_USER_AGENT']) ||
-			preg_match("~$bot~i", $_SERVER['HTTP_USER_AGENT'])) {
+		if (
+			!preg_match("/$notbot/i", $_SERVER['HTTP_USER_AGENT']) ||
+			preg_match("~$bot~i", $_SERVER['HTTP_USER_AGENT'])
+		) {
 			$do_count = false;
 		}
 	}
@@ -105,7 +108,8 @@ add_action('wp_head', function ($args = []) {
  * @param boolean $user
  * @return void
  */
-function view($cont_id = '', $user = false) {
+function view($cont_id = '', $user = false)
+{
 	global $post;
 
 	if (!$cont_id) {
@@ -141,14 +145,14 @@ function view($cont_id = '', $user = false) {
 add_action('admin_init', function () {
 	if (is_admin() && !(current_user_can('administrator')) && (!defined('DOING_AJAX') || !DOING_AJAX)) {
 		wp_redirect(home_url(404), 302);
-		exit();
+		exit ();
 	}
 });
 
 /**
  * Contact form 7 remove span
  */
-add_filter('wpcf7_form_elements', function($content) {
+add_filter('wpcf7_form_elements', function ($content) {
 	$content = preg_replace('/<(span).*?class="\s*(?:.*\s)?wpcf7-form-control-wrap(?:\s[^"]+)?\s*"[^\>]*>(.*)<\/\1>/i', '\2', $content);
 
 	$content = str_replace('<br />', '', $content);
@@ -157,12 +161,12 @@ add_filter('wpcf7_form_elements', function($content) {
 });
 
 /**
-* Get Current Url
-*/
+ * Get Current Url
+ */
 function currUrl()
 {
-	 global $wp;
-	 return home_url($wp->request);
+	global $wp;
+	return home_url($wp->request);
 }
 
 /**
@@ -196,40 +200,41 @@ function show_image($img = '', $thumb = 'large', $attr = [])
  *
  * @param [string] $url
  * @param [string] $title
- * @return void
+ * @return string
  */
-function socialShare($url, $title) {
-		return '<div class="social_share">
+function socialShare($url, $title)
+{
+	return '<div class="social_share">
 		<div class="article-social">
 			<a class="social_share_link social_share_whatsapp"
-				href="https://api.whatsapp.com/send?text='.$title.'&url='.$url.'"
+				href="https://api.whatsapp.com/send?text=' . $title . '&url=' . $url . '"
 				title="Whatsapp" rel="nofollow noopener" target="_blank">
 				<span
-					class="social_share_svg"><img src="'.
-					get_template_directory_uri() . '/assets/img/icons/s-whatsapp.svg'
-				.'" /></span>
+					class="social_share_svg"><img src="' .
+		get_template_directory_uri() . '/assets/img/icons/s-whatsapp.svg'
+		. '" /></span>
 			</a>
 			<a class="social_share_link social_share_facebook"
-				href="https://www.facebook.com/sharer/sharer.php?u='.$url.'"
+				href="https://www.facebook.com/sharer/sharer.php?u=' . $url . '"
 				title="Facebook" rel="nofollow noopener" target="_blank">
-				<span class="social_share_svg"><img src="'.
-					get_template_directory_uri() . '/assets/img/icons/s-facebook.svg'
-				.'" /></span>
+				<span class="social_share_svg"><img src="' .
+		get_template_directory_uri() . '/assets/img/icons/s-facebook.svg'
+		. '" /></span>
 			</a>
 			<a class="social_share_link social_share_gmail"
-				href="mailto:'.
-				$url.'?subject='.$title.'"
+				href="mailto:' .
+		$url . '?subject=' . $title . '"
 				title="Mail" rel="nofollow noopener" target="_blank">
-				<span class="social_share_svg"><img src="'.
-					get_template_directory_uri() . '/assets/img/icons/s-mail.svg'
-				.'" /></span>
+				<span class="social_share_svg"><img src="' .
+		get_template_directory_uri() . '/assets/img/icons/s-mail.svg'
+		. '" /></span>
 			</a>
 			<a class="social_share_link social_share_twitter"
-				href="http://twitter.com/intent/tweet?text='.$title.'&amp;url='.$url.'"
+				href="http://twitter.com/intent/tweet?text=' . $title . '&amp;url=' . $url . '"
 				title="Twitter" rel="nofollow noopener" target="_blank">
-				<span class="social_share_svg"><img src="'.
-					get_template_directory_uri() . '/assets/img/icons/s-twitter.svg'
-				.'" /></span>
+				<span class="social_share_svg"><img src="' .
+		get_template_directory_uri() . '/assets/img/icons/s-twitter.svg'
+		. '" /></span>
 			</a>
 		</div>
 	</div>';
@@ -238,11 +243,14 @@ function socialShare($url, $title) {
 /**
  * Show YouTube Video
  */
-function showYoutubeVideo( $link ) {
+function showYoutubeVideo($link)
+{
 	$video = $link;
 	$video = substr($video, strpos($video, "=") + 1);
-	if($link) :	?>
-		<iframe width="635" height="405" src="https://www.youtube.com/embed/<?= $video ?>" title="YouTube video player" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	if ($link): ?>
+		<iframe width="635" height="405" src="https://www.youtube.com/embed/<?= $video ?>" title="YouTube video player"
+			frameborder="0" allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+			allowfullscreen></iframe>
 	<?php else: ?>
 		<img src="https://img.youtube.com/vi/<?php $video ?>/default.jpg" class="br-40" alt="youtube">
 	<?php endif;
