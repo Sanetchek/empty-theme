@@ -9,7 +9,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package giovanni
+ * @package emptytheme
  */
 
 get_header();

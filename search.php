@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#search-result
  *
- * @package giovanni
+ * @package emptytheme
  */
 
 get_header();
@@ -19,7 +19,7 @@ get_header();
 					<h1 class="page-title main-title title-green">
 						<?php
 						/* translators: %s: search query. */
-						printf( esc_html__( 'Search Results for: %s', 'giovanni' ), '<div>" ' . get_search_query() . ' "</div>' );
+						printf( esc_html__( 'Search Results for: %s', 'emptytheme' ), '<div>" ' . get_search_query() . ' "</div>' );
 						?>
 					</h1>
 				</header><!-- .page-header -->

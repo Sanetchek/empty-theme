@@ -1,4 +1,4 @@
-=== giovanni ===
+=== emptytheme ===
 
 Contributors: automattic
 Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
@@ -10,7 +10,7 @@ Stable tag: 1.0.0
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
-A starter theme called giovanni.
+A starter theme called emptytheme.
 
 == Description ==
 
@@ -26,7 +26,7 @@ Description
 
 = Does this theme support any plugins? =
 
-giovanni includes support for WooCommerce and for Infinite Scroll in Jetpack.
+emptytheme includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
 

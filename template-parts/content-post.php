@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package giovanni
+ * @package emptytheme
  */
 
 ?>
@@ -29,7 +29,7 @@
 
 			<div class="article-print">
 				<span><img src="<?= get_template_directory_uri() . '/assets/img/icons/s-shows.svg' ?>" alt=""> <?= view( get_the_ID() ) ?></span>
-				<a href="" id="print_btn"><img src="<?= get_template_directory_uri() . '/assets/img/icons/s-print.svg' ?>" alt=""> <?= __('printing ', 'giovanni') ?></a>
+				<a href="" id="print_btn"><img src="<?= get_template_directory_uri() . '/assets/img/icons/s-print.svg' ?>" alt=""> <?= __('printing ', 'emptytheme') ?></a>
 			</div>
 
 		</div>
@@ -86,7 +86,7 @@
 	<div class="more-articles">
 		<div class="container">
 			<h2>
-				<?= __('More articles', 'giovanni') ?>
+				<?= __('More articles', 'emptytheme') ?>
 			</h2>
 			<div class="row row__30">
 				<?php
