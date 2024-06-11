@@ -1,10 +1,10 @@
 <?php
 /**
- * emptytheme functions and definitions
+ * giovanni functions and definitions
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package emptytheme
+ * @package giovanni
  */
 
 if ( ! defined( '_S_VERSION' ) ) {
@@ -19,14 +19,14 @@ if ( ! defined( '_S_VERSION' ) ) {
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
  */
-function emptytheme_setup() {
+function giovanni_setup() {
 	/*
 		* Make theme available for translation.
 		* Translations can be filed in the /languages/ directory.
-		* If you're building a theme based on emptytheme, use a find and replace
-		* to change 'emptytheme' to the name of your theme in all the template files.
+		* If you're building a theme based on giovanni, use a find and replace
+		* to change 'giovanni' to the name of your theme in all the template files.
 		*/
-	load_theme_textdomain( 'emptytheme', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'giovanni', get_template_directory() . '/languages' );
 
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
@@ -49,7 +49,7 @@ function emptytheme_setup() {
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(
 		array(
-			'menu-1' => esc_html__( 'Primary', 'emptytheme' ),
+			'menu-1' => esc_html__( 'Primary', 'giovanni' ),
 		)
 	);
 
@@ -74,7 +74,7 @@ function emptytheme_setup() {
 	add_theme_support(
 		'custom-background',
 		apply_filters(
-			'emptytheme_custom_background_args',
+			'giovanni_custom_background_args',
 			array(
 				'default-color' => 'ffffff',
 				'default-image' => '',
@@ -104,19 +104,19 @@ function emptytheme_setup() {
 	remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10);
 	remove_action('wp_head', 'print_emoji_detection_script', 7);
 }
-add_action( 'after_setup_theme', 'emptytheme_setup' );
+add_action( 'after_setup_theme', 'giovanni_setup' );
 
 /**
  * Register widget area.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function emptytheme_widgets_init() {
+function giovanni_widgets_init() {
 	register_sidebar(
 		array(
-			'name'          => esc_html__( 'Sidebar', 'emptytheme' ),
+			'name'          => esc_html__( 'Sidebar', 'giovanni' ),
 			'id'            => 'sidebar-1',
-			'description'   => esc_html__( 'Add widgets here.', 'emptytheme' ),
+			'description'   => esc_html__( 'Add widgets here.', 'giovanni' ),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widget-title">',
@@ -125,9 +125,9 @@ function emptytheme_widgets_init() {
 	);
 
 	register_sidebar(array(
-    'name' => esc_html__( 'Footer Widget 1', 'emptytheme' ),
+    'name' => esc_html__( 'Footer Widget 1', 'giovanni' ),
     'id' => 'footer-1',
-    'description' => esc_html__( 'First area', 'emptytheme' ),
+    'description' => esc_html__( 'First area', 'giovanni' ),
     'before_widget' => '<div class="wsfooterwdget">',
     'after_widget' => '</div>',
     'before_title' => '<h2>',
@@ -135,9 +135,9 @@ function emptytheme_widgets_init() {
     ));
 
     register_sidebar(array(
-    'name' => esc_html__( 'Footer Widget 2', 'emptytheme' ),
+    'name' => esc_html__( 'Footer Widget 2', 'giovanni' ),
     'id' => 'footer-2',
-    'description' => esc_html__( 'Second area', 'emptytheme' ),
+    'description' => esc_html__( 'Second area', 'giovanni' ),
     'before_widget' => '<div class="wsfooterwdget">',
     'after_widget' => '</div>',
     'before_title' => '<h2>',
@@ -145,9 +145,9 @@ function emptytheme_widgets_init() {
     ));
 
     register_sidebar(array(
-    'name' => esc_html__( 'Footer Widget 3', 'emptytheme' ),
+    'name' => esc_html__( 'Footer Widget 3', 'giovanni' ),
     'id' => 'footer-3',
-    'description' => esc_html__( 'Third area', 'emptytheme' ),
+    'description' => esc_html__( 'Third area', 'giovanni' ),
     'before_widget' => '<div class="wsfooterwdget">',
     'after_widget' => '</div>',
     'before_title' => '<h2>',
@@ -155,24 +155,24 @@ function emptytheme_widgets_init() {
     ));
 
   register_sidebar(array(
-    'name' => esc_html__( 'Footer Widget 4', 'emptytheme' ),
+    'name' => esc_html__( 'Footer Widget 4', 'giovanni' ),
     'id' => 'footer-4',
-    'description' => esc_html__( 'Fourth area', 'emptytheme' ),
+    'description' => esc_html__( 'Fourth area', 'giovanni' ),
     'before_widget' => '<div class="wsfooterwdget">',
     'after_widget' => '</div>',
     'before_title' => '<h2>',
     'after_title' => '</h2>',
   ));
 }
-add_action( 'widgets_init', 'emptytheme_widgets_init' );
+add_action( 'widgets_init', 'giovanni_widgets_init' );
 
 /**
  * Enqueue scripts and styles.
  */
-function emptytheme_scripts() {
+function giovanni_scripts() {
 	// main styles
-	wp_enqueue_style( 'emptytheme-style', get_stylesheet_uri(), array(), _S_VERSION );
-	wp_style_add_data( 'emptytheme-style', 'rtl', 'replace' );
+	wp_enqueue_style( 'giovanni-style', get_stylesheet_uri(), array(), _S_VERSION );
+	wp_style_add_data( 'giovanni-style', 'rtl', 'replace' );
 
 	// script - jquery
 	wp_enqueue_script('jquery');
@@ -190,7 +190,7 @@ function emptytheme_scripts() {
 	wp_enqueue_script( 'slick', get_template_directory_uri() . '/assets/js/slick/slick.min.js', array(), _S_VERSION, true  );
 
 	// script - theme
-	wp_enqueue_script( 'emptytheme-script', get_template_directory_uri() . '/assets/js/script.js', array('jquery'), _S_VERSION, true );
+	wp_enqueue_script( 'giovanni-script', get_template_directory_uri() . '/assets/js/script.js', array('jquery'), _S_VERSION, true );
 
 	// script - comment reply
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -198,7 +198,7 @@ function emptytheme_scripts() {
 	}
 
 	// wordpress localize
-	wp_localize_script('emptytheme-script', 'emptytheme', [
+	wp_localize_script('giovanni-script', 'giovanni', [
 		'ajax_url' => admin_url('admin-ajax.php'),
 		'site_url' => get_home_url(),
 	]);
@@ -208,7 +208,7 @@ function emptytheme_scripts() {
 	wp_dequeue_style( 'wp-block-library-theme' );
 	// wp_dequeue_style( 'wc-blocks-style' ); // Remove WooCommerce block CSS
 }
-add_action( 'wp_enqueue_scripts', 'emptytheme_scripts' );
+add_action( 'wp_enqueue_scripts', 'giovanni_scripts' );
 
 /**
  * Add attributes to SCRIPT link

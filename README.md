@@ -3,12 +3,12 @@ Installation
 
 ### Quick Start
 
-1. Search and replace `emptytheme` to your theme name `mega-theme`
+1. Search and replace `giovanni` to your theme name `mega-theme`
 
 
 ### Setup
 
-To start using all the tools that come with `emptytheme`  you need to install the necessary Node.js and Composer dependencies :
+To start using all the tools that come with `giovanni`  you need to install the necessary Node.js and Composer dependencies :
 
 ```sh
 $ composer install
@@ -17,7 +17,7 @@ $ npm install
 
 ### Available CLI commands
 
-`emptytheme` comes packed with CLI commands tailored for WordPress theme development :
+`giovanni` comes packed with CLI commands tailored for WordPress theme development :
 
 - `composer lint:wpcs` : checks all PHP files against [PHP Coding Standards](https://developer.wordpress.org/coding-standards/wordpress-coding-standards/php/).
 - `composer lint:php` : checks all PHP files for syntax errors.
