@@ -258,24 +258,24 @@ add_filter( 'script_loader_tag', 'add_attribs_to_scripts', 10, 3 );
 /**
  * Actions.
  */
-require get_template_directory() . '/inc/actions.php';
+require get_template_directory() . '/inc/__actions.php';
 
 /**
  * Ajax.
  */
-require get_template_directory() . '/inc/ajax.php';
+require get_template_directory() . '/inc/__ajax.php';
 
 /**
  * ACF functionality.
  */
-require get_template_directory() . '/inc/acf.php';
+require get_template_directory() . '/inc/__acf.php';
 
 /**
  * Custom functionality.
  */
-require get_template_directory() . '/inc/custom-functions.php';
+require get_template_directory() . '/inc/__custom-functions.php';
 
 /**
  * Customizer.
  */
-require get_template_directory() . '/inc/customizer.php';
+require get_template_directory() . '/inc/__customizer.php';
