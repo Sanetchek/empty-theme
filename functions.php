@@ -190,7 +190,7 @@ function emptytheme_scripts() {
 	wp_enqueue_script( 'slick', get_template_directory_uri() . '/assets/js/slick/slick.min.js', array(), _S_VERSION, true  );
 
 	// script - theme
-	wp_enqueue_script( 'emptytheme-script', get_template_directory_uri() . '/assets/js/script.js', array('jquery'), _S_VERSION, true );
+	wp_enqueue_script( 'emptytheme-script', get_template_directory_uri() . '/assets/js/script.min.js', array('jquery'), _S_VERSION, true );
 
 	// script - comment reply
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {

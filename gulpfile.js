@@ -5,6 +5,8 @@ import cleanCSS from 'gulp-clean-css';
 import concat from 'gulp-concat';
 import uglify from 'gulp-uglify';
 import rename from 'gulp-rename';
+import postcss from 'gulp-postcss';
+import autoprefixer from 'autoprefixer';
 
 // Minify JavaScript
 gulp.task('minify-js', function() {
@@ -18,6 +20,7 @@ gulp.task('minify-js', function() {
 gulp.task('minify-css', function() {
   return gulp.src('assets/css/*.css')
     .pipe(concat('style-rtl.css'))
+    .pipe(postcss([autoprefixer()]))
     .pipe(cleanCSS())
     .pipe(gulp.dest('.'));
 });
