@@ -21,35 +21,6 @@
 </head>
 
 <body <?php body_class(); ?>>
-	<!-- Preloader Start -->
-	<section>
-		<div id="preloader">
-			<div id="ctn-preloader" class="ctn-preloader">
-				<div class="animation-preloader">
-					<div class="icon">
-						<?php if (theme_logo()) : ?>
-							<?= theme_logo(); // you can set logo in Appearance -> Customize -> Site Identity -> Logo field ?>
-						<?php else : ?>
-							<img src="<?= assets('img/logo.svg') ?>" alt="logo" width="38">
-						<?php endif; ?>
-					</div>
-					<div class="txt-loading mt-2">
-						<?php
-							$text = strtoupper(get_bloginfo('name'));
-							$name = str_split( $text );
-						?>
-						<?php foreach ($name as $letter) : ?>
-							<span data-text-preloader="<?= $letter ?>" class="letters-loading">
-								<?= $letter ?>
-							</span>
-						<?php endforeach; ?>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- Preloader End -->
-
 	<?php wp_body_open(); ?>
 	<div id="page" class="site">
 
@@ -57,10 +28,10 @@
 			<div class="site-header">
 				<div class="container header__wrap">
 					<?php if (theme_logo()) : ?>
-						<?= theme_logo(); // you can set logo in Appearance -> Customize -> Site Identity -> Logo field ?>
+						<?= theme_logo(); // Appearance -> Customize -> Site Identity -> Logo field ?>
 					<?php else : ?>
-						<a href="/" class="site-branding">
-							<img src="<?= assets('img/logo.svg') ?>" alt="logo" width="38">
+						<a href="/" class="site-branding" rel="home" aria-current="page" tabindex="0">
+							<?php bloginfo('name'); ?>
 						</a><!-- .site-branding -->
 					<?php endif; ?>
 
