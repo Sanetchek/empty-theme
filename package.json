@@ -1,25 +1,21 @@
 {
-  "name": "underscores",
+  "name": "empty-theme",
   "version": "1.0.0",
-  "description": "Hi. I'm a starter theme called emptytheme, or underscores, if you like. I'm a theme meant for hacking so don't use me as a Parent Theme. Instead try turning me into the next, most awesome, WordPress theme out there. That's what I'm here for.",
-  "author": "Automattic Theme Team",
+  "description": "Hi. I'm a starter theme called empty-theme",
+  "author": "Oleksandr Gryshko",
   "license": "GPL-2.0-or-later",
   "type": "module",
   "keywords": [
     "WordPress",
     "Theme"
   ],
-  "homepage": "https://github.com/Automattic/emptytheme#readme",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Automattic/emptytheme.git"
-  },
-  "bugs": {
-    "url": "https://github.com/Automattic/emptytheme/issues"
-  },
+  "homepage": "https://github.com/Sanetchek/empty-theme",
+  "repository": "git+https://github.com/Sanetchek/empty-theme.git",
   "devDependencies": {
-    "@wordpress/scripts": "^19.2.2",
+    "@wordpress/scripts": "^19.2.4",
+    "@wordpress/stylelint-config": "^22.5.0",
     "autoprefixer": "^10.4.19",
+    "eslint": "^8.44.0",
     "gulp": "^5.0.0",
     "gulp-clean-css": "^4.3.0",
     "gulp-concat": "^2.6.1",
@@ -28,7 +24,9 @@
     "gulp-uglify": "^3.0.2",
     "gulp-watch": "^5.0.1",
     "npm-run-all": "^4.1.5",
-    "rtlcss": "^3.5.0"
+    "prettier": "^3.3.3",
+    "rtlcss": "^3.5.0",
+    "stylelint": "^14.2.0"
   },
   "rtlcssConfig": {
     "options": {
@@ -48,10 +46,16 @@
     "lint:js": "wp-scripts lint-js 'assets/js/*.js'",
     "lint:css": "wp-scripts lint-style 'assets/**/*.css'",
     "compile:rtl": "rtlcss style-rtl.css style.css",
-    "start": "gulp"
+    "start": "gulp",
+    "check:format": "prettier --check 'assets/**/*.js' 'assets/**/*.css'",
+    "fix:format": "prettier --write 'assets/**/*.js' 'assets/**/*.css'",
+    "lint:eslint": "eslint 'assets/js/**/*.js'",
+    "lint:stylelint": "stylelint 'assets/**/*.css' --fix",
+    "lint": "npm-run-all lint:js lint:eslint lint:stylelint",
+    "check": "npm-run-all lint check:format",
+    "format": "prettier --write 'assets/**/*.js' 'assets/**/*.css'"
   },
   "dependencies": {
-    "jquery-validation": "^1.19.5",
-    "jspdf": "^2.5.1"
+    "jquery-validation": "^1.19.5"
   }
 }
