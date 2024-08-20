@@ -12,6 +12,7 @@
   "homepage": "https://github.com/Sanetchek/empty-theme",
   "repository": "git+https://github.com/Sanetchek/empty-theme.git",
   "devDependencies": {
+    "@wordpress/eslint-plugin": "^20.2.0",
     "@wordpress/scripts": "^19.2.4",
     "@wordpress/stylelint-config": "^22.5.0",
     "autoprefixer": "^10.4.19",
@@ -26,7 +27,9 @@
     "npm-run-all": "^4.1.5",
     "prettier": "^3.3.3",
     "rtlcss": "^3.5.0",
-    "stylelint": "^14.2.0"
+    "stylelint": "^14.2.0",
+    "phpcs": "^3.7.0",
+    "phpcs-wordpress": "^2.0.0"
   },
   "rtlcssConfig": {
     "options": {
@@ -43,17 +46,8 @@
   },
   "scripts": {
     "minify:js": "gulp minify-js",
-    "lint:js": "wp-scripts lint-js 'assets/js/*.js'",
-    "lint:css": "wp-scripts lint-style 'assets/**/*.css'",
     "compile:rtl": "rtlcss style-rtl.css style.css",
-    "start": "gulp",
-    "check:format": "prettier --check 'assets/**/*.js' 'assets/**/*.css'",
-    "fix:format": "prettier --write 'assets/**/*.js' 'assets/**/*.css'",
-    "lint:eslint": "eslint 'assets/js/**/*.js'",
-    "lint:stylelint": "stylelint 'assets/**/*.css' --fix",
-    "lint": "npm-run-all lint:js lint:eslint lint:stylelint",
-    "check": "npm-run-all lint check:format",
-    "format": "prettier --write 'assets/**/*.js' 'assets/**/*.css'"
+    "start": "gulp"
   },
   "dependencies": {
     "jquery-validation": "^1.19.5"
