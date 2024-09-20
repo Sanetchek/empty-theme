@@ -261,6 +261,11 @@ add_filter( 'script_loader_tag', 'add_attribs_to_scripts', 10, 3 );
 require get_template_directory() . '/inc/__actions.php';
 
 /**
+ * Filters.
+ */
+require get_template_directory() . '/inc/__filters.php';
+
+/**
  * Ajax.
  */
 require get_template_directory() . '/inc/__ajax.php';
@@ -284,3 +289,8 @@ require get_template_directory() . '/inc/__custom-functions.php';
  * Customizer.
  */
 require get_template_directory() . '/inc/__customizer.php';
+
+/**
+ * Woocommerce.
+ */
+require get_template_directory() . '/inc/__woocommerce.php';

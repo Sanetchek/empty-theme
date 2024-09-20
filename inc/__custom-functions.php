@@ -20,86 +20,54 @@ function str_word($text, $counttext = 30, $sep = ' ')
 }
 
 /**
- * Counting the number of page visits
+ * Generates a responsive <picture> element with multiple <source> elements for different screen sizes.
+ *
+ * @param int    $image_id ID of the image attachment.
+ * @param string $thumb    Size of the thumbnail to retrieve for the default image.
+ * @param string $class    CSS class to apply to the <img> element.
+ * @param array  $min      An associative array of min-width media queries and corresponding image sizes.
+ *                         Example: ['768' => 'medium', '1024' => 'large']
+ * @param array  $max      An associative array of max-width media queries and corresponding image sizes.
+ *                         Example: ['767' => 'thumbnail', '1023' => 'medium']
+ *
+ * @return string The generated HTML markup for the <picture> element or an empty string if the image is not found.
  */
-add_action('wp_head', function ($args = []) {
-	global $user_ID, $post, $wpdb;
-	$cont_id = '';
+function generate_picture_element($image_id, $thumb = 'full', $class = '', $min = [], $max = []) {
+	$image = wp_get_attachment_image_src($image_id, $thumb);
 
-	$rg = (object) wp_parse_args($args, [
-		// The post meta field key, where the number of views will be recorded.
-		'meta_key' => 'views',
-		// Whose visits count? 0 - All. 1 - Guests only. 2 - Only registered users.
-		'who_count' => 0,
-		// Exclude bots, robots? 0 - no, let them also count. 1 - yes, exclude from the count.
-		'exclude_bots' => true,
-	]);
+	// Check if the image source is available
+	if ($image) {
+		$output = '<picture aria-hidden="true">';
 
-	$do_count = false;
-	switch ($rg->who_count) {
-		case 0:
-			$do_count = true;
-			break;
-		case 1:
-			if (!$user_ID) {
-				$do_count = true;
+		// Generate <source> elements for min-width queries
+		if ($min) {
+			foreach ($min as $width => $size) {
+				$source_image = wp_get_attachment_image_src($image_id, $size);
+				if ($source_image) {
+					$output .= '<source media="(min-width:' . esc_attr($width) . 'px)" srcset="' . esc_url($source_image[0]) . '">';
+				}
 			}
-			break;
-		case 2:
-			if ($user_ID) {
-				$do_count = true;
-			}
-			break;
-	}
-
-	if ($do_count && $rg->exclude_bots) {
-		$notbot = 'Mozilla|Opera'; // Chrome|Safari|Firefox|Netscape - all equal Mozilla
-		$bot = 'Bot/|robot|Slurp/|yahoo';
-		if (
-			!preg_match("/$notbot/i", $_SERVER['HTTP_USER_AGENT']) ||
-			preg_match("~$bot~i", $_SERVER['HTTP_USER_AGENT'])
-		) {
-			$do_count = false;
-		}
-	}
-
-	if ($do_count) {
-		// for single page
-		if (is_singular()) {
-			$up = $wpdb->query(
-				$wpdb->prepare(
-					"UPDATE $wpdb->postmeta SET meta_value = (meta_value+1) WHERE post_id = %d AND meta_key = %s",
-					$post->ID,
-					$rg->meta_key
-				)
-			);
-
-			if (!$up) {
-				add_post_meta($post->ID, $rg->meta_key, 1, true);
-			}
-
-			wp_cache_delete($post->ID, 'post_meta');
 		}
 
-		// for user/author page
-		if (is_author()) {
-			$user = get_user_by('slug', get_query_var('author_name'));
-			$up = $wpdb->query(
-				$wpdb->prepare(
-					"UPDATE $wpdb->usermeta SET meta_value = (meta_value+1) WHERE user_id = %d AND meta_key = %s",
-					$user->ID,
-					$rg->meta_key
-				)
-			);
-
-			if (!$up) {
-				add_user_meta($user->ID, $rg->meta_key, 1, true);
+		// Generate <source> elements for max-width queries
+		if ($max) {
+			foreach ($max as $width => $size) {
+				$source_image = wp_get_attachment_image_src($image_id, $size);
+				if ($source_image) {
+					$output .= '<source media="(max-width:' . esc_attr($width) . 'px)" srcset="' . esc_url($source_image[0]) . '">';
+				}
 			}
-
-			wp_cache_delete($user->ID, 'user_meta');
 		}
+
+		// Add the <img> element
+		$output .= '<img class="lazyloaded ' . esc_attr($class) . '" data-src="' . esc_url($image[0]) . '" alt="' . esc_attr(get_the_title($image_id)) . '" src="' . esc_url($image[0]) . '">';
+		$output .= '</picture>';
+
+		return $output;
 	}
-});
+
+	return '';
+}
 
 /**
  * Count Page View
@@ -138,27 +106,6 @@ function view($cont_id = '', $user = false)
 		return '0';
 	}
 }
-
-/**
- * Login redirect if not administrator
- */
-add_action('admin_init', function () {
-	if (is_admin() && !(current_user_can('administrator')) && (!defined('DOING_AJAX') || !DOING_AJAX)) {
-		wp_redirect(home_url(404), 302);
-		exit ();
-	}
-});
-
-/**
- * Contact form 7 remove span
- */
-add_filter('wpcf7_form_elements', function ($content) {
-	$content = preg_replace('/<(span).*?class="\s*(?:.*\s)?wpcf7-form-control-wrap(?:\s[^"]+)?\s*"[^\>]*>(.*)<\/\1>/i', '\2', $content);
-
-	$content = str_replace('<br />', '', $content);
-
-	return $content;
-});
 
 /**
  * Get Current Url
@@ -248,10 +195,10 @@ function showYoutubeVideo($link)
 	$video = $link;
 	$video = substr($video, strpos($video, "=") + 1);
 	if ($link): ?>
-		<iframe width="635" height="405" src="https://www.youtube.com/embed/<?= $video ?>" title="YouTube video player"
-			frameborder="0" allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-			allowfullscreen></iframe>
-	<?php else: ?>
-		<img src="https://img.youtube.com/vi/<?php $video ?>/default.jpg" class="br-40" alt="youtube">
-	<?php endif;
+<iframe width="635" height="405" src="https://www.youtube.com/embed/<?= $video ?>" title="YouTube video player"
+  frameborder="0" allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen></iframe>
+<?php else: ?>
+<img src="https://img.youtube.com/vi/<?php $video ?>/default.jpg" class="br-40" alt="youtube">
+<?php endif;
 }
