@@ -24,7 +24,7 @@ function str_word($text, $counttext = 30, $sep = ' ')
  *
  * @param int    $image_id ID of the image attachment.
  * @param string $thumb    Size of the thumbnail to retrieve for the default image.
- * @param string $class    CSS class to apply to the <img> element.
+ * @param array  $args     An associative array of attributes to apply to the <img> element.
  * @param array  $min      An associative array of min-width media queries and corresponding image sizes.
  *                         Example: ['768' => 'medium', '1024' => 'large']
  * @param array  $max      An associative array of max-width media queries and corresponding image sizes.
@@ -32,7 +32,7 @@ function str_word($text, $counttext = 30, $sep = ' ')
  *
  * @return string The generated HTML markup for the <picture> element or an empty string if the image is not found.
  */
-function generate_picture_element($image_id, $thumb = 'full', $class = '', $min = [], $max = []) {
+function generate_picture_element($image_id, $thumb = 'full', $args = [], $min = [], $max = []) {
 	$image = wp_get_attachment_image_src($image_id, $thumb);
 
 	// Check if the image source is available
@@ -59,8 +59,16 @@ function generate_picture_element($image_id, $thumb = 'full', $class = '', $min 
 			}
 		}
 
+		// Build attributes string for the <img> element
+		$img_attributes = '';
+		if (!empty($args) && is_array($args)) {
+			foreach ($args as $key => $value) {
+				$img_attributes .= esc_attr($key) . '="' . esc_attr($value) . '" ';
+			}
+		}
+
 		// Add the <img> element
-		$output .= '<img class="lazyloaded ' . esc_attr($class) . '" data-src="' . esc_url($image[0]) . '" alt="' . esc_attr(get_the_title($image_id)) . '" src="' . esc_url($image[0]) . '">';
+		$output .= '<img data-src="' . esc_url($image[0]) . '" alt="' . esc_attr(get_the_title($image_id)) . '" src="' . esc_url($image[0]) . '" ' . trim($img_attributes) . '>';
 		$output .= '</picture>';
 
 		return $output;
