@@ -13,4 +13,4 @@ style.css
 style-rtl.css
 
 # JavaScript files
-assets/js/scripts.min.js
+/assets/js/scripts.min.js
