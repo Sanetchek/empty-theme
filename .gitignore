@@ -1,4 +1,16 @@
-node_modules
-/vendor
-.idea
-.vscode
+# Node modules
+node_modules/
+
+# Vendor files
+/vendor/
+
+# IDE files
+.idea/
+.vscode/
+
+# CSS files
+style.css
+style-rtl.css
+
+# JavaScript files
+assets/js/scripts.min.js
