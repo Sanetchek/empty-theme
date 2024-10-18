@@ -12,6 +12,14 @@ if ( ! defined( '_S_VERSION' ) ) {
 	define( '_S_VERSION', '1.0.0' );
 }
 
+// Load the .env file in functions.php
+if (file_exists(get_template_directory() . '/vendor/autoload.php')) {
+	require_once get_template_directory() . '/vendor/autoload.php';
+	$dotenv = Dotenv\Dotenv::createImmutable(get_template_directory());
+	$dotenv->load();
+	// to see env value use $_ENV['TEST_NAME']
+}
+
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  *
