@@ -12,9 +12,6 @@
   "homepage": "https://github.com/Sanetchek/empty-theme",
   "repository": "git+https://github.com/Sanetchek/empty-theme.git",
   "devDependencies": {
-    "@wordpress/eslint-plugin": "^20.2.0",
-    "@wordpress/scripts": "^19.2.4",
-    "@wordpress/stylelint-config": "^22.5.0",
     "autoprefixer": "^10.4.19",
     "eslint": "^8.44.0",
     "gulp": "^5.0.0",
@@ -25,11 +22,8 @@
     "gulp-uglify": "^3.0.2",
     "gulp-watch": "^5.0.1",
     "npm-run-all": "^4.1.5",
-    "prettier": "^3.3.3",
     "rtlcss": "^3.5.0",
-    "stylelint": "^14.2.0",
-    "phpcs": "^3.7.0",
-    "phpcs-wordpress": "^2.0.0"
+    "stylelint": "^14.2.0"
   },
   "rtlcssConfig": {
     "options": {
