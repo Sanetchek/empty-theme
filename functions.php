@@ -235,7 +235,6 @@ function add_attribs_to_scripts( $tag, $handle, $src ) {
 	);
 
 	$defer_scripts = array(
-		'contact-form-7',
 		'jquery-form',
 		'wpdm-bootstrap',
 		'frontjs',
