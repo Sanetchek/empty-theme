@@ -111,14 +111,13 @@ function processSimpleLike()
  * @param string $field_user_liked
  * @param string $field_user_ip
  * @return string
- */
-function simpleLikes($post_id, $field_count = '_likes_count', $field_user_liked = '_user_liked', $field_user_ip = '_user_ip')
+ */function simpleLikes($post_id, $field_count = '_likes_count', $field_user_liked = '_user_liked', $field_user_ip = '_user_ip')
 {
 	$number = get_field($field_count);
 	$post_id = !$post_id ? get_the_ID() : $post_id;
 	$nonce = wp_create_nonce('simple-likes-nonce'); // Security
 	$heart = get_unliked_icon();
-  $formatted_number = format_number_short($number);
+  $formatted = format_number_short($number);
 
 	if (is_user_logged_in()) { // user is logged in
 		$user_id = get_current_user_id();
@@ -132,11 +131,11 @@ function simpleLikes($post_id, $field_count = '_likes_count', $field_user_liked 
       $list = array_combine(range(1, count($list)), $list);
 			$uid_key = array_search($user_info->user_nicename, $list); // search for username
 
-			if ($uid_key) {
-				$heart = get_liked_icon();
-			} else {
-				$heart = get_unliked_icon();
-			}
+			if ($uid_key === false) {
+        $heart = get_unliked_icon();
+      } else {
+        $heart = get_liked_icon();
+      }
 		}
 	} else { // user is anonymous
 		$user_ip = sl_get_user_ip();
@@ -148,17 +147,16 @@ function simpleLikes($post_id, $field_count = '_likes_count', $field_user_liked 
 			$list   = explode(', ', $user_liked);
 			$uid_key = array_search($user_ip, $list);
 
-			if (!$uid_key) {
-				$heart = get_liked_icon();
-			} else {
-				$heart = get_unliked_icon();
-			}
+      if ($uid_key === false) {
+        $heart = get_unliked_icon();
+      } else {
+        $heart = get_liked_icon();
+      }
 		}
 	}
 
-
 	$output = '<span class="post-review__like" data-post-id="' . $post_id . '" data-nonce="' . $nonce . '">
-      <span class="post-review__like-icon">' . $heart . '<span class="post-review__like-count">' . $formatted_number . '</span></span>
+      <span class="post-review__like-icon">' . $heart . '</span>
     </span>';
 
 	return $output;
