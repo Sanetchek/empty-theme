@@ -8,10 +8,17 @@ import concat from 'gulp-concat';
 import uglify from 'gulp-uglify';
 import postcss from 'gulp-postcss';
 import autoprefixer from 'autoprefixer';
+import fonter from 'gulp-fonter';
+import ttf2woff2 from 'gulp-ttf2woff2';
+import svgmin from 'gulp-svgmin';
+import svgstore from 'gulp-svgstore';
+import rename from 'gulp-rename';
+import fs from 'fs';
+import path from 'path';
 
 // Minify JavaScript
-gulp.task('minify-scripts', function (done) {
-  console.log('Starting minify-scripts task');
+gulp.task('minify-js', function (done) {
+  console.log('Starting minify-js task');
   return gulp.src('assets/js/scripts/*.js')
     .pipe(concat('scripts.min.js'))
     .pipe(uglify().on('error', function (err) {
@@ -20,7 +27,7 @@ gulp.task('minify-scripts', function (done) {
     }))
     .pipe(gulp.dest('assets/js'))
     .on('end', function () {
-      console.log('minify-scripts task completed');
+      console.log('minify-js task completed');
       done();
     });
 });
@@ -50,11 +57,76 @@ gulp.task('compile-rtl', function (done) {
   });
 });
 
-// Watch task to run minify-js and minify-css on file changes
+// Convert fonts to WOFF2
+gulp.task('convert-fonts', () => {
+  return gulp.src('assets/fonts/*.{ttf,otf}')
+    .pipe(fonter({
+      formats: ['woff2']
+    }))
+    .pipe(ttf2woff2())
+    .pipe(gulp.dest('assets/fonts'));
+});
+
+// Generate fonts CSS
+gulp.task('generate-fonts-css', (done) => {
+  const fontDir = 'assets/fonts';
+  const cssFile = 'assets/css/__02-fonts.css';
+  let cssContent = '';
+  let cssVariables = ':root {\n';
+
+  fs.readdirSync(fontDir).forEach(file => {
+    if (file.endsWith('.woff2')) {
+      const baseName = path.basename(file, '.woff2');
+      // Convert baseName to camelCase for variable names
+      const varName = baseName.replace(/[-_](.)/g, (_, c) => c.toUpperCase());
+      cssContent += `
+@font-face {
+  font-family: '${baseName}';
+  src: url('../fonts/${file}') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+`;
+      cssVariables += `  --font-${varName}: '${baseName}';\n`;
+    }
+  });
+
+  cssVariables += '}\n';
+  cssContent += '\n' + cssVariables;
+
+  fs.writeFileSync(cssFile, cssContent);
+  done();
+});
+
+// Optimize SVG icons
+gulp.task('svg-optimize', () => {
+  return gulp.src('assets/img/icons/*.svg')
+    .pipe(svgmin())
+    .pipe(gulp.dest('assets/img/icons'));
+});
+
+// Combine SVGs into sprite.svg
+gulp.task('svg-combine', () => {
+  return gulp.src('assets/img/icons/*.svg')
+    .pipe(svgstore({
+      inlineSvg: true
+    }))
+    .pipe(rename('sprite.svg')) // Explicitly rename output to sprite.svg
+    .pipe(gulp.dest('assets/img'));
+});
+
+// Font and SVG tasks
+gulp.task('fonts', gulp.series('convert-fonts', 'generate-fonts-css'));
+gulp.task('icons', gulp.series('svg-optimize', 'svg-combine'));
+
+// Watch task to run tasks on file changes
 gulp.task('watch', function () {
   console.log('Watching files...');
-  watch('assets/js/scripts/*.js', gulp.series('minify-scripts'));
+  watch('assets/js/scripts/*.js', gulp.series('minify-js'));
   watch('assets/css/*.css', gulp.series('minify-css', 'compile-rtl'));
+  watch('assets/fonts/*.{ttf,otf}', gulp.series('fonts'));
+  watch('assets/img/icons/*.svg', gulp.series('icons'));
 });
 
 // Default task to run watch

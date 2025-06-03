@@ -10,10 +10,3 @@ License URI: LICENSE
 Text Domain: emptytheme
 Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
 */
-
-body {
-	font-family: Assistant, sans-serif;
-	font-size: 16px;
-	line-height: 1.5;
-	overflow-x: hidden;
-}

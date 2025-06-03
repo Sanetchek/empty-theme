@@ -1,63 +1,75 @@
+
 @font-face {
-	font-family: Assistant;
-	src: url(assets/fonts/Assistant-Bold.ttf);
-	font-weight: 700;
-	font-style: normal;
-	font-display: swap;
+  font-family: 'Assistant-Bold';
+  src: url('../fonts/Assistant-Bold.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-	font-family: Assistant;
-	src: url(assets/fonts/Assistant-ExtraBold.ttf);
-	font-weight: 800;
-	font-style: normal;
-	font-display: swap;
+  font-family: 'Assistant-ExtraBold';
+  src: url('../fonts/Assistant-ExtraBold.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-	font-family: Assistant;
-	src: url(assets/fonts/Assistant-ExtraLight.ttf);
-	font-weight: 200;
-	font-style: normal;
-	font-display: swap;
+  font-family: 'Assistant-ExtraLight';
+  src: url('../fonts/Assistant-ExtraLight.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-	font-family: Assistant;
-	src: url(assets/fonts/Assistant-Light.ttf);
-	font-weight: 300;
-	font-style: normal;
-	font-display: swap;
+  font-family: 'Assistant-Light';
+  src: url('../fonts/Assistant-Light.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-	font-family: Assistant;
-	src: url(assets/fonts/Assistant-Medium.ttf);
-	font-weight: 500;
-	font-style: normal;
-	font-display: swap;
+  font-family: 'Assistant-Medium';
+  src: url('../fonts/Assistant-Medium.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-	font-family: Assistant;
-	src: url(assets/fonts/Assistant-Regular.ttf);
-	font-weight: 400;
-	font-style: normal;
-	font-display: swap;
+  font-family: 'Assistant-Regular';
+  src: url('../fonts/Assistant-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-	font-family: Assistant;
-	src: url(assets/fonts/Assistant-SemiBold.ttf);
-	font-weight: 600;
-	font-style: normal;
-	font-display: swap;
+  font-family: 'Assistant-SemiBold';
+  src: url('../fonts/Assistant-SemiBold.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-	font-family: Roboto;
-	src: url(assets/fonts/Roboto-Regular.ttf);
-	font-weight: 400;
-	font-style: normal;
-	font-display: swap;
+  font-family: 'Roboto-Regular';
+  src: url('../fonts/Roboto-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --font-AssistantBold: 'Assistant-Bold';
+  --font-AssistantExtraBold: 'Assistant-ExtraBold';
+  --font-AssistantExtraLight: 'Assistant-ExtraLight';
+  --font-AssistantLight: 'Assistant-Light';
+  --font-AssistantMedium: 'Assistant-Medium';
+  --font-AssistantRegular: 'Assistant-Regular';
+  --font-AssistantSemiBold: 'Assistant-SemiBold';
+  --font-RobotoRegular: 'Roboto-Regular';
 }
