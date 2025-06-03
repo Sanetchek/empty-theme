@@ -101,21 +101,7 @@ gulp.task('generate-fonts-css', (done) => {
 // Optimize SVG icons
 gulp.task('svg-optimize', () => {
   return gulp.src('assets/img/icons/*.svg')
-    .pipe(svgmin(({
-      file
-    }) => {
-      const content = file.contents.toString();
-      const hasStroke = content.includes('stroke=') || content.includes('stroke-width=');
-      return {
-        plugins: [{
-            removeTitle: true
-          },
-          {
-            convertStrokeToFill: hasStroke
-          }
-        ]
-      };
-    }))
+    .pipe(svgmin())
     .pipe(gulp.dest('assets/img/icons'));
 });
 
