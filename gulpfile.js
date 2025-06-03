@@ -77,7 +77,6 @@ gulp.task('generate-fonts-css', (done) => {
   fs.readdirSync(fontDir).forEach(file => {
     if (file.endsWith('.woff2')) {
       const baseName = path.basename(file, '.woff2');
-      // Convert baseName to camelCase for variable names
       const varName = baseName.replace(/[-_](.)/g, (_, c) => c.toUpperCase());
       cssContent += `
 @font-face {
@@ -102,7 +101,21 @@ gulp.task('generate-fonts-css', (done) => {
 // Optimize SVG icons
 gulp.task('svg-optimize', () => {
   return gulp.src('assets/img/icons/*.svg')
-    .pipe(svgmin())
+    .pipe(svgmin(({
+      file
+    }) => {
+      const content = file.contents.toString();
+      const hasStroke = content.includes('stroke=') || content.includes('stroke-width=');
+      return {
+        plugins: [{
+            removeTitle: true
+          },
+          {
+            convertStrokeToFill: hasStroke
+          }
+        ]
+      };
+    }))
     .pipe(gulp.dest('assets/img/icons'));
 });
 
@@ -112,11 +125,11 @@ gulp.task('svg-combine', () => {
     .pipe(svgstore({
       inlineSvg: true
     }))
-    .pipe(rename('sprite.svg')) // Explicitly rename output to sprite.svg
+    .pipe(rename('sprite.svg'))
     .pipe(gulp.dest('assets/img'));
 });
 
-// Font and SVG tasks
+// Font, SVG, and image tasks
 gulp.task('fonts', gulp.series('convert-fonts', 'generate-fonts-css'));
 gulp.task('icons', gulp.series('svg-optimize', 'svg-combine'));
 
