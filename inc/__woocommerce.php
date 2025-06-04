@@ -50,7 +50,7 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters('active_plugins', ge
 
     foreach ($columns as $key => $column) {
       if ($key === 'order_number') {
-        $new_columns['custom_order_number'] = __('Order #', 'your-textdomain');
+        $new_columns['custom_order_number'] = __('Order #', 'emptytheme');
       } else {
         $new_columns[$key] = $column;
       }

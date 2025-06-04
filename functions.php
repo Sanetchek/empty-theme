@@ -263,14 +263,9 @@ function add_attribs_to_scripts( $tag, $handle, $src ) {
 add_filter( 'script_loader_tag', 'add_attribs_to_scripts', 10, 3 );
 
 /**
- * Actions.
+ * Hooks.
  */
-require get_template_directory() . '/inc/__actions.php';
-
-/**
- * Filters.
- */
-require get_template_directory() . '/inc/__filters.php';
+require get_template_directory() . '/inc/__hooks.php';
 
 /**
  * Ajax.

@@ -1,0 +1,36 @@
+.menu-toggle {
+  display: block;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 1001;
+  position: relative;
+}
+
+.menu-toggle .hamburger-bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background: #000;
+  margin: 5px 0;
+  transition: 0.3s;
+}
+
+
+.menu-toggle {
+  border: none !important;
+  padding: 20px 40px !important;
+  transition: 0.3s;
+}
+
+.main-menu-wrapper {
+  display: block;
+}
+
+.button.menu-toggle::before,
+button.menu-toggle::after,
+button.menu-toggle span::before,
+button.menu-toggle::before {
+  display: none;
+}

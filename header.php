@@ -22,8 +22,11 @@
 
 <body <?php body_class(); ?>>
 	<?php wp_body_open(); ?>
-	<div id="site_page" class="site">
 
+	<!-- Skip Link for Accessibility -->
+	<a class="skip-link screen-reader-text" href="#main_content"><?= __('Skip to content', 'noakirel') ?></a>
+
+	<div id="site_page" class="site">
 		<header id="masthead">
 			<div class="site-header">
 				<div class="container header__wrap">
@@ -55,3 +58,5 @@
 
 			</div>
 		</header><!-- #masthead -->
+
+		<main id="main_content" class="main-content">
