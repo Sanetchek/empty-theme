@@ -2,61 +2,52 @@
 /**
  * The header for our theme
  *
- * This is the template that displays all of the <head> section and everything up until <div id="content">
- *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
- *
  * @package emptytheme
  */
-
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
 <head>
-	<meta charset="<?php bloginfo( 'charset' ); ?>">
+	<meta charset="<?php bloginfo('charset'); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
-
 	<?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
-	<?php wp_body_open(); ?>
+<?php wp_body_open(); ?>
 
-	<!-- Skip Link for Accessibility -->
-	<a class="skip-link screen-reader-text" href="#main_content"><?= __('Skip to content', 'noakirel') ?></a>
+<!-- Skip Link -->
+<a class="skip-link screen-reader-text" href="#main_content"><?php esc_html_e('Skip to main content', 'emptytheme'); ?></a>
 
-	<div id="site_page" class="site">
-		<header id="masthead">
-			<div class="site-header">
-				<div class="container header__wrap">
-					<?php if (theme_logo()) : ?>
-						<?= theme_logo(); // Appearance -> Customize -> Site Identity -> Logo field ?>
-					<?php else : ?>
-						<a href="/" class="site-branding" rel="home" aria-current="page" tabindex="0">
-							<?php bloginfo('name'); ?>
-						</a><!-- .site-branding -->
-					<?php endif; ?>
+<?php $masterhead_class = wp_is_mobile() ? 'header-inner-mobile' : 'header-inner-desktop'; ?>
+<header id="masthead" class="site-header <?php echo esc_attr($masterhead_class); ?>" role="banner">
+	<div class="container header__wrap">
+		<?php if (wp_is_mobile()) : ?>
+			<?php
+			show_burger_menu();
+			show_header_logo();
+			?>
+		<?php else : ?>
+			<nav class="header-menu-wrapper" role="navigation" aria-label="<?php esc_attr_e('Main Navigation', 'emptytheme'); ?>">
+				<?php
+				wp_nav_menu([
+					'theme_location' => 'menu-1',
+					'menu_id'        => 'primary-menu',
+					'container'      => false,
+					'menu_class'     => 'header-menu',
+					'fallback_cb'    => false,
+				]);
+				?>
+			</nav>
+			<?php show_header_logo(); ?>
+		<?php endif; ?>
 
-					<nav class="main-navigation">
-						<?php
-						wp_nav_menu(
-							array(
-								'theme_location' => 'menu-1',
-								'menu_id'        => 'primary-menu',
-							)
-						);
-						?>
-					</nav><!-- #site-navigation -->
+		<div class="header-actions">
+			<?php show_header_links(false); ?>
+		</div>
+	</div>
+</header>
 
-					<div id="burger-menu" class="burger-menu">
-						<div class="bar1"></div>
-						<div class="bar2"></div>
-						<div class="bar3"></div>
-					</div>
-				</div>
-
-			</div>
-		</header><!-- #masthead -->
-
-		<main id="main_content" class="main-content">
+<main id="main_content" class="main-content">
