@@ -1,6 +1,7 @@
 # Node modules
 /node_modules/
 /package-lock.json
+/package.json
 
 # Vendor files
 /vendor/
@@ -19,6 +20,7 @@ assets/js/scripts.min.js
 
 # Files
 generateContent.js
+gulpfile.js
 README.md
 
 # Logs

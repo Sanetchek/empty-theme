@@ -11,34 +11,10 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'article' ); ?>>
 
-	<div class="container">
-		<div class="article-header-show">
-
-			<div class="article-all">
-				<?php $page_parent_id = 1814; ?>
-				<a href="<?php the_permalink( $page_parent_id ); ?>">
-					<?php
-						$icon = get_field( 'icon', $page_parent_id );
-						if ($icon) {
-							echo wp_get_attachment_image($icon, '');
-						}
-					?>
-					<?= get_the_title( $page_parent_id ) ?>
-				</a>
-			</div>
-
-			<div class="article-print">
-				<span><img src="<?= get_template_directory_uri() . '/assets/img/icons/s-shows.svg' ?>" alt=""> <?= view( get_the_ID() ) ?></span>
-				<a href="" id="print_btn"><img src="<?= get_template_directory_uri() . '/assets/img/icons/s-print.svg' ?>" alt=""> <?= __('printing ', 'emptytheme') ?></a>
-			</div>
-
-		</div>
-	</div>
-
 	<div id="print">
 		<div class="article-header">
 			<div class="container">
-				<div class="article-header2">
+				<div class="article-wraoper">
 					<div class="article-row-title">
 
 						<div class="article-title">

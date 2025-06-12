@@ -105,32 +105,32 @@ function assets($source = '') {
  * @return string The full URL to the icon in the sprite sheet.
  */
 function sprite($icon_id = '') {
-	return get_template_directory_uri() . '/assets/img/sprite.svg#' . $icon_id;
+	return get_template_directory_uri() . '/assets/images/sprite.svg#' . $icon_id;
 }
 
 /**
  * Retrieve the HTML for an image, given its attachment ID.
  *
- * @param int    $img     The attachment ID of the image.
+ * @param int    $img_id  The attachment ID of the image.
  * @param string $thumb   The size of the image to retrieve. Default 'large'.
  * @param array  $attr    The attributes to add to the <img> element. Default empty array.
  * @return string The HTML for the image.
  */
-function get_image($img = '', $thumb = 'large', $attr = []) {
-	return wp_get_attachment_image($img, $thumb, '', $attr);
+function get_image($img_id = '', $thumb = 'large', $attr = []) {
+	return wp_get_attachment_image($img_id, $thumb, '', $attr);
 }
 
 /**
  * Displays an image on the page if the attachment ID is provided.
  *
- * @param int    $img   The attachment ID of the image.
- * @param string $thumb The size of the image to display. Default is 'large'.
- * @param array  $attr  Additional attributes for the <img> element. Default is an empty array.
+ * @param int    $img_id The attachment ID of the image.
+ * @param string $thumb  The size of the image to display. Default is 'large'.
+ * @param array  $attr   Additional attributes for the <img> element. Default is an empty array.
  */
 
-function show_image($img = '', $thumb = 'large', $attr = []) {
-	if ($img) {
-		echo wp_get_attachment_image($img, $thumb, '', $attr);
+function show_image($img_id = '', $thumb = 'large', $attr = []) {
+	if ($img_id) {
+		echo wp_get_attachment_image($img_id, $thumb, '', $attr);
 	}
 }
 
