@@ -6,3 +6,143 @@ body {
 #site_page {
   overflow-x: hidden;
 }
+
+.btn-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  line-height: 167%;
+  text-align: center;
+  color: var(--dark);
+  border: 0.80px solid rgba(45, 0, 9, 0.6);
+  padding: 15px;
+  min-width: 131px;
+  width: max-content;
+  height: 60px;
+  text-decoration: none;
+  transition: all .3s;
+}
+
+.btn-link:hover {
+  background-color: var(--dark);
+  color: var(--white);
+}
+
+.screen-reader-text {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  word-wrap: normal !important
+}
+
+.screen-reader-text:focus {
+  background-color: #f1f1f1;
+  border-radius: 3px;
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, .6);
+  clip: auto !important;
+  display: block;
+  font-weight: 700;
+  height: auto;
+  left: 0;
+  line-height: normal;
+  padding: 1em 1.618em;
+  text-decoration: none;
+  top: 0;
+  width: auto;
+  z-index: 100000;
+  outline: none
+}
+
+.screen-reader-text.skip-link:focus {
+  clip-path: none
+}
+
+.accordion-item {
+  position: relative;
+  background: none;
+  border: none;
+  width: 100%;
+  padding: 15px 0;
+  text-align: right;
+  font-family: var(--font-UbuntuRegular);
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 186%;
+  color: rgba(45, 0, 9, 0.7);
+}
+
+.accordion-item.active .accordion-content {
+  display: block;
+}
+
+.accordion-title {
+  display: block;
+  width: 100%;
+  position: relative;
+  background: transparent;
+  text-align: start;
+  cursor: pointer;
+  padding-right: 0;
+}
+
+.accordion-title:hover {
+  background: transparent;
+}
+
+.accordion-title-text::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 0.8px;
+  background: rgba(45, 0, 9, 0.7);
+  margin-top: 10px;
+}
+
+.accordion-content {
+  display: none;
+  font-family: var(--font-UbuntuRegular);
+  font-weight: 300;
+  font-size: 14px;
+  text-transform: capitalize;
+  text-align: right;
+  color: rgba(45, 0, 9, 0.7);
+}
+
+.accordion-content p {
+  margin: 0;
+}
+
+svg.accordion-icon {
+  fill: rgba(45, 0, 9, .7);
+  color: rgba(45, 0, 9, .7);
+  position: absolute;
+  top: 10px;
+  left: 0;
+}
+
+.accordion-icon-minus {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.accordion-item.active .accordion-icon-minus {
+  opacity: 1;
+  visibility: visible;
+}
+
+.accordion-icon-plus {
+  opacity: 1;
+  visibility: visible;
+}
+
+.accordion-item.active .accordion-icon-plus {
+  opacity: 0;
+  visibility: hidden;
+}

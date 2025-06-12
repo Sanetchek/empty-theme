@@ -185,18 +185,6 @@ function emptytheme_scripts() {
 	// script - jquery
 	wp_enqueue_script('jquery');
 
-	// script - form validation https://jqueryvalidation.org/
-	wp_enqueue_script('jquery-validate', get_template_directory_uri() . '/assets/js/jquery.validate.min.js');
-
-	// script - aos animation https://michalsnik.github.io/aos/
-	wp_enqueue_script( 'aos', get_template_directory_uri() . '/assets/js/aos-next/aos.js', array(), _S_VERSION, true  );
-
-	// script - counter up https://github.com/bfintal/Counter-Up
-	wp_enqueue_script( 'counterup', get_template_directory_uri() . '/assets/js/jquery.counterup.min.js', array(), _S_VERSION, true  );
-
-	// script - slick slider https://kenwheeler.github.io/slick/
-	wp_enqueue_script( 'slick', get_template_directory_uri() . '/assets/js/slick/slick.min.js', array(), _S_VERSION, true  );
-
 	// script - theme
 	wp_enqueue_script( 'emptytheme-script', get_template_directory_uri() . '/assets/js/scripts.min.js', array('jquery'), _S_VERSION, true );
 
@@ -286,6 +274,11 @@ require get_template_directory() . '/inc/__custom-functions.php';
  * Customizer.
  */
 require get_template_directory() . '/inc/__customizer.php';
+
+/**
+ * Preload fonts.
+ */
+require get_template_directory() . '/inc/__preload-fonts.php';
 
 /**
  * Woocommerce.

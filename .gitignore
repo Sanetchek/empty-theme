@@ -17,5 +17,9 @@ style-rtl.css
 # JavaScript files
 assets/js/scripts.min.js
 
-# .env
-.env
+# Files
+generateContent.js
+README.md
+
+# Logs
+*.log

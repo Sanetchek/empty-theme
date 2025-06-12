@@ -1,11 +1,12 @@
 .menu-toggle {
   display: block;
   background: none;
-  border: none;
   cursor: pointer;
-  padding: 10px;
   z-index: 1001;
   position: relative;
+  border: none !important;
+  padding: 0 !important;
+  transition: 0.3s;
 }
 
 .menu-toggle .hamburger-bar {
@@ -17,20 +18,21 @@
   transition: 0.3s;
 }
 
-
-.menu-toggle {
-  border: none !important;
-  padding: 20px 40px !important;
-  transition: 0.3s;
-}
-
-.main-menu-wrapper {
-  display: block;
-}
-
 .button.menu-toggle::before,
 button.menu-toggle::after,
 button.menu-toggle span::before,
 button.menu-toggle::before {
   display: none;
+}
+
+.menu-toggle.active .hamburger-bar:nth-child(2) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.menu-toggle.active .hamburger-bar:nth-child(3) {
+  opacity: 0;
+}
+
+.menu-toggle.active .hamburger-bar:nth-child(4) {
+  transform: rotate(-45deg) translate(5px, -5px);
 }
