@@ -66,7 +66,7 @@ function show_header_logo($acf_logo_field = '') {
 	$logo = get_field($acf_logo_field, 'option') ?? assets('images/logo.svg');
 	?>
 	<a href="<?php echo esc_url(home_url('/')); ?>" class="header-logo" aria-label="<?php esc_attr_e('Go to homepage', 'noakirel'); ?>">
-		<img src="<?php echo esc_url($logo); ?>" alt="<?php esc_attr_e('Site logo', 'noakirel'); ?>">
+		<img rel="preload" as="image" src="<?php echo esc_url($logo); ?>" alt="<?php esc_attr_e('Site logo', 'noakirel'); ?>">
 	</a>
 	<?php
 }
@@ -109,6 +109,16 @@ function sprite($icon_id = '') {
 }
 
 /**
+ * Returns the URL to a specific icon within the social sprite sheet.
+ *
+ * @param string $icon_id The identifier of the icon within the sprite sheet.
+ * @return string The full URL to the icon in the sprite sheet.
+ */
+function social_sprite($icon_id = '') {
+	return get_template_directory_uri() . '/assets/images/social-sprite.svg#' . $icon_id;
+}
+
+/**
  * Retrieve the HTML for an image, given its attachment ID.
  *
  * @param int    $img_id  The attachment ID of the image.
@@ -142,43 +152,6 @@ function show_image($img_id = '', $thumb = 'large', $attr = []) {
  */
 function part($file_name = '', $args = []) {
 	get_template_part( "template-parts/{$file_name}", '', $args );
-}
-
-/**
- * Social Share
- *
- * @param [string] $url
- * @param [string] $title
- * @return string
- */
-function socialShare($url, $title)
-{
-	return '<div class="social_share">
-		<div class="article-social">
-			<a class="social_share_link social_share_whatsapp"
-				href="https://api.whatsapp.com/send?text=' . $title . '&url=' . $url . '"
-				title="Whatsapp" rel="nofollow noopener" target="_blank">
-				<span
-					class="social_share_svg"><img src="' . sprite('s-whatsapp')	. '" /></span>
-			</a>
-			<a class="social_share_link social_share_facebook"
-				href="https://www.facebook.com/sharer/sharer.php?u=' . $url . '"
-				title="Facebook" rel="nofollow noopener" target="_blank">
-				<span class="social_share_svg"><img src="' . sprite('s-facebook')	. '" /></span>
-			</a>
-			<a class="social_share_link social_share_gmail"
-				href="mailto:' .
-		$url . '?subject=' . $title . '"
-				title="Mail" rel="nofollow noopener" target="_blank">
-				<span class="social_share_svg"><img src="' . sprite('s-mail')	. '" /></span>
-			</a>
-			<a class="social_share_link social_share_twitter"
-				href="http://twitter.com/intent/tweet?text=' . $title . '&amp;url=' . $url . '"
-				title="Twitter" rel="nofollow noopener" target="_blank">
-				<span class="social_share_svg"><img src="' . sprite('s-twitter') . '" /></span>
-			</a>
-		</div>
-	</div>';
 }
 
 /**

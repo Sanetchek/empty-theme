@@ -34,7 +34,7 @@ gulp.task('minify-js', function (done) {
 // Combine, minify, and autoprefix CSS, then output to style-rtl.css
 gulp.task('minify-css', function () {
   console.log('Starting minify-css task');
-  return gulp.src('assets/css/*.css')
+  return gulp.src('assets/css/draft/*.css')
     .pipe(plumber())
     .pipe(concat('style-rtl.css'))
     .pipe(postcss([autoprefixer()]))
@@ -61,7 +61,7 @@ gulp.task('compile-rtl', function (done) {
 gulp.task('generate-fonts-css', (done) => {
   try {
     const fontDir = 'assets/fonts/';
-    const cssFile = 'assets/css/__02-fonts.css';
+    const cssFile = 'assets/css/draft/__02-fonts.css';
     let cssContent = '';
     let cssVariables = ':root {\n';
 
@@ -138,7 +138,7 @@ gulp.task('icons', gulp.series('svg-optimize', 'svg-combine'));
 // Watch task to run tasks on file changes
 gulp.task('watch', function () {
   console.log('Watching files...');
-  gulp.watch('assets/css/*.css', gulp.series('css'));
+  gulp.watch('assets/css/draft/*.css', gulp.series('css'));
   gulp.watch('assets/js/scripts/*.js', gulp.series('js'));
 });
 

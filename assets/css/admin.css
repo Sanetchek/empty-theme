@@ -1,0 +1,11 @@
+.theme-settings {
+    max-width: 600px;
+}
+
+.theme-settings h1 {
+    margin-bottom: 20px;
+}
+
+.theme-settings .form-table th {
+    width: 200px;
+}

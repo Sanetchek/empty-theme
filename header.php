@@ -33,7 +33,7 @@
 			<nav class="header-menu-wrapper" role="navigation" aria-label="<?php esc_attr_e('Main Navigation', 'emptytheme'); ?>">
 				<?php
 				wp_nav_menu([
-					'theme_location' => 'menu-1',
+					'theme_location' => 'header-menu',
 					'menu_id'        => 'primary-menu',
 					'container'      => false,
 					'menu_class'     => 'header-menu',

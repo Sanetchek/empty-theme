@@ -1,6 +1,7 @@
 {
   "name": "sanetchek/emptytheme",
   "type": "wordpress-theme",
+  "version": "1.0.0",
   "description": "emptytheme starter theme with localization support.",
   "keywords": [
     "WordPress",
