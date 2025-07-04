@@ -1,9 +1,9 @@
-body {
-  font-size: 16px;
+html {
+  font-size: 10px;
   line-height: 1.5;
 }
 
-#site_page {
+.overflow-hidden {
   overflow-x: hidden;
 }
 
@@ -64,85 +64,24 @@ body {
   clip-path: none
 }
 
-.accordion-item {
-  position: relative;
-  background: none;
-  border: none;
-  width: 100%;
-  padding: 15px 0;
-  text-align: right;
-  font-family: var(--font-UbuntuRegular);
-  font-weight: 300;
-  font-size: 14px;
-  line-height: 186%;
-  color: rgba(45, 0, 9, 0.7);
-}
-
-.accordion-item.active .accordion-content {
-  display: block;
-}
-
-.accordion-title {
-  display: block;
-  width: 100%;
-  position: relative;
-  background: transparent;
-  text-align: start;
-  cursor: pointer;
-  padding-right: 0;
-}
-
-.accordion-title:hover {
-  background: transparent;
-}
-
-.accordion-title-text::after {
-  content: "";
-  display: block;
-  width: 60px;
-  height: 0.8px;
-  background: rgba(45, 0, 9, 0.7);
-  margin-top: 10px;
-}
-
-.accordion-content {
-  display: none;
-  font-family: var(--font-UbuntuRegular);
-  font-weight: 300;
-  font-size: 14px;
-  text-transform: capitalize;
-  text-align: right;
-  color: rgba(45, 0, 9, 0.7);
-}
-
-.accordion-content p {
-  margin: 0;
-}
-
-svg.accordion-icon {
-  fill: rgba(45, 0, 9, .7);
-  color: rgba(45, 0, 9, .7);
+.visibility-hidden {
   position: absolute;
-  top: 10px;
-  left: 0;
-}
-
-.accordion-icon-minus {
+  left: -9999px;
+  top: -9999px;
+  width: 0;
+  height: 0;
   opacity: 0;
+  font-size: 0;
   visibility: hidden;
+  pointer-events: none;
 }
 
-.accordion-item.active .accordion-icon-minus {
-  opacity: 1;
-  visibility: visible;
-}
-
-.accordion-icon-plus {
-  opacity: 1;
-  visibility: visible;
-}
-
-.accordion-item.active .accordion-icon-plus {
-  opacity: 0;
-  visibility: hidden;
+.container {
+  width: 100%;
+  max-width: 192rem;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 3rem;
+  padding-left: 3rem;
+  box-sizing: border-box;
 }

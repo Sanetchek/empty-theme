@@ -79,12 +79,7 @@ function show_header_logo($acf_logo_field = '') {
  */
 function show_burger_menu() {
 	?>
-	<button class="menu-toggle" aria-controls="main-menu" aria-expanded="false" aria-label="<?php esc_attr_e('Toggle menu', 'emptytheme'); ?>">
-		<span class="screen-reader-text"><?php esc_html_e('Menu', 'emptytheme'); ?></span>
-		<span class="hamburger-bar" aria-hidden="true"></span>
-		<span class="hamburger-bar" aria-hidden="true"></span>
-		<span class="hamburger-bar" aria-hidden="true"></span>
-	</button>
+	<button type="button" class="header-burger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu"><span class="header-burger-icon"><i></i><i></i><i></i></span></button>
 	<?php
 }
 
@@ -164,39 +159,29 @@ function part($file_name = '', $args = []) {
  * @param array $list An array of items to render in the accordion.
  * @return string The HTML string containing the accordion element.
  */
-function display_product_accordion($list) {
+function display_product_accordion($list, $first = true) {
 	ob_start(); // Start output buffering
 
 	if ($list) :
 	?>
 		<div class="accordion" role="presentation">
-			<?php foreach ($list as $key => $item) : ?>
-				<?php $first = ($key === 0); ?>
-				<div class="accordion-item <?php echo $first ? 'active' : ''; ?>" role="region">
-					<button class="accordion-title"
-							aria-expanded="<?php echo $first ? 'true' : 'false'; ?>"
-							aria-controls="accordion-content-<?php echo sanitize_title($item['title']); ?>">
-						<span class="accordion-title-text"><?= esc_html($item['title']) ?></span>
-						<span class="accordion-icon-plus">
-							<svg class="accordion-icon" width="12" height="12" role="img" aria-label="<?php echo esc_attr__('Expansion Icon', 'noakirel'); ?>">
-								<use href="<?php echo esc_url(sprite('plus')); ?>"></use>
-							</svg>
-						</span>
-						<span class="accordion-icon-minus">
-							<svg class="accordion-icon" width="12" height="12" role="img" aria-label="<?php echo esc_attr__('Close Icon', 'noakirel'); ?>">
-								<use href="<?php echo esc_url(sprite('minus')); ?>"></use>
-							</svg>
-						</span>
-					</button>
-					<div class="accordion-content"
-							id="accordion-content-<?php echo sanitize_title($item['title']); ?>"
-							role="region"
-							aria-hidden="<?php echo $first ? 'false' : 'true'; ?>">
-						<p><?= esc_html($item['content']) ?></p>
-					</div>
+			<?php foreach ($list as $key => $item) :
+				$first_active = $key == 0 && $first ? 'active' : '';
+			?>
+			<div class="accordion-item <?php echo $first_active; ?>" role="region">
+				<button role="button" class="accordion-question"
+					aria-expanded="<?php echo $first_active ? 'true' : 'false'; ?>"
+					aria-controls="accordion-content-<?php echo sanitize_title($item['title']); ?>">
+					<?= esc_html($item['title']) ?>
+				</button>
+				<div class="accordion-answer"
+					id="accordion-content-<?php echo sanitize_title($item['title']); ?>"
+					role="region"
+					aria-hidden="<?php echo $first_active ? 'false' : 'true'; ?>">
+					<p class="accordion-text"><?= esc_html($item['content']) ?></p>
 				</div>
-				<?php
-			endforeach; ?>
+			</div>
+			<?php endforeach; ?>
 		</div>
 	<?php
 	endif;

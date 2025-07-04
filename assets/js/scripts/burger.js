@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const menu = document.getElementById('mobile-menu');
   const overlay = document.getElementById('mobile-menu-overlay');
-  const menuToggle = document.querySelector('.menu-toggle');
+  const menuToggle = document.querySelector('.header-burger');
   const body = document.body;
 
   if (menuToggle && menu && overlay) {
