@@ -1,89 +1,6 @@
 <?php
 
 /**
- * Break content on N words
- *
- * @param [type] $text
- * @param integer $counttext
- * @param string $sep
- * @return void
- */
-function str_word($text, $counttext = 30, $sep = ' ')
-{
-	$text = wp_strip_all_tags($text);
-	$words = explode($sep, $text);
-
-	if (count($words) > $counttext)
-		$text = join($sep, array_slice($words, 0, $counttext));
-
-	return $text;
-}
-
-/**
- * Count Page View
- *
- * @param string $cont_id
- * @param boolean $user
- * @return void
- */
-function view($cont_id = '', $user = false)
-{
-	global $post;
-
-	if (!$cont_id) {
-		$cont_id = $post->ID;
-	}
-
-	$view = get_post_meta($cont_id, 'views', true);
-
-	if ($user) {
-		$view = get_user_meta($cont_id, 'views', true);
-	}
-
-	if ($view) {
-		if ($view > 999999) {
-			$view /= 1000000;
-			$view = round($view, 1);
-			return $view . 'KK';
-		} elseif ($view > 999) {
-			$view /= 1000;
-			$view = round($view, 1);
-			return $view . 'K';
-		} else {
-			return $view;
-		}
-	} else {
-		return '0';
-	}
-}
-
-/**
- * Shows the header logo
- *
- * @param string $acf_logo_field The field name of the logo in ACF
- */
-function show_header_logo($acf_logo_field = '') {
-	$logo = get_field($acf_logo_field, 'option') ?? assets('images/logo.svg');
-	?>
-	<a href="<?php echo esc_url(home_url('/')); ?>" class="header-logo" aria-label="<?php esc_attr_e('Go to homepage', 'noakirel'); ?>">
-		<img rel="preload" as="image" src="<?php echo esc_url($logo); ?>" alt="<?php esc_attr_e('Site logo', 'noakirel'); ?>">
-	</a>
-	<?php
-}
-
-/**
- * Shows the hamburger menu button
- *
- * @since 1.0.0
- * @return void
- */
-function show_burger_menu() {
-	?>
-	<button type="button" class="header-burger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu"><span class="header-burger-icon"><i></i><i></i><i></i></span></button>
-	<?php
-}
-
-/**
  * Returns the URL to a file within the `assets` folder.
  *
  * @param string $source The relative path to the file.
@@ -149,42 +66,17 @@ function part($file_name = '', $args = []) {
 	get_template_part( "template-parts/{$file_name}", '', $args );
 }
 
-/**
- * Renders an accordion element for a product page.
- *
- * The function takes an array of items as its argument and returns an HTML string
- * containing an accordion element with a title and content for each item in the
- * array. The first item in the array is expanded by default.
- *
- * @param array $list An array of items to render in the accordion.
- * @return string The HTML string containing the accordion element.
- */
-function display_product_accordion($list, $first = true) {
-	ob_start(); // Start output buffering
-
-	if ($list) :
-	?>
-		<div class="accordion" role="presentation">
-			<?php foreach ($list as $key => $item) :
-				$first_active = $key == 0 && $first ? 'active' : '';
-			?>
-			<div class="accordion-item <?php echo $first_active; ?>" role="region">
-				<button role="button" class="accordion-question"
-					aria-expanded="<?php echo $first_active ? 'true' : 'false'; ?>"
-					aria-controls="accordion-content-<?php echo sanitize_title($item['title']); ?>">
-					<?= esc_html($item['title']) ?>
-				</button>
-				<div class="accordion-answer"
-					id="accordion-content-<?php echo sanitize_title($item['title']); ?>"
-					role="region"
-					aria-hidden="<?php echo $first_active ? 'false' : 'true'; ?>">
-					<p class="accordion-text"><?= esc_html($item['content']) ?></p>
-				</div>
-			</div>
-			<?php endforeach; ?>
-		</div>
-	<?php
-	endif;
-
-	return ob_get_clean(); // Return the buffered output
-}
+// Include the header logo utility file
+require_once get_template_directory() . '/inc/utils/__show-header-logo.php';
+// Include the burger menu utility file
+require_once get_template_directory() . '/inc/utils/__show-burger-menu.php';
+// Include the truncate string utility file
+require_once get_template_directory() . '/inc/utils/__truncate-string.php';
+// Include the countries array utility file
+require_once get_template_directory() . '/inc/utils/__countries.php';
+// Include the show count page view utility file
+require_once get_template_directory() . '/inc/utils/__show-count-page-view.php';
+// Include the show accordion utility file
+require_once get_template_directory() . '/inc/utils/__show-accordion.php';
+// Include the generate example phone number utility file
+require_once get_template_directory() . '/inc/utils/__generate-example-phone-number.php';
