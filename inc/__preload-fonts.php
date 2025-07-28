@@ -1,14 +1,22 @@
 <?php
 
 /**
- * Outputs HTML link tags to preload fonts from the theme's assets/fonts/
- * directory. This is done to enable font preloading in modern browsers.
+ * Preloads all site fonts by generating <link rel="preload"> tags for them.
  *
- * Note: This function is intended to be hooked into the `wp_head` action.
+ * This function scans for fonts in two primary locations:
+ * 1. Local theme fonts located in the /assets/fonts/ directory.
+ * 2. Fonts from enqueued styles, such as Google Fonts.
  *
- * @since 1.0.0
+ * For local fonts, it constructs URLs based on the theme's directory structure.
+ * For external fonts, it inspects enqueued stylesheets for font URLs, including
+ * those from Google Fonts or any @font-face declarations found within CSS files.
+ *
+ * Outputs unique preload tags for each detected font URL, specifying the appropriate
+ * MIME type for the font based on its file extension. Google Fonts are treated as
+ * stylesheets and are preloaded accordingly.
  */
-function emptytheme_preload_all_site_fonts() {
+
+function tips_preload_all_site_fonts() {
     global $wp_styles;
 
     $font_urls = [];
@@ -34,13 +42,12 @@ function emptytheme_preload_all_site_fonts() {
             // Detect Google Fonts
             if (strpos($url, 'fonts.googleapis.com') !== false) {
                 $font_urls[] = $url;
-
-                // Optional noscript fallback
                 printf('<noscript><link rel="stylesheet" href="%s"></noscript>' . "\n", esc_url($url));
             }
 
             // Parse CSS file for @font-face URLs
-            if (pathinfo(parse_url($url, PHP_URL_PATH), PATHINFO_EXTENSION) === 'css') {
+            $parsed_path = parse_url($url, PHP_URL_PATH);
+            if ($parsed_path !== null && pathinfo($parsed_path, PATHINFO_EXTENSION) === 'css') {
                 $css = @file_get_contents($url);
                 if ($css && preg_match_all('/url\((\'|")?(.*?\.(woff2?|ttf|otf|eot))(\\?.*?)?(\'|")?\)/i', $css, $matches)) {
                     foreach ($matches[2] as $font_url) {
@@ -68,7 +75,12 @@ function emptytheme_preload_all_site_fonts() {
     $font_urls = array_unique($font_urls);
 
     foreach ($font_urls as $font_url) {
-        $ext = pathinfo(parse_url($font_url, PHP_URL_PATH), PATHINFO_EXTENSION);
+        $path = parse_url($font_url, PHP_URL_PATH);
+        if ($path === null) {
+            continue; // skip if path is not defined
+        }
+
+        $ext = pathinfo($path, PATHINFO_EXTENSION);
         switch (strtolower($ext)) {
             case 'woff2':
                 $type = 'font/woff2';
@@ -105,5 +117,4 @@ function emptytheme_preload_all_site_fonts() {
         }
     }
 }
-add_action('wp_head', 'emptytheme_preload_all_site_fonts', 1);
-
+add_action('wp_head', 'tips_preload_all_site_fonts', 1);
