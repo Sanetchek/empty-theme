@@ -16,7 +16,7 @@
  * stylesheets and are preloaded accordingly.
  */
 
-function tips_preload_all_site_fonts() {
+function emptytheme_preload_all_site_fonts() {
     global $wp_styles;
 
     $font_urls = [];
@@ -117,4 +117,4 @@ function tips_preload_all_site_fonts() {
         }
     }
 }
-add_action('wp_head', 'tips_preload_all_site_fonts', 1);
+add_action('wp_head', 'emptytheme_preload_all_site_fonts', 1);
