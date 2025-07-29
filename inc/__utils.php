@@ -21,7 +21,7 @@ function sprite($icon_id = '') {
 }
 
 /**
- * Returns the URL to a specific icon within the social sprite sheet.
+ * Returns the URL to a specific social media icon within the sprite sheet.
  *
  * @param string $icon_id The identifier of the icon within the sprite sheet.
  * @return string The full URL to the icon in the sprite sheet.
@@ -80,3 +80,5 @@ require_once get_template_directory() . '/inc/utils/__show-count-page-view.php';
 require_once get_template_directory() . '/inc/utils/__show-accordion.php';
 // Include the generate example phone number utility file
 require_once get_template_directory() . '/inc/utils/__generate-example-phone-number.php';
+// Include the header actions utility file
+require_once get_template_directory() . '/inc/utils/__header-actions.php';

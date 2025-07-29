@@ -44,7 +44,7 @@
 							</div>
 						</div>
 
-						<?= socialShare( get_the_permalink(), get_the_title() ) ?>
+						<?= emptytheme_social_share( get_the_permalink(), get_the_title() ) ?>
 
 					</div>
 				</div>

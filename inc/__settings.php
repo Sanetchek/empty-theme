@@ -109,7 +109,6 @@ function emptytheme_settings_init() {
         'telegram' => 'Telegram',
         'email' => 'Email',
         'tumblr' => 'Tumblr',
-        'line' => 'Line',
         'viber' => 'Viber'
     );
 
@@ -135,7 +134,7 @@ function emptytheme_social_share_checkbox_callback($args) {
     <?php
 }
 
-// Social share function (VK removed)
+// Social share function
 function emptytheme_social_share($url, $title) {
     $options = get_option('emptytheme_social_share_options');
     $output = '<div class="social_share"><div class="article-social">';
@@ -144,57 +143,52 @@ function emptytheme_social_share($url, $title) {
         'facebook' => array(
             'url' => "https://www.facebook.com/sharer/sharer.php?u={$url}",
             'title' => 'Facebook',
-            'icon' => 's-facebook'
+            'icon' => 'facebook'
         ),
         'twitter' => array(
             'url' => "http://twitter.com/intent/tweet?text={$title}&url={$url}",
             'title' => 'Twitter',
-            'icon' => 's-twitter'
+            'icon' => 'twitter'
         ),
         'whatsapp' => array(
             'url' => "https://api.whatsapp.com/send?text={$title} {$url}",
             'title' => 'WhatsApp',
-            'icon' => 's-whatsapp'
+            'icon' => 'whatsapp'
         ),
         'linkedin' => array(
             'url' => "https://www.linkedin.com/shareArticle?mini=true&url={$url}&title={$title}",
             'title' => 'LinkedIn',
-            'icon' => 's-linkedin'
+            'icon' => 'linkedin'
         ),
         'pinterest' => array(
             'url' => "https://pinterest.com/pin/create/button/?url={$url}&description={$title}",
             'title' => 'Pinterest',
-            'icon' => 's-pinterest'
+            'icon' => 'pinterest2'
         ),
         'reddit' => array(
             'url' => "https://reddit.com/submit?url={$url}&title={$title}",
             'title' => 'Reddit',
-            'icon' => 's-reddit'
+            'icon' => 'reddit'
         ),
         'telegram' => array(
             'url' => "https://t.me/share/url?url={$url}&text={$title}",
             'title' => 'Telegram',
-            'icon' => 's-telegram'
+            'icon' => 'telegram'
         ),
         'email' => array(
             'url' => "mailto:?subject={$title}&body={$url}",
             'title' => 'Email',
-            'icon' => 's-mail'
+            'icon' => 'envelope'
         ),
         'tumblr' => array(
             'url' => "https://www.tumblr.com/widgets/share/tool?canonicalUrl={$url}&title={$title}",
             'title' => 'Tumblr',
-            'icon' => 's-tumblr'
-        ),
-        'line' => array(
-            'url' => "https://line.me/R/msg/text/?{$title}%20{$url}",
-            'title' => 'Line',
-            'icon' => 's-line'
+            'icon' => 'tumblr'
         ),
         'viber' => array(
             'url' => "viber://forward?text={$title}%20{$url}",
             'title' => 'Viber',
-            'icon' => 's-viber'
+            'icon' => 'viber'
         )
     );
 
