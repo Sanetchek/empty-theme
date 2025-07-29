@@ -203,9 +203,3 @@ function emptytheme_social_share($url, $title) {
     $output .= '</div></div>';
     return $output;
 }
-
-// Enqueue frontend styles
-add_action('wp_enqueue_scripts', 'emptytheme_social_share_styles');
-function emptytheme_social_share_styles() {
-    wp_enqueue_style('emptytheme-social-share', get_template_directory_uri() . '/css/social-share.css', array(), '1.0');
-}

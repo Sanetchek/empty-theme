@@ -74,19 +74,6 @@ function emptytheme_defer_scripts($tag, $handle, $src) {
 add_filter('script_loader_tag', 'emptytheme_defer_scripts', 10, 3);
 
 /**
- * Enqueues the Lite YouTube Embed script and stylesheet.
- *
- * This function is hooked into the `wp_enqueue_scripts` action.
- *
- * @since 1.0.0
- */
-function noakirel_lazy_embed_assets() {
-    wp_enqueue_script('lite-youtube', get_template_directory_uri() . '/assets/js/lite-yt-embed.js', [], null, true);
-    wp_enqueue_style('lite-youtube-style', get_template_directory_uri() . '/assets/css/lite-yt-embed.css', [], null);
-}
-add_action('wp_enqueue_scripts', 'noakirel_lazy_embed_assets');
-
-/**
  * Removes the query string parameter "ver" from script and style sources.
  *
  * @param string $src The source URL of the script or style.
