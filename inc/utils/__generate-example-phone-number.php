@@ -12,79 +12,51 @@
  * @return string
  */
 function generate_example_phone_number($country_code, $pattern, $length) {
-    // Remove leading and trailing pattern characters: '/', '^', '$'
-    $pattern = trim($pattern, '/^$');
-
-    // Case: (X|Y|Z...) followed by \d{N}
-    if (
-        strpos($pattern, '|') !== false &&
-        preg_match('/^\(([^)]+)\)\\\\d\{(\d+)\}$/', $pattern, $m)
-    ) {
-        $prefixes = explode('|', $m[1]);
-        $digits = (int)$m[2];
-        $result = [];
-        foreach ($prefixes as $p) {
-            // Variant like [2368]\d — make 2X, 3X, etc.
-            if (preg_match('/^\[(\d+)\]\\\\d$/', $p, $pm)) {
-                $range = str_split($pm[1]);
-                foreach ($range as $r) {
-                    $result[] = $r . 'X';
-                }
-            } else {
-                $clean_prefix = str_replace('-', '', $p); // Remove hyphens
-                $result[] = $clean_prefix;
-            }
-        }
-        $example = implode('| ', $result) . str_repeat('0', $digits);
-        return $example;
+    // Нормализация длины
+    if (is_array($length)) {
+        $length = max($length); // берём максимум для примера
+    } elseif (!is_numeric($length)) {
+        $length = 10; // дефолт
     }
 
-    // Legacy case: (X|Y|Z)\d{N}
-    if (
-        strpos($pattern, '|') !== false &&
-        preg_match('/^\(([^)]+)\)\\\\d\{(\d+)\}\\\\d\{(\d+)\}$/', $pattern, $m)
-    ) {
+    // Чистим паттерн от / ^ $
+    $pattern = preg_replace('#^/#', '', $pattern);
+    $pattern = preg_replace('#/$#', '', $pattern);
+    $pattern = preg_replace('#^\^#', '', $pattern);
+    $pattern = preg_replace('#\$$#', '', $pattern);
+
+    // 1. (X|Y|Z) + \d{N}
+    if (preg_match('/^\(([^)]+)\)\\\\d\{(\d+)\}$/', $pattern, $m)) {
+        $prefixes = explode('|', $m[1]);
+        $digits = (int)$m[2];
+        return $prefixes[0] . str_repeat('0', $digits);
+    }
+
+    // 2. (X|Y|Z)\d{N}\d{M}
+    if (preg_match('/^\(([^)]+)\)\\\\d\{(\d+)\}\\\\d\{(\d+)\}$/', $pattern, $m)) {
         $prefixes = explode('|', $m[1]);
         $digits1 = (int)$m[2];
         $digits2 = (int)$m[3];
-        $result = [];
-        foreach ($prefixes as $p) {
-            $clean_prefix = str_replace('-', '', $p); // Remove hyphens
-            $result[] = $clean_prefix . str_repeat('0', $digits1 - strlen($clean_prefix));
-        }
-        $example = implode('| ', $result) . str_repeat('0', $digits2);
-        return $example;
+        return $prefixes[0] . str_repeat('0', $digits1 + $digits2 - strlen($prefixes[0]));
     }
 
-    // Prefix and numbers, like 5\d{6}
-    if (preg_match('/([0-9\[\]\(\)\-]+)\\\\d\{(\d+)\}/', $pattern, $m)) {
-        $prefix = preg_replace('/[\[\]\(\)]/', '', $m[1]);
-        $prefix = str_replace('-', '', $prefix); // Remove hyphens
-        $digits = (int)$m[2];
-        $example = $prefix . str_repeat('0', $digits);
-        return substr($example, 0, $length);
+    // 3. [29]\d{8} или [2-7]\d{8}
+    if (preg_match('/^\[(\d(?:-\d)?)\]\\\\d\{(\d+)\}$/', $pattern, $m)) {
+        $first = strpos($m[1], '-') !== false ? explode('-', $m[1])[0] : $m[1];
+        return $first . str_repeat('0', (int)$m[2]);
     }
 
-    // Range in square brackets, like [29]\d{8}
-    if (preg_match('/\[(\d+)\]\\\\d\{(\d+)\}/', $pattern, $m)) {
-        $prefix = $m[1][0];
-        $digits = (int)$m[2];
-        return $prefix . str_repeat('0', $digits);
+    // 4. Просто \d{N}
+    if (preg_match('/^\\\\d\{(\d+)\}$/', $pattern, $m)) {
+        return str_repeat('0', (int)$m[1]);
     }
 
-    // Only digits, like \d{9}
-    if (preg_match('/\\\\d\{(\d+)\}/', $pattern, $m)) {
-        return str_repeat('0', $m[1]);
+    // 5. Любой другой случай: берём только цифры/скобки из паттерна и дополняем нулями
+    if (preg_match('/([0-9]+)/', $pattern, $m)) {
+        $prefix = $m[1];
+        return substr($prefix . str_repeat('0', $length), 0, $length);
     }
 
-    // Range like [2-7]\d{8}
-    if (preg_match('/\[(\d+\-\d+)\]\\\\d\{(\d+)\}/', $pattern, $m)) {
-        list($start, $end) = explode('-', $m[1]);
-        $prefix = $start;
-        $digits = (int)$m[2];
-        return $prefix . str_repeat('0', $digits);
-    }
-
-    // Fallback: just zeros with needed length
+    // Fallback
     return str_repeat('0', $length);
 }
