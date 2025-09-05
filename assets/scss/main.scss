@@ -1,0 +1,9 @@
+@use 'parts/fonts' as fonts_generated;
+
+/* Main entry: imports partials from parts */
+
+@use 'parts/variables' as vars;
+@use 'parts/mixins' as mixins;
+@use 'parts/base' as base;
+
+/* Add component/page-specific imports below */

@@ -29,12 +29,6 @@
 					<div class="article-row-image">
 
 						<div class="article-image">
-
-							<?php $subtitle = get_field('subtitle'); ?>
-							<?php if ($subtitle) : ?>
-							<h2 class="article-subtitle"><?= $subtitle ?></h2>
-							<?php endif; ?>
-
 							<div class="articles__thumb">
 								<?php if (has_post_thumbnail()) : ?>
 									<?php the_post_thumbnail( 'large', ['class' => 'br-25 articles__thumb_image'] ); ?>

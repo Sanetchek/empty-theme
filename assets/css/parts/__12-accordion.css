@@ -50,8 +50,9 @@
 }
 
 .accordion-answer {
+    max-height: 0;
     overflow: hidden;
-    height: 0;
+    transition: max-height 0.35s ease;
 }
 
 .accordion-text {

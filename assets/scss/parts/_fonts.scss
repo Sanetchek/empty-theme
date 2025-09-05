@@ -1,0 +1,77 @@
+@font-face {
+  font-family: 'Assistant';
+  src: local('Assistant'),
+       local('Assistant Extralight'),
+       local('Assistant-Extralight'),
+       url('../fonts/Assistant-ExtraLight.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Assistant';
+  src: local('Assistant'),
+       local('Assistant Light'),
+       local('Assistant-Light'),
+       url('../fonts/Assistant-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Assistant';
+  src: local('Assistant'),
+       local('Assistant Regular'),
+       local('Assistant-Regular'),
+       url('../fonts/Assistant-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Assistant';
+  src: local('Assistant'),
+       local('Assistant Medium'),
+       local('Assistant-Medium'),
+       url('../fonts/Assistant-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Assistant';
+  src: local('Assistant'),
+       local('Assistant Semibold'),
+       local('Assistant-Semibold'),
+       url('../fonts/Assistant-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Assistant';
+  src: local('Assistant'),
+       local('Assistant Bold'),
+       local('Assistant-Bold'),
+       url('../fonts/Assistant-ExtraBold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: local('Roboto'),
+       local('Roboto Regular'),
+       local('Roboto-Regular'),
+       url('../fonts/Roboto-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+

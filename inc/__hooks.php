@@ -29,7 +29,7 @@ add_action('wp_head', function ($args = []) {
 	$do_count = $rg->who_count === 0 ? true : ($rg->who_count === 1 ? !$user_ID : (bool) $user_ID);
 
 	if ($do_count && $rg->exclude_bots) {
-		$user_agent = $_SERVER['HTTP_USER_AGENT'] ?? '';
+		$user_agent = $_SERVER['HTTP_USER_AGENT'] ?: '';
 		if ($user_agent && !preg_match('/Mozilla|Opera/i', $user_agent) || preg_match('/Bot\/|robot|Slurp\/|yahoo/i', $user_agent)) {
 			$do_count = false;
 		}

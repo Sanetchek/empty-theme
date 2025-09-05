@@ -153,6 +153,9 @@ function emptytheme_scripts() {
 	wp_enqueue_style( 'emptytheme-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_style_add_data( 'emptytheme-style', 'rtl', 'replace' );
 
+	// fonts
+	wp_enqueue_style( 'emptytheme-fonts', get_template_directory_uri() . '/assets/css/main.min.css', array(), _S_VERSION );
+
 	// script - theme
 	wp_enqueue_script( 'emptytheme-script', get_template_directory_uri() . '/assets/js/scripts.min.js', array('jquery'), _S_VERSION, true );
 
@@ -167,11 +170,6 @@ function emptytheme_scripts() {
 		'site_url' => get_home_url(),
 		'nonce' => wp_create_nonce('emptytheme_nonce'),
 	]);
-
-	// dequeue
-	wp_dequeue_style( 'wp-block-library' );
-	wp_dequeue_style( 'wp-block-library-theme' );
-	wp_dequeue_style( 'wc-blocks-style' ); // Remove WooCommerce block CSS
 }
 add_action( 'wp_enqueue_scripts', 'emptytheme_scripts' );
 
@@ -214,3 +212,13 @@ require get_template_directory() . '/inc/__preload-fonts.php';
  * Woocommerce.
  */
 require get_template_directory() . '/inc/__woocommerce.php';
+
+/**
+ * Theme Options Functionality.
+ */
+require get_template_directory() . '/inc/__theme-options.php';
+
+/**
+ * Theme Shortcodes.
+ */
+require get_template_directory() . '/inc/__shortcodes.php';

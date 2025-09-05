@@ -1,0 +1,25 @@
+/* Base styles */
+
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-Assistant-Regular, 'Assistant', Arial, sans-serif);
+  color: var(--color-dark);
+  background: #fff;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    text-decoration: none;
+}

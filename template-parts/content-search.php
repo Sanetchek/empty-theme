@@ -22,18 +22,7 @@
 		<h2 class="articles__title"><a href="<?php the_permalink() ?>"><?= get_the_title() ?></a></h2>
 
 		<div class="articles__text">
-			<?php
-				$content = get_field('content');
-
-				if ( $content ) {
-					foreach ($content as $item) {
-						if ( $item['text'] ) {
-							echo str_word( $item['text'], $words );
-							break;
-						}
-					}
-				}
-			?>
+			<?php the_excerpt(); ?>
 		</div>
 
 		<div class="articles__date" dir="ltr"><?= wp_date('d/m/Y|H:i') ?></div>
