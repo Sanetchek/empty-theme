@@ -23,10 +23,11 @@ function emptytheme_logo_shortcode($atts) {
     $class = !empty($atts['class']) ? ' class="' . esc_attr($atts['class']) . '"' : '';
     $alt = esc_attr($atts['alt']);
 
-    return wp_get_attachment_image($logo_id, $atts['size'], false, array(
-        'class' => $atts['class'],
-        'alt' => $alt
-    ));
+    // Use liteimage for better optimization if plugin is available
+    return function_exists('liteimage') ? liteimage($logo_id, [
+        'thumb' => $atts['size'],
+        'args' => ['class' => $atts['class'], 'alt' => $alt]
+    ]) : get_image($logo_id, $atts['size'], ['class' => $atts['class'], 'alt' => $alt]);
 }
 
 // Phone shortcode
@@ -110,6 +111,28 @@ function emptytheme_address_shortcode($atts) {
     );
 }
 
+// Copyright shortcode
+add_shortcode('theme_copyright', 'emptytheme_copyright_shortcode');
+function emptytheme_copyright_shortcode($atts) {
+    $atts = shortcode_atts(array(
+        'class' => ''
+    ), $atts, 'theme_copyright');
+
+    $copyright = emptytheme_get_option('copyright');
+
+    if (empty($copyright)) {
+        return '';
+    }
+
+    $class = !empty($atts['class']) ? ' class="' . esc_attr($atts['class']) . '"' : '';
+
+    return sprintf(
+        '<span%s>%s</span>',
+        $class,
+        esc_html($copyright)
+    );
+}
+
 // Footer text shortcode
 add_shortcode('theme_footer_text', 'emptytheme_footer_text_shortcode');
 function emptytheme_footer_text_shortcode($atts) {
@@ -137,15 +160,32 @@ add_shortcode('theme_preloader', 'emptytheme_preloader_shortcode');
 function emptytheme_preloader_shortcode($atts) {
     $atts = shortcode_atts(array(
         'class' => '',
-        'text' => __('Loading...', 'emptytheme')
+        'text' => '',
+        'show_progress' => 'true',
+        'show_text' => 'false'
     ), $atts, 'theme_preloader');
 
     $class = !empty($atts['class']) ? ' class="' . esc_attr($atts['class']) . '"' : '';
     $text = esc_html($atts['text']);
+    $show_progress = $atts['show_progress'] === 'true';
+    $show_text = $atts['show_text'] === 'true';
 
-    return sprintf(
-        '<div id="preloader"%s><div class="preloader-content">%s</div></div>',
-        $class,
-        $text
-    );
+    $html = '<div id="preloader"' . $class . '>';
+    $html .= '<div class="preloader-content">';
+    $html .= '<div class="preloader-spinner"></div>';
+
+    if ($show_text && !empty($text)) {
+        $html .= '<div class="preloader-text">' . $text . '</div>';
+    }
+
+    if ($show_progress) {
+        $html .= '<div class="preloader-progress">';
+        $html .= '<div class="preloader-progress-bar"></div>';
+        $html .= '</div>';
+    }
+
+    $html .= '</div>';
+    $html .= '</div>';
+
+    return $html;
 }

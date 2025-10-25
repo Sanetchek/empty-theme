@@ -1,0 +1,69 @@
+.header-burger {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 4rem;
+    margin-left: 1.6rem;
+    border: none;
+    background-color: transparent;
+    color: var(--color-white);
+    cursor: pointer;
+}
+
+.header-burger-icon {
+    position: relative;
+    display: block;
+    width: 2.4rem;
+    height: 1.8rem;
+    margin: auto;
+}
+
+.header-burger-icon i {
+    position: absolute;
+    right: 0;
+    display: block;
+    width: inherit;
+    height: .1rem;
+    background-color: var(--color-white);
+    border-radius: .4rem;
+    transition: top .35s ease-in-out, background-color .35s ease;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    perspective: 1000;
+    transform: translateZ(0);
+}
+
+.header-burger-icon i:first-child {
+    top: 0;
+}
+
+.header-burger-icon i:nth-child(2) {
+    top: .8rem;
+    width: 55%;
+}
+
+.header-burger-icon i:last-child {
+    top: 1.6rem;
+    width: 80%;
+}
+
+.header-burger.active i:first-child {
+    opacity: 1;
+    top: .8rem;
+    width: 75%;
+    transition: top .35s ease, width .35s ease .35s, transform .5s ease .35s, background-color .35s ease;
+    transform: rotate(45deg);
+}
+
+.header-burger.active i:nth-child(2) {
+    opacity: 0;
+    transition: opacity 50ms ease .35s;
+}
+
+.header-burger.active i:last-child {
+    opacity: 1;
+    top: .8rem;
+    width: 75%;
+    transition: top .35s ease, width .35s ease .35s, transform .5s ease .35s, background-color .35s ease;
+    transform: rotate(-45deg);
+}

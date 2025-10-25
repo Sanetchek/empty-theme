@@ -15,39 +15,39 @@
 	<?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>>
-<?php wp_body_open(); ?>
+<?php $masterhead_class = wp_is_mobile() ? 'mobile' : 'desktop'; ?>
+<body <?php body_class( array('site_' . $masterhead_class) ); ?>>
+	<?php wp_body_open(); ?>
 
-<!-- Skip Link -->
-<a class="skip-link screen-reader-text" href="#main_content"><?php esc_html_e('Skip to main content', 'emptytheme'); ?></a>
+	<a href="#main_content" class="skip-link screen-reader-text"><?php _e('Skip to main content', 'emptytheme'); ?></a>
 
-<?php $masterhead_class = wp_is_mobile() ? 'header-inner-mobile' : 'header-inner-desktop'; ?>
-<header id="masthead" class="site-header <?php echo esc_attr($masterhead_class); ?>" role="banner">
-	<div class="container header__wrap">
-		<?php if (wp_is_mobile()) : ?>
-			<?php
-			show_burger_menu();
-			show_header_logo();
-			?>
-		<?php else : ?>
-			<nav class="header-menu-wrapper" role="navigation" aria-label="<?php esc_attr_e('Main Navigation', 'emptytheme'); ?>">
+	<header id="masthead" class="site-header">
+		<div class="container site-header__inner">
+			<?php if (wp_is_mobile()) : ?>
 				<?php
-				wp_nav_menu([
-					'theme_location' => 'header-menu',
-					'menu_id'        => 'primary-menu',
-					'container'      => false,
-					'menu_class'     => 'header-menu',
-					'fallback_cb'    => false,
-				]);
+				show_logo();
+				show_burger_menu();
 				?>
-			</nav>
-			<?php show_header_logo(); ?>
-		<?php endif; ?>
-
-		<div class="header-actions">
-			<?php show_header_links(false); ?>
+			<?php else : ?>
+				<?php show_logo(); ?>
+				<nav class="site-header__menu" aria-label="<?php esc_attr_e('Main Navigation', 'emptytheme'); ?>">
+					<?php
+					wp_nav_menu([
+						'theme_location' => 'header-menu',
+						'menu_id'        => 'primary-menu',
+						'container'      => false,
+						'menu_class'     => 'site-header__menu_list',
+						'fallback_cb'    => false,
+					]);
+					?>
+				</nav>
+				<?php
+				$button_title = emptytheme_get_option('header_button_title', 'Connect');
+				$button_url = emptytheme_get_option('header_button_url', '#');
+				show_button($button_title, $button_url, 'black', 'site-header__button');
+				?>
+			<?php endif; ?>
 		</div>
-	</div>
-</header>
+	</header>
 
-<main id="main_content" class="main-content">
+	<main id="main_content" class="main-content">

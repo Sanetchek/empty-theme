@@ -3,7 +3,7 @@
 add_action('admin_enqueue_scripts', 'emptytheme_admin_styles');
 function emptytheme_admin_styles($hook) {
     if (strpos($hook, 'emptytheme-') !== false) {
-        wp_enqueue_style('emptytheme-admin', get_template_directory_uri() . '/css/emptytheme-admin.css', array(), '1.0');
+        wp_enqueue_style('emptytheme-admin', get_template_directory_uri() . '/assets/css/admin.min.css', array(), '1.0');
     }
 }
 
@@ -32,6 +32,17 @@ function emptytheme_settings_menu() {
         1
     );
 
+    // Scripts & Snippets subpage
+    add_submenu_page(
+        'emptytheme-general-settings',
+        'Scripts & Snippets',
+        'Scripts',
+        'edit_posts',
+        'emptytheme-scripts-settings',
+        'emptytheme_scripts_settings_page',
+        5
+    );
+
     // Social Share subpage
     add_submenu_page(
         'emptytheme-general-settings',
@@ -46,6 +57,9 @@ function emptytheme_settings_menu() {
 
 // Register settings for General Settings
 require_once get_template_directory() . '/inc/settings-pages/general.php';
+
+// Scripts Settings page
+require_once get_template_directory() . '/inc/settings-pages/scripts.php';
 
 // Social Share Settings page
 require_once get_template_directory() . '/inc/settings-pages/social-share.php';

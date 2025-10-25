@@ -1,0 +1,63 @@
+/**
+ * Header Styles
+ *
+ * @package emptytheme
+ */
+
+@use "preloader" as preloader;
+@use "mixins" as mixins;
+@use "burger" as burger;
+
+.site-header {
+    padding: 1rem 0;
+    background: linear-gradient(132deg, #2c2c2c 0%, #3e3e3e 50%, #2c2c2c 100%);
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 0.1875rem;
+        background: linear-gradient(
+            90deg,
+            #000000 0%,
+            #d8b150 25%,
+            #666666 50%,
+            #d5af51 79%,
+            #191409 100%
+        );
+        z-index: 1;
+
+        @include mixins.media-breakpoint-down(768) {
+            body.site_mobile.mobile-menu-open & {
+                bottom: unset;
+                top: 0;
+            }
+        }
+    }
+
+    &__inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        @include mixins.media-breakpoint-down(576) {
+            body.site_desktop & {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    }
+
+    &__menu_list {
+        @include mixins.horizontal-menu();
+    }
+
+    &__button {
+        @include mixins.media-breakpoint-down(992) {
+            display: none;
+        }
+    }
+}

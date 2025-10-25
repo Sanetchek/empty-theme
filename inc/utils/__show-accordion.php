@@ -15,21 +15,23 @@ function show_accordion($list, $first = true) {
 
 	if ($list) :
 	?>
-		<div class="accordion" role="presentation">
+		<div class="accordion">
 			<?php foreach ($list as $key => $item) :
 				$first_active = $key == 0 && $first ? 'active' : '';
+				$unique_id = 'accordion-' . sanitize_title($item['title']) . '-' . $key;
+				$button_id = 'accordion-button-' . $key;
 			?>
-			<div class="accordion-item <?php echo $first_active; ?>" role="region">
-				<button role="button" class="accordion-question"
+			<div class="accordion-item <?php echo $first_active; ?>">
+				<button type="button" id="<?php echo esc_attr($button_id); ?>" class="accordion-question"
 					aria-expanded="<?php echo $first_active ? 'true' : 'false'; ?>"
-					aria-controls="accordion-content-<?php echo sanitize_title($item['title']); ?>">
+					aria-controls="<?php echo esc_attr($unique_id); ?>">
 					<?= esc_html($item['title']) ?>
 				</button>
-				<div class="accordion-answer"
-					id="accordion-content-<?php echo sanitize_title($item['title']); ?>"
+				<div class="accordion-answer" id="<?php echo esc_attr($unique_id); ?>"
 					role="region"
+					aria-labelledby="<?php echo esc_attr($button_id); ?>"
 					aria-hidden="<?php echo $first_active ? 'false' : 'true'; ?>">
-					<p class="accordion-text"><?= esc_html($item['content']) ?></p>
+					<div class="accordion-text"><?= wp_kses_post($item['content']) ?></div>
 				</div>
 			</div>
 			<?php endforeach; ?>
@@ -38,4 +40,20 @@ function show_accordion($list, $first = true) {
 	endif;
 
 	return ob_get_clean(); // Return the buffered output
+}
+
+function create_accordion_items($list)
+{
+	$items = [];
+	foreach ($list as $item_id) {
+		if ($item_id) {
+			$raw_content = get_post_field('post_content', $item_id);
+			$content = apply_filters('the_content', $raw_content);
+			$items[] = [
+				'title' => get_the_title($item_id),
+				'content' => $content,
+			];
+		}
+	}
+	return $items;
 }

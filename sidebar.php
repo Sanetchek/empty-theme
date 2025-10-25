@@ -7,11 +7,12 @@
  * @package emptytheme
  */
 
-if ( ! is_active_sidebar( 'sidebar-1' ) ) {
+// Check if sidebar has actual content before displaying
+if ( ! emptytheme_sidebar_has_content( 'sidebar-1' ) ) {
 	return;
 }
 ?>
 
-<aside id="secondary" class="widget-area">
-	<?php dynamic_sidebar( 'sidebar-1' ); ?>
+<aside id="secondary" class="widget-area" aria-label="<?php esc_attr_e('Sidebar', 'emptytheme'); ?>">
+    <?php dynamic_sidebar( 'sidebar-1' ); ?>
 </aside><!-- #secondary -->

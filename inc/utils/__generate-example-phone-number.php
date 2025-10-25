@@ -12,14 +12,14 @@
  * @return string
  */
 function generate_example_phone_number($country_code, $pattern, $length) {
-    // Нормализация длины
+    // Normalize length
     if (is_array($length)) {
-        $length = max($length); // берём максимум для примера
+        $length = max($length); // take maximum for example
     } elseif (!is_numeric($length)) {
-        $length = 10; // дефолт
+        $length = 10; // default
     }
 
-    // Чистим паттерн от / ^ $
+    // Clean pattern from / ^ $
     $pattern = preg_replace('#^/#', '', $pattern);
     $pattern = preg_replace('#/$#', '', $pattern);
     $pattern = preg_replace('#^\^#', '', $pattern);
@@ -40,18 +40,18 @@ function generate_example_phone_number($country_code, $pattern, $length) {
         return $prefixes[0] . str_repeat('0', $digits1 + $digits2 - strlen($prefixes[0]));
     }
 
-    // 3. [29]\d{8} или [2-7]\d{8}
+    // 3. [29]\d{8} or [2-7]\d{8}
     if (preg_match('/^\[(\d(?:-\d)?)\]\\\\d\{(\d+)\}$/', $pattern, $m)) {
         $first = strpos($m[1], '-') !== false ? explode('-', $m[1])[0] : $m[1];
         return $first . str_repeat('0', (int)$m[2]);
     }
 
-    // 4. Просто \d{N}
+    // 4. Simple \d{N}
     if (preg_match('/^\\\\d\{(\d+)\}$/', $pattern, $m)) {
         return str_repeat('0', (int)$m[1]);
     }
 
-    // 5. Любой другой случай: берём только цифры/скобки из паттерна и дополняем нулями
+    // 5. Any other case: take only digits/brackets from pattern and pad with zeros
     if (preg_match('/([0-9]+)/', $pattern, $m)) {
         $prefix = $m[1];
         return substr($prefix . str_repeat('0', $length), 0, $length);

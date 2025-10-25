@@ -12,22 +12,53 @@
 ?>
 	</main>
 
+	<?php
+	// Show mobile menu (only on mobile devices)
+	show_mobile_menu();
+	?>
+
 	<footer id="colophon" class="site-footer">
-		<div class="site-info container">
+		<div class="site-footer__inner container">
 
-			<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('footer-1') ) : ?>
-			<?php endif; ?>
+			<div class="site-footer__inner_top">
+				<div class="site-footer__logo">
+					<?php show_logo(); ?>
+				</div>
 
-			<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('footer-2') ) : ?>
-			<?php endif; ?>
+				<nav class="site-footer__menu" aria-label="<?php esc_attr_e('Footer Navigation', 'emptytheme'); ?>">
+					<?php wp_nav_menu([
+						'theme_location' => 'footer-menu',
+						'menu_id'        => 'footer-menu',
+						'container'      => false,
+						'menu_class'     => 'site-footer__menu_list',
+						'fallback_cb'    => false,
+					]); ?>
+				</nav>
+			</div>
 
-			<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('footer-3') ) : ?>
-			<?php endif; ?>
+			<div class="site-footer__inner_middle">
+				<?php echo do_shortcode('[theme_footer_text]'); ?>
+			</div>
 
-			<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('footer-4') ) : ?>
-			<?php endif; ?>
+			<div class="site-footer__inner_privacy">
+				<nav class="site-footer__privacy_menu" aria-label="<?php esc_attr_e('Privacy Navigation', 'emptytheme'); ?>">
+					<?php wp_nav_menu([
+						'theme_location' => 'privacy-menu',
+						'menu_id'        => 'privacy-menu',
+						'container'      => false,
+						'menu_class'     => 'site-footer__privacy_menu_list',
+						'fallback_cb'    => false,
+					]); ?>
+				</nav>
+			</div>
 
-		</div><!-- .site-info -->
+			<div class="site-footer__inner_bottom">
+				<div class="site-footer__company"><?php _e('Company name', 'emptytheme'); ?></div>
+
+				<div class="site-footer__copyright"><?php echo do_shortcode('[theme_copyright]'); ?></div>
+			</div>
+
+		</div><!-- .site-footer__inner -->
 	</footer><!-- #colophon -->
 
 

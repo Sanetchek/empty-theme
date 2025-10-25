@@ -1,0 +1,73 @@
+.accordion {
+    border-top: 1px solid rgba(0, 0, 0, .2);
+}
+
+.accordion-item {
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+    padding: 1.25rem 0;
+}
+
+.accordion-question {
+    position: relative;
+    width: 100%;
+    padding: 0 4.5rem 0 0;
+    margin: 0;
+    background: 0;
+    border: 0;
+    font-family: var(--font-urbanist);
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 1.25;
+    color: var(--color-dark);
+    text-align: start;
+    cursor: pointer;
+    transition: all .25s ease-in-out;
+}
+
+.accordion-question:before {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    right: 0.5rem;
+    width: 1.4375rem;
+    height: 0.0625rem;
+    background-color: #000;
+    border-radius: 2px;
+    transform: translateY(-50%);
+}
+
+.accordion-question:after {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    right: 1.125rem;
+    width: 0.0625rem;
+    height: 1.4375rem;
+    background-color: #000;
+    border-radius: 2px;
+    transition: all .25s ease-in-out;
+    transform: translateY(-50%);
+}
+
+.accordion-item.active .accordion-question:after {
+    opacity: 0;
+}
+
+.accordion-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+    padding-right: 4.5rem;
+}
+
+.accordion-text {
+    overflow: hidden;
+    padding-top: 0.75rem;
+    margin: 0;
+}
+
+.accordion-text * {
+    font-size: 1.125rem;
+    line-height: 1.45;
+    color: var(--color-text);
+}

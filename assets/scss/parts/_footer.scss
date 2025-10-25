@@ -1,0 +1,53 @@
+@use "mixins" as mixins;
+
+.site-footer {
+    background: var(--color-dark);
+    padding: 1.5rem 0;
+
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    &__inner_top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    &__menu_list {
+        @include mixins.horizontal-menu();
+    }
+
+    &__inner_middle {
+        font-size: 0.75rem;
+        line-height: 1.45;
+        color: var(--color-white);
+    }
+
+    &__privacy_menu {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    &__privacy_menu_list {
+        @include mixins.horizontal-menu();
+    }
+
+    &__inner_bottom {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    &__copyright,
+    &__company {
+        font-size: 0.75rem;
+        line-height: 1.45;
+        color: var(--color-white);
+    }
+}

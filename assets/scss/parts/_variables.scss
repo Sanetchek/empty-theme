@@ -1,20 +1,25 @@
 /* Variables */
 
+/* Breakpoints */
+$breakpoints: (
+  0: 0,
+  576: 576px,
+  768: 768px,
+  992: 992px,
+  1240: 1240px,
+) !default;
+
 :root {
   /* Example color variables */
-  --color-primary: #0d6efd;
-  --color-secondary: #6c757d;
-  --color-success: #198754;
-  --color-danger: #dc3545;
-  --color-warning: #ffc107;
-  --color-info: #0dcaf0;
-  --color-light: #f8f9fa;
-  --color-dark: #212529;
+  --color-dark: #1f1f1f;
+  --color-text: #626262;
+  --color-yellow: #d8b150;
+  --color-white: #fff;
 }
 
 /* fonts:generated:start */
 :root {
-  --font-Assistant: 'Assistant', sans-serif;
-  --font-Roboto: 'Roboto', sans-serif;
+  --font-plus: 'plus', sans-serif;
+  --font-urbanist: 'urbanist', sans-serif;
 }
 /* fonts:generated:end */

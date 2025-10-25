@@ -13,6 +13,93 @@ if ( ! defined( '_S_VERSION' ) ) {
 }
 
 /**
+ * Check if required plugins are active
+ */
+function emptytheme_check_required_plugins() {
+	$missing_plugins = array();
+
+	// Check if LiteImage plugin is active
+	if ( ! function_exists( 'liteimage' ) ) {
+		$missing_plugins[] = 'LiteImage';
+	}
+
+	// Check if ACF plugin is active
+	if ( ! function_exists( 'acf_add_local_field_group' ) ) {
+		$missing_plugins[] = 'Advanced Custom Fields';
+	}
+
+	if ( ! empty( $missing_plugins ) ) {
+		// Only add admin notice once to prevent duplicates
+		static $notice_added = false;
+		if ( ! $notice_added ) {
+			add_action( 'admin_notices', function() use ($missing_plugins) {
+				emptytheme_required_plugins_notice( $missing_plugins );
+			});
+			$notice_added = true;
+		}
+		add_action( 'wp_footer', 'emptytheme_required_plugin_frontend_notice' );
+		return false;
+	}
+	return true;
+}
+
+/**
+ * Admin notice for missing required plugins
+ */
+function emptytheme_required_plugins_notice( $missing_plugins ) {
+	$plugin_names = implode( ', ', $missing_plugins );
+
+	echo '<div class="notice notice-error is-dismissible">';
+	/* translators: %s: List of plugin names */
+	echo '<p><strong>' . sprintf( esc_html__( 'The emptytheme theme requires the following plugins to work correctly: %s', 'emptytheme' ), $plugin_names ) . '</strong></p>';
+	echo '<p>' . esc_html__( 'These plugins will be installed automatically when you activate the theme.', 'emptytheme' ) . '</p>';
+	echo '</div>';
+}
+
+/**
+ * Frontend notice for missing required plugin
+ */
+function emptytheme_required_plugin_frontend_notice() {
+	if ( current_user_can( 'manage_options' ) ) {
+		echo '<div style="position: fixed; top: 32px; right: 20px; background: #dc3232; color: white; padding: 15px; border-radius: 4px; z-index: 999999; max-width: 300px;">';
+		echo '<strong>' . esc_html__( 'Theme Error:', 'emptytheme' ) . '</strong><br>';
+		echo esc_html__( 'The emptytheme theme requires the LiteImage plugin to work correctly!', 'emptytheme' );
+		echo '<br><a href="' . admin_url( 'plugins.php' ) . '" style="color: white; text-decoration: underline;">' . esc_html__( 'Plugin management', 'emptytheme' ) . '</a>';
+		echo '</div>';
+	}
+}
+
+/**
+ * Theme activation hook - check required plugins
+ */
+function emptytheme_theme_activation_check() {
+	emptytheme_check_required_plugins();
+}
+add_action( 'after_switch_theme', 'emptytheme_theme_activation_check' );
+
+// Check required plugin on init
+add_action( 'init', 'emptytheme_check_required_plugins' );
+
+/**
+ * Prevent theme from working without required plugin (optional strict mode)
+ * Uncomment the following lines if you want to completely disable theme functionality
+ */
+function emptytheme_strict_mode_check() {
+	if (!emptytheme_check_required_plugins()) {
+		add_action('template_redirect', function() {
+			if (!current_user_can('manage_options')) {
+				wp_die(
+					'<h1>emptytheme theme requires LiteImage plugin</h1><p>For the theme to work correctly, you need to install and activate the LiteImage plugin.</p><p><a href="' . admin_url('plugins.php') . '">Go to plugin management</a></p>',
+					'Requires LiteImage plugin',
+					array('response' => 503)
+				);
+			}
+		});
+	}
+}
+add_action('init', 'emptytheme_strict_mode_check');
+
+/**
  * Sets up theme defaults and registers support for various WordPress features.
  *
  * Note that this function is hooked into the after_setup_theme hook, which
@@ -50,6 +137,9 @@ function emptytheme_setup() {
 	register_nav_menus(
 		array(
 			'header-menu' => esc_html__( 'Header Menu', 'emptytheme' ),
+			'footer-menu' => esc_html__( 'Footer Menu', 'emptytheme' ),
+			'privacy-menu' => esc_html__( 'Privacy Menu', 'emptytheme' ),
+			'mobile-menu' => esc_html__( 'Mobile Menu', 'emptytheme' ),
 		)
 	);
 
@@ -199,6 +289,11 @@ require get_template_directory() . '/inc/__acf.php';
 require get_template_directory() . '/inc/__utils.php';
 
 /**
+ * Sidebar helpers.
+ */
+require get_template_directory() . '/inc/utils/__sidebar-helpers.php';
+
+/**
  * Optimization.
  */
 require get_template_directory() . '/inc/__optimization.php';
@@ -222,3 +317,33 @@ require get_template_directory() . '/inc/__theme-options.php';
  * Theme Shortcodes.
  */
 require get_template_directory() . '/inc/__shortcodes.php';
+
+/**
+ * Custom Post Types.
+ */
+require get_template_directory() . '/inc/__post-types.php';
+
+/**
+ * Meta Boxes.
+ */
+require get_template_directory() . '/inc/__meta-boxes.php';
+
+/**
+ * Views Management.
+ */
+require get_template_directory() . '/inc/__views-management.php';
+
+/**
+ * Custom Columns for Post Types.
+ */
+require get_template_directory() . '/inc/__custom-columns.php';
+
+/**
+ * Accessibility Functions.
+ */
+require get_template_directory() . '/inc/__accessibility.php';
+
+/**
+ * Comments Functions.
+ */
+require get_template_directory() . '/inc/__comments.php';

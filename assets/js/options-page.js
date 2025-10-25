@@ -157,7 +157,7 @@
      * Show maintenance mode information
      */
     function showMaintenanceInfo() {
-        const info = `
+        const $modal = $(`
             <div class="maintenance-info-modal" style="
                 position: fixed;
                 top: 50%;
@@ -174,8 +174,11 @@
                 <h3>🚧 Maintenance Mode Active</h3>
                 <p>Your site is currently in maintenance mode. Visitors will see a "Site under construction" page.</p>
                 <p><strong>Only logged-in users and administrators can see the normal site.</strong></p>
-                <button class="button button-primary" onclick="this.parentElement.remove()">Got it!</button>
+                <button type="button" class="button button-primary" aria-label="Close this dialog">Got it!</button>
             </div>
+        `);
+
+        const $overlay = $(`
             <div class="maintenance-info-overlay" style="
                 position: fixed;
                 top: 0;
@@ -184,10 +187,24 @@
                 bottom: 0;
                 background: rgba(0,0,0,0.5);
                 z-index: 99999;
-            " onclick="this.remove(); this.previousElementSibling.remove();"></div>
-        `;
+            "></div>
+        `);
 
-        $('body').append(info);
+        // Add click handlers
+        $modal.find('button').on('click', function() {
+            $modal.remove();
+            $overlay.remove();
+        });
+
+        $overlay.on('click', function() {
+            $modal.remove();
+            $overlay.remove();
+        });
+
+        $('body').append($modal).append($overlay);
+
+        // Focus management
+        $modal.find('button').focus();
     }
 
     /**
@@ -205,6 +222,9 @@
 
         // Add field dependencies
         addFieldDependencies();
+
+        // Initialize media library for logo upload
+        initMediaLibrary();
     }
 
     /**
@@ -482,6 +502,75 @@
     function isValidPhone(phone) {
         const phoneRegex = /^[\+]?[0-9\s\-\(\)]{7,}$/;
         return phoneRegex.test(phone);
+    }
+
+    /**
+     * Initialize media library for logo upload
+     */
+    function initMediaLibrary() {
+        let mediaUploader;
+
+        // Upload logo button
+        $('#upload_logo_button').on('click', function(e) {
+            e.preventDefault();
+
+            // If the uploader object has already been created, reopen the dialog
+            if (mediaUploader) {
+                mediaUploader.open();
+                return;
+            }
+
+            // Create the media frame
+            mediaUploader = wp.media({
+                title: emptytheme_admin.strings.upload_title,
+                button: {
+                    text: emptytheme_admin.strings.upload_button
+                },
+                multiple: false,
+                library: {
+                    type: 'image'
+                }
+            });
+
+            // When a file is selected, run a callback
+            mediaUploader.on('select', function() {
+                const attachment = mediaUploader.state().get('selection').first().toJSON();
+
+                // Update the hidden input with the attachment ID
+                $('#logo_id').val(attachment.id);
+
+                // Update the preview with the selected image
+                $('#logo_preview').html(`<img src="${attachment.url}" alt="${attachment.alt}" style="max-width: 200px; height: auto;" />`);
+
+                // Update button text
+                $('#upload_logo_button').text(emptytheme_admin.strings.change_logo);
+
+                // Show remove button
+                if (!$('#remove_logo_button').length) {
+                    $('#upload_logo_button').after(`<button type="button" class="button button-link-delete" id="remove_logo_button">${emptytheme_admin.strings.remove_logo}</button>`);
+                }
+            });
+
+            // Open the uploader dialog
+            mediaUploader.open();
+        });
+
+        // Remove logo button
+        $(document).on('click', '#remove_logo_button', function(e) {
+            e.preventDefault();
+
+            // Clear the hidden input
+            $('#logo_id').val('');
+
+            // Reset preview to default logo
+            $('#logo_preview').html(`<img src="${emptytheme_admin.template_url}/assets/images/logo.svg" alt="Default Logo" style="max-width: 200px; height: auto;" />`);
+
+            // Update button text
+            $('#upload_logo_button').text(emptytheme_admin.strings.upload_logo);
+
+            // Hide remove button
+            $('#remove_logo_button').remove();
+        });
     }
 
     // Expose functions globally for use in shortcodes

@@ -1,13 +1,14 @@
 /*!
-Theme Name: emptytheme
+Theme Name: bnx
 Author: Oleksand Gryshko
-Description: A minimal WordPress theme with basic features.
+Description: Avant-garde WordPress theme with advanced image optimization. Requires LiteImage plugin for optimal performance.
 Version: 1.0.0
 Tested up to: 5.4
 Requires PHP: 5.6
+Requires Plugins: liteimage
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: emptytheme
+Text Domain: bnx
 Domain Path: /languages
-Tags: custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+Tags: custom-logo, custom-menu, featured-images, threaded-comments, translation-ready, image-optimization
 */

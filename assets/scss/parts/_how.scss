@@ -1,0 +1,74 @@
+@use "mixins" as mixins;
+
+.how {
+    padding: 6rem 0;
+
+    &__title {
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    &__description {
+        margin-bottom: 2rem;
+
+        * {
+            font-size: 1rem;
+            line-height: 1.45;
+            text-align: center;
+            color: var(--color-text);
+        }
+    }
+
+    &__list {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.5rem;
+    }
+
+    &__item {
+        width: calc((100% - 48px) / 3);
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        background: linear-gradient(180deg, rgba(19, 19, 19, 0.86) 0%, #131313 60.5%);
+
+        @include mixins.media-breakpoint-down(992) {
+            width: calc((100% - 24px) / 2);
+        }
+
+        @include mixins.media-breakpoint-down(576) {
+            width: 100%;
+        }
+
+        &_title {
+            text-align: center;
+            color: var(--color-white);
+        }
+
+        &_description * {
+            font-size: 1rem;
+            line-height: 1.5;
+            text-align: center;
+            color: var(--color-white);
+        }
+    }
+
+    &__image {
+        &_container {
+            padding: 2.0625rem;
+            line-height: 0;
+        }
+    }
+
+    &__button {
+        width: max-content;
+        margin: 2rem auto 0;
+    }
+}

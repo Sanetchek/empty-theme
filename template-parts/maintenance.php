@@ -25,7 +25,7 @@ if (!defined('ABSPATH')) {
             margin: 0;
             padding: 0;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -62,6 +62,7 @@ if (!defined('ABSPATH')) {
             line-height: 1.6;
             margin-bottom: 2rem;
             opacity: 0.9;
+            color: #fff;
         }
 
         .maintenance-progress {

@@ -1,3 +1,6 @@
+@use 'sass:map';
+@use 'variables' as *;
+
 /* Mixins */
 
 @mixin clearfix() {
@@ -8,14 +11,65 @@
   }
 }
 
-@mixin sr-only() {
-  position: absolute;
-  width: 1px;
-  height: 1px;
+@mixin gradient-text($gradient: linear-gradient(90deg, #fec 0%, #ad9515 100%)) {
+  background: $gradient;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@mixin media-breakpoint-up($breakpoint) {
+  @if map.has-key($breakpoints, $breakpoint) {
+    @media (min-width: map.get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @media (min-width: $breakpoint) {
+      @content;
+    }
+  }
+}
+
+@mixin media-breakpoint-down($breakpoint) {
+  @if map.has-key($breakpoints, $breakpoint) {
+    @media (max-width: #{map.get($breakpoints, $breakpoint) - 0.02px}) {
+      @content;
+    }
+  } @else {
+    @media (max-width: #{$breakpoint - 0.02px}) {
+      @content;
+    }
+  }
+}
+
+@mixin media-breakpoint-between($lower, $upper) {
+  $lower-value: if(map.has-key($breakpoints, $lower), map.get($breakpoints, $lower), $lower);
+  $upper-value: if(map.has-key($breakpoints, $upper), map.get($breakpoints, $upper), $upper);
+
+  @media (min-width: #{$lower-value}) and (max-width: #{$upper-value - 0.02px}) {
+    @content;
+  }
+}
+
+@mixin horizontal-menu($gap: 1.75rem, $link-color: var(--color-white), $link-hover-color: var(--color-yellow), $font-family: var(--font-urbanist), $font-weight: 500, $font-size: 1rem, $line-height: 1.5, $transition: all 0.5s) {
+  display: flex;
+  gap: $gap;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0;
   padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
+  list-style: none;
+
+  a {
+    font-family: $font-family;
+    font-weight: $font-weight;
+    font-size: $font-size;
+    line-height: $line-height;
+    color: $link-color;
+    transition: $transition;
+
+    &:hover {
+      color: $link-hover-color;
+    }
+  }
 }

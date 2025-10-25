@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wpml-config>
+    <admin-texts>
+        <key name="emptytheme_general_options">
+            <key name="logo_id" />
+            <key name="header_button_title" />
+            <key name="header_button_url" />
+            <key name="phone" />
+            <key name="email" />
+            <key name="address" />
+            <key name="footer_text" />
+            <key name="copyright" />
+        </key>
+    </admin-texts>
+</wpml-config>

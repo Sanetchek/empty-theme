@@ -10,58 +10,86 @@
 get_header();
 ?>
 
+<div class="error-404-page">
+	<div class="container">
+		<section class="error-404 not-found">
 
-<div class="container">
-	<section class="error-404 not-found">
+			<!-- Animated 404 Number -->
+			<div class="error-404__number" aria-hidden="true">
+				<div class="error-404__digit error-404__digit--4">4</div>
+				<div class="error-404__digit error-404__digit--0">0</div>
+				<div class="error-404__digit error-404__digit--4-2">4</div>
+			</div>
 
-		<header class="page-header">
-			<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'emptytheme' ); ?></h1>
-		</header><!-- .page-header -->
+			<!-- Main Content -->
+			<div class="error-404__content">
+				<header class="error-404__header">
+					<h1 class="error-404__title"><?php esc_html_e( 'Oops! Page Not Found', 'emptytheme' ); ?></h1>
+					<p class="error-404__description"><?php esc_html_e( 'The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.', 'emptytheme' ); ?></p>
+				</header>
 
-		<div class="page-content">
-			<p dir="ltr"><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'emptytheme' ); ?></p>
+				<!-- Search Form -->
+				<section class="error-404__search">
+					<h3><?php esc_html_e( 'Search for something else', 'emptytheme' ); ?></h3>
+					<?php get_search_form(); ?>
 
-				<?php get_search_form(); ?>
+				<!-- Search Suggestions -->
+				<?php if (emptytheme_should_show_404_search_suggestions()) : ?>
+				<div class="search-suggestions">
+					<p><?php esc_html_e( 'Or try searching for:', 'emptytheme' ); ?></p>
+					<?php emptytheme_show_404_popular_tags(6); ?>
+				</div>
+				<?php endif; ?>
+				</section>
 
-				<div class="recent row row__70_30">
-					<div class="col-2">
-						<?php the_widget( 'WP_Widget_Recent_Posts' ); ?>
-					</div>
-
-					<div class="widget widget_categories col-2">
-						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'emptytheme' ); ?></h2>
-						<ul>
-							<?php
-							wp_list_categories(
-								array(
-									'orderby'    => 'count',
-									'order'      => 'DESC',
-									'show_count' => 1,
-									'title_li'   => '',
-									'number'     => 10,
-								)
-							);
-							?>
-						</ul>
-					</div><!-- .widget -->
-
-					<div class="col-2">
-						<?php
-							/* translators: %1$s: smiley */
-							$archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'emptytheme' ), convert_smilies( ':)' ) ) . '</p>';
-							the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$archive_content" );
-						?>
-					</div>
-
-					<div class="col-2 category">
-						<?php the_widget( 'WP_Widget_Tag_Cloud' ); ?>
-					</div>
+				<!-- Action Buttons -->
+				<div class="error-404__actions">
+					<?php show_button( __( 'Go Home', 'emptytheme' ), home_url(), 'yellow', 'error-404__button' ); ?>
 				</div>
 
-		</div><!-- .page-content -->
+				<!-- Helpful Links -->
+				<?php if (emptytheme_should_show_404_helpful_links()) : ?>
+				<aside class="error-404__helpful-links" aria-label="<?php esc_attr_e('Helpful Links', 'emptytheme'); ?>">
+					<h3><?php esc_html_e( 'Popular Pages', 'emptytheme' ); ?></h3>
+					<div class="error-404__links-grid">
 
-	</section><!-- .error-404 -->
-</div><!-- .container -->
+						<?php if (emptytheme_has_published_pages()) : ?>
+						<div class="error-404__link-item">
+							<h4><?php esc_html_e( 'Important Pages', 'emptytheme' ); ?></h4>
+							<?php emptytheme_show_404_important_pages(5); ?>
+						</div>
+						<?php endif; ?>
+
+						<?php if (emptytheme_has_published_posts()) : ?>
+						<div class="error-404__link-item">
+							<h4><?php esc_html_e( 'Recent Posts', 'emptytheme' ); ?></h4>
+							<?php emptytheme_show_404_recent_posts(5); ?>
+						</div>
+						<?php endif; ?>
+
+						<?php if (emptytheme_has_categories()) : ?>
+						<div class="error-404__link-item">
+							<h4><?php esc_html_e( 'Categories', 'emptytheme' ); ?></h4>
+							<?php emptytheme_show_404_popular_categories(5); ?>
+						</div>
+						<?php endif; ?>
+
+						<?php if (emptytheme_has_archives()) : ?>
+						<div class="error-404__link-item">
+							<h4><?php esc_html_e( 'Archives', 'emptytheme' ); ?></h4>
+							<?php emptytheme_show_404_monthly_archives(5); ?>
+						</div>
+						<?php endif; ?>
+
+					</div>
+				</aside>
+				<?php endif; ?>
+
+			</div><!-- .error-404__content -->
+
+		</section><!-- .error-404 -->
+	</div><!-- .container -->
+</div><!-- .error-404-page -->
 
 <?php
 get_footer();

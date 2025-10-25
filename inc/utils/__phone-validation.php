@@ -19,13 +19,20 @@
  */
 
  function phone_number_validation($country_code, $phone) {
+    /* translators: %s: Required number of digits */
+    $invalid_format = __('The phone number must contain %s digits for the selected country.', 'emptytheme');
+    /* translators: 1: Minimum number of digits, 2: Maximum number of digits */
+    $invalid_length = __('The phone number should be from %1$s to %2$s digits.', 'emptytheme');
+    /* translators: %s: Example phone number */
+    $pattern_example = __('Invalid phone format. Example: %s', 'emptytheme');
+
     $messages = [
         'empty_code' => __('Please enter the phone number.', 'emptytheme'),
         'empty_phone' => __('Please enter the phone number.', 'emptytheme'),
-        'invalid_format' => __('The phone number must contain %s digits for the selected country.', 'emptytheme'),
-        'invalid_length' => __('The phone number should be from %s to %s digits.', 'emptytheme'),
+        'invalid_format' => $invalid_format,
+        'invalid_length' => $invalid_length,
         'pattern_error' => __('Internal pattern check failed for this country.', 'emptytheme'),
-        'pattern_example' => __('Invalid phone format. Example: %s', 'emptytheme'),
+        'pattern_example' => $pattern_example,
         'no_country_list_function' => __('Failed to get country list. Check get_all_countries().', 'emptytheme'),
         'no_example_phone_number_function' => __('Failed to generate an example phone number. Check generate_example_phone_number().', 'emptytheme'),
         'valid' => __('The phone number is valid.', 'emptytheme'),
@@ -108,7 +115,7 @@
         if (!function_exists('generate_example_phone_number')) {
             return ['status' => 'error', 'message' => $messages['no_example_phone_number_function']];
         }
-        // Передаём данные корректно: страну/паттерн/длину
+        // Pass data correctly: country/pattern/length
         $example = generate_example_phone_number($country, $pattern, $country['length'] ?: null);
         $error_message = sprintf($messages['pattern_example'], $example);
         return ['status' => 'error', 'message' => $error_message];

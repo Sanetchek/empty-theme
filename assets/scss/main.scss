@@ -4,6 +4,27 @@
 
 @use 'parts/variables' as vars;
 @use 'parts/mixins' as mixins;
+@use 'parts/scroll-bar' as scroll-bar;
+@use 'parts/modern-normalize' as modern-normalize;
 @use 'parts/base' as base;
+@use 'parts/header' as header;
+@use 'parts/burger' as burger;
+@use 'parts/mobile-menu' as mobile-menu;
+@use 'parts/footer' as footer;
+
+@use 'parts/forms' as forms;
+@use 'parts/search-form' as search-form;
+@use 'parts/404' as error-404;
+@use 'parts/posts-pages' as posts-pages;
+@use 'parts/comments' as comments;
+@use 'parts/sidebar' as sidebar;
+@use 'parts/slick' as slick;
+@use 'parts/accordion' as accordion;
+@use 'parts/social-share' as social-share;
 
 /* Add component/page-specific imports below */
+@use 'parts/hero' as hero;
+@use 'parts/how' as how;
+@use 'parts/testimonials' as testimonials;
+@use 'parts/faq' as faq;
+

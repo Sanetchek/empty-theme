@@ -12,7 +12,10 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'col-2 post__col_4 shadow br-40' ); ?>>
 	<div class="articles__thumb">
 		<?php if (has_post_thumbnail()) : ?>
-			<?php the_post_thumbnail( 'post-col-' . $num, ['class' => 'br-25 articles__thumb_image'] ); ?>
+			<?php echo function_exists('liteimage') ? liteimage(get_post_thumbnail_id(), [
+				'thumb' => 'post-col-' . $num,
+				'args' => ['class' => 'br-25 articles__thumb_image']
+			]) : get_image(get_post_thumbnail_id(), 'post-col-' . $num, ['class' => 'br-25 articles__thumb_image']); ?>
 		<?php else : ?>
 			<?php get_template_part( 'template-parts/thumb', 'placer', ['size' => '-' . $size] ) ?>
 		<?php endif; ?>

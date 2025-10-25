@@ -20,7 +20,12 @@
 			?>
 	</header><!-- .entry-header -->
 
-	<?php the_post_thumbnail(); ?>
+	<?php if (has_post_thumbnail()) : ?>
+		<?php echo function_exists('liteimage') ? liteimage(get_post_thumbnail_id(), [
+			'thumb' => 'large',
+			'args' => ['class' => 'entry-featured-image']
+		]) : get_image(get_post_thumbnail_id(), 'large', ['class' => 'entry-featured-image']); ?>
+	<?php endif; ?>
 
 	<div class="entry-content">
 		<?php
