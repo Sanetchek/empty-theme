@@ -2,21 +2,21 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: bnx 1.0.0\n"
+"Project-Id-Version: emptytheme 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/01_emptytheme\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-10-25T23:55:35+03:00\n"
+"POT-Creation-Date: 2025-10-28T00:47:45+03:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
-"X-Domain: bnx\n"
+"X-Domain: emptytheme\n"
 
 #. Theme Name of the theme
 #: style.css
-msgid "bnx"
+msgid "emptytheme"
 msgstr ""
 
 #. Description of the theme
@@ -29,18 +29,1993 @@ msgstr ""
 msgid "Oleksand Gryshko"
 msgstr ""
 
+#: 404.php:27
+msgid "Oops! Page Not Found"
+msgstr ""
+
+#: 404.php:28
+msgid "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable."
+msgstr ""
+
+#: 404.php:33
+msgid "Search for something else"
+msgstr ""
+
+#: 404.php:39
+msgid "Or try searching for:"
+msgstr ""
+
+#: 404.php:47
+msgid "Go Home"
+msgstr ""
+
+#: 404.php:52
+msgid "Helpful Links"
+msgstr ""
+
+#: 404.php:53
+msgid "Popular Pages"
+msgstr ""
+
+#: 404.php:58
+msgid "Important Pages"
+msgstr ""
+
+#: 404.php:65
+msgid "Recent Posts"
+msgstr ""
+
+#: 404.php:72
+msgid "Categories"
+msgstr ""
+
+#: 404.php:79
+msgid "Archives"
+msgstr ""
+
+#: archive.php:24
+msgid "Archive Posts"
+msgstr ""
+
+#: archive.php:41
+#: index.php:47
+#: search.php:48
+msgid "Posts navigation"
+msgstr ""
+
+#: archive.php:45
+#: index.php:51
+#: search.php:52
+msgid "Previous"
+msgstr ""
+
+#: archive.php:46
+#: index.php:52
+#: search.php:53
+msgid "Next"
+msgstr ""
+
+#: archive.php:47
+#: index.php:53
+#: search.php:54
+msgid "Page"
+msgstr ""
+
+#. translators: 1: title.
+#: comments.php:34
+#, php-format
+msgid "One thought on &ldquo;%1$s&rdquo;"
+msgstr ""
+
+#. translators: 1: comment count number, 2: title.
+#: comments.php:40
+#, php-format
+msgctxt "comments title"
+msgid "%1$s thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] ""
+msgstr[1] ""
+
+#: comments.php:69
+msgid "Comments are closed."
+msgstr ""
+
+#: comments.php:76
+msgid "No comments yet. Be the first to share your thoughts!"
+msgstr ""
+
+#: comments.php:85
+msgid "Contact Information"
+msgstr ""
+
+#: comments.php:89
+msgid "Leave a Reply"
+msgstr ""
+
+#. translators: %s: Name of person being replied to
+#: comments.php:91
+#, php-format
+msgid "Leave a Reply to %s"
+msgstr ""
+
+#: comments.php:92
+msgid "Cancel Reply"
+msgstr ""
+
+#: comments.php:93
+msgid "Post Comment"
+msgstr ""
+
+#: comments.php:94
+msgid "Comment"
+msgstr ""
+
+#: comments.php:96
+msgid "Name"
+msgstr ""
+
+#: comments.php:97
+#: demo/page-forms-demo.php:172
+msgid "Email"
+msgstr ""
+
+#: comments.php:98
+msgid "Website"
+msgstr ""
+
 #. Template Name of the theme
 msgid "Form Buttons Demo"
 msgstr ""
 
 #. Template Name of the theme
+#: demo/page-forms-demo.php:15
 msgid "Form Elements Demo"
+msgstr ""
+
+#: demo/page-forms-demo.php:16
+msgid "All form elements with consistent styling and functionality"
+msgstr ""
+
+#: demo/page-forms-demo.php:23
+msgid "Text Inputs"
+msgstr ""
+
+#: demo/page-forms-demo.php:27
+msgid "Text Input"
+msgstr ""
+
+#: demo/page-forms-demo.php:29
+msgid "Your Name"
+msgstr ""
+
+#: demo/page-forms-demo.php:30
+msgid "Enter your name..."
+msgstr ""
+
+#: demo/page-forms-demo.php:32
+msgid "This field is required"
+msgstr ""
+
+#: demo/page-forms-demo.php:37
+msgid "Email Input"
+msgstr ""
+
+#: demo/page-forms-demo.php:39
+#: demo/page-forms-demo.php:223
+#: demo/page-forms-demo.php:231
+#: inc/settings-pages/general.php:46
+msgid "Email Address"
+msgstr ""
+
+#: demo/page-forms-demo.php:40
+msgid "your@email.com"
+msgstr ""
+
+#: demo/page-forms-demo.php:42
+msgid "We will never share your email"
+msgstr ""
+
+#: demo/page-forms-demo.php:47
+msgid "Password Input"
+msgstr ""
+
+#: demo/page-forms-demo.php:49
+msgid "Password"
+msgstr ""
+
+#: demo/page-forms-demo.php:50
+msgid "Enter your password..."
+msgstr ""
+
+#: demo/page-forms-demo.php:52
+msgid "Minimum 8 characters"
+msgstr ""
+
+#: demo/page-forms-demo.php:57
+msgid "Phone Input"
+msgstr ""
+
+#: demo/page-forms-demo.php:59
+#: inc/settings-pages/general.php:37
+msgid "Phone Number"
+msgstr ""
+
+#: demo/page-forms-demo.php:60
+#: inc/settings-pages/general.php:178
+msgid "+1 (555) 123-4567"
+msgstr ""
+
+#: demo/page-forms-demo.php:61
+msgid "Include country code"
+msgstr ""
+
+#: demo/page-forms-demo.php:66
+msgid "Number Input"
+msgstr ""
+
+#: demo/page-forms-demo.php:68
+msgid "Age"
+msgstr ""
+
+#: demo/page-forms-demo.php:69
+msgid "25"
+msgstr ""
+
+#: demo/page-forms-demo.php:70
+msgid "Must be 18 or older"
+msgstr ""
+
+#: demo/page-forms-demo.php:75
+msgid "Date Input"
+msgstr ""
+
+#: demo/page-forms-demo.php:77
+msgid "Birth Date"
+msgstr ""
+
+#: demo/page-forms-demo.php:78
+msgid "Select your birth date"
+msgstr ""
+
+#: demo/page-forms-demo.php:86
+msgid "Textarea"
+msgstr ""
+
+#: demo/page-forms-demo.php:90
+msgid "Your Message"
+msgstr ""
+
+#: demo/page-forms-demo.php:91
+msgid "Tell us about your project..."
+msgstr ""
+
+#: demo/page-forms-demo.php:94
+msgid "Please provide as much detail as possible"
+msgstr ""
+
+#: demo/page-forms-demo.php:101
+msgid "Select Dropdown"
+msgstr ""
+
+#: demo/page-forms-demo.php:105
+msgid "Country Selection"
+msgstr ""
+
+#: demo/page-forms-demo.php:108
+msgid "Select Country"
+msgstr ""
+
+#: demo/page-forms-demo.php:109
+#: inc/utils/__countries.php:1257
+msgid "United States"
+msgstr ""
+
+#: demo/page-forms-demo.php:110
+msgid "Canada"
+msgstr ""
+
+#: demo/page-forms-demo.php:111
+msgid "United Kingdom"
+msgstr ""
+
+#: demo/page-forms-demo.php:112
+#: inc/utils/__countries.php:339
+msgid "Germany"
+msgstr ""
+
+#: demo/page-forms-demo.php:113
+#: inc/utils/__countries.php:438
+msgid "France"
+msgstr ""
+
+#: demo/page-forms-demo.php:114
+msgid "Italy"
+msgstr ""
+
+#: demo/page-forms-demo.php:115
+#: inc/utils/__countries.php:393
+msgid "Spain"
+msgstr ""
+
+#: demo/page-forms-demo.php:116
+msgid "Russia"
+msgstr ""
+
+#: demo/page-forms-demo.php:117
+msgid "Japan"
+msgstr ""
+
+#: demo/page-forms-demo.php:118
+#: inc/utils/__countries.php:267
+msgid "China"
+msgstr ""
+
+#: demo/page-forms-demo.php:119
+#: inc/utils/__countries.php:87
+msgid "Australia"
+msgstr ""
+
+#: demo/page-forms-demo.php:122
+msgid "Country"
+msgstr ""
+
+#: demo/page-forms-demo.php:124
+msgid "Select your country of residence"
+msgstr ""
+
+#: demo/page-forms-demo.php:129
+msgid "Service Selection"
+msgstr ""
+
+#: demo/page-forms-demo.php:132
+msgid "Choose Service"
+msgstr ""
+
+#: demo/page-forms-demo.php:133
+msgid "Web Design"
+msgstr ""
+
+#: demo/page-forms-demo.php:134
+msgid "Web Development"
+msgstr ""
+
+#: demo/page-forms-demo.php:135
+msgid "Mobile App Development"
+msgstr ""
+
+#: demo/page-forms-demo.php:136
+msgid "SEO Services"
+msgstr ""
+
+#: demo/page-forms-demo.php:137
+msgid "Consulting"
+msgstr ""
+
+#: demo/page-forms-demo.php:140
+msgid "Service Type"
+msgstr ""
+
+#: demo/page-forms-demo.php:142
+msgid "What service do you need?"
+msgstr ""
+
+#: demo/page-forms-demo.php:150
+msgid "Checkboxes & Radio Buttons"
+msgstr ""
+
+#: demo/page-forms-demo.php:154
+msgid "Checkboxes"
+msgstr ""
+
+#: demo/page-forms-demo.php:156
+msgid "Subscribe to Newsletter"
+msgstr ""
+
+#: demo/page-forms-demo.php:157
+msgid "Get updates about new features and offers"
+msgstr ""
+
+#: demo/page-forms-demo.php:161
+msgid "I agree to Terms & Conditions"
+msgstr ""
+
+#: demo/page-forms-demo.php:163
+msgid "You must agree to continue"
+msgstr ""
+
+#: demo/page-forms-demo.php:168
+msgid "Radio Buttons"
+msgstr ""
+
+#: demo/page-forms-demo.php:170
+msgid "Preferred Contact Method"
+msgstr ""
+
+#: demo/page-forms-demo.php:176
+msgid "Phone"
+msgstr ""
+
+#: demo/page-forms-demo.php:180
+msgid "SMS"
+msgstr ""
+
+#: demo/page-forms-demo.php:183
+msgid "How would you like us to contact you?"
+msgstr ""
+
+#: demo/page-forms-demo.php:191
+msgid "File Upload"
+msgstr ""
+
+#: demo/page-forms-demo.php:195
+msgid "Upload File"
+msgstr ""
+
+#: demo/page-forms-demo.php:197
+msgid "Upload your resume or portfolio (PDF, DOC, JPG, PNG)"
+msgstr ""
+
+#: demo/page-forms-demo.php:204
+msgid "Range Slider"
+msgstr ""
+
+#: demo/page-forms-demo.php:208
+msgid "Budget Range"
+msgstr ""
+
+#: demo/page-forms-demo.php:210
+msgid "Select your budget range: $1,000 - $50,000"
+msgstr ""
+
+#: demo/page-forms-demo.php:217
+msgid "Form States"
+msgstr ""
+
+#: demo/page-forms-demo.php:221
+msgid "Error State"
+msgstr ""
+
+#: demo/page-forms-demo.php:224
+msgid "Please enter a valid email address"
+msgstr ""
+
+#: demo/page-forms-demo.php:229
+msgid "Success State"
+msgstr ""
+
+#: demo/page-forms-demo.php:232
+msgid "Email address is valid"
+msgstr ""
+
+#: demo/page-forms-demo.php:237
+msgid "Disabled State"
+msgstr ""
+
+#: demo/page-forms-demo.php:239
+msgid "Read Only Field"
+msgstr ""
+
+#: demo/page-forms-demo.php:241
+msgid "This field is disabled"
+msgstr ""
+
+#: demo/page-forms-demo.php:249
+msgid "Dark Theme Forms"
+msgstr ""
+
+#: demo/page-forms-demo.php:253
+msgid "Dark Theme Input"
+msgstr ""
+
+#: demo/page-forms-demo.php:254
+msgid "Enter text..."
+msgstr ""
+
+#: demo/page-forms-demo.php:255
+msgid "This input uses dark theme styling"
+msgstr ""
+
+#: demo/page-forms-demo.php:263
+#: demo/page-search-demo.php:52
+msgid "Usage Examples"
+msgstr ""
+
+#: demo/page-forms-demo.php:265
+#: demo/page-search-demo.php:54
+msgid "PHP Code:"
+msgstr ""
+
+#: demo/page-forms-demo.php:266
+msgid ""
+"// Text input\n"
+"show_form_input(\"name\", \"text\", \"\", [\n"
+"    \"label\" => \"Your Name\",\n"
+"    \"placeholder\" => \"Enter your name...\",\n"
+"    \"required\" => true\n"
+"]);\n"
+"\n"
+"// Textarea\n"
+"show_form_textarea(\"message\", \"\", [\n"
+"    \"label\" => \"Your Message\",\n"
+"    \"rows\" => 5,\n"
+"    \"required\" => true\n"
+"]);\n"
+"\n"
+"// Select dropdown\n"
+"$options = [\"option1\" => \"Option 1\", \"option2\" => \"Option 2\"];\n"
+"show_form_select(\"choice\", $options, \"\", [\n"
+"    \"label\" => \"Make a Choice\",\n"
+"    \"required\" => true\n"
+"]);\n"
+"\n"
+"// Checkbox\n"
+"show_form_checkbox(\"agree\", \"1\", false, [\n"
+"    \"label\" => \"I agree to terms\",\n"
+"    \"required\" => true\n"
+"]);\n"
+"\n"
+"// Radio button\n"
+"show_form_radio(\"contact\", \"email\", true, [\n"
+"    \"label\" => \"Email\"\n"
+"]);"
 msgstr ""
 
 #. Template Name of the theme
 msgid "Search Form Demo"
 msgstr ""
 
+#: demo/page-search-demo.php:15
+msgid "Search Form Variants Demo"
+msgstr ""
+
+#: demo/page-search-demo.php:16
+msgid "Different styles of search forms for various use cases"
+msgstr ""
+
+#: demo/page-search-demo.php:23
+msgid "Default Search Form"
+msgstr ""
+
+#: demo/page-search-demo.php:24
+msgid "Standard search form for general use"
+msgstr ""
+
+#: demo/page-search-demo.php:30
+msgid "Compact Search Form"
+msgstr ""
+
+#: demo/page-search-demo.php:31
+msgid "Smaller version for headers and sidebars"
+msgstr ""
+
+#: demo/page-search-demo.php:32
+msgid "Quick search..."
+msgstr ""
+
+#: demo/page-search-demo.php:37
+msgid "Large Search Form"
+msgstr ""
+
+#: demo/page-search-demo.php:38
+msgid "Bigger version for hero sections"
+msgstr ""
+
+#: demo/page-search-demo.php:39
+msgid "Search our entire website..."
+msgstr ""
+
+#: demo/page-search-demo.php:44
+msgid "Dark Search Form"
+msgstr ""
+
+#: demo/page-search-demo.php:45
+msgid "Dark theme version for dark backgrounds"
+msgstr ""
+
+#: demo/page-search-demo.php:46
+msgid "Search in dark mode..."
+msgstr ""
+
+#: demo/page-search-demo.php:55
+msgid ""
+"// Default form\n"
+"get_search_form();\n"
+"\n"
+"// Compact form\n"
+"show_search_form_variant(\"compact\", \"Quick search...\");\n"
+"\n"
+"// Large form\n"
+"show_search_form_variant(\"large\", \"Search our website...\");\n"
+"\n"
+"// Dark form\n"
+"show_search_form_variant(\"dark\", \"Search in dark mode...\");"
+msgstr ""
+
 #. Template Name of the theme
 msgid "Sidebar Demo"
+msgstr ""
+
+#: footer.php:28
+msgid "Footer Navigation"
+msgstr ""
+
+#: footer.php:44
+msgid "Privacy Navigation"
+msgstr ""
+
+#: footer.php:56
+msgid "Company name"
+msgstr ""
+
+#. translators: %s: List of plugin names
+#: functions.php:54
+#, php-format
+msgid "The emptytheme theme requires the following plugins to work correctly: %s"
+msgstr ""
+
+#: functions.php:55
+msgid "These plugins will be installed automatically when you activate the theme."
+msgstr ""
+
+#: functions.php:65
+msgid "Theme Error:"
+msgstr ""
+
+#: functions.php:66
+msgid "The emptytheme theme requires the LiteImage plugin to work correctly!"
+msgstr ""
+
+#: functions.php:67
+msgid "Plugin management"
+msgstr ""
+
+#: functions.php:139
+msgid "Header Menu"
+msgstr ""
+
+#: functions.php:140
+msgid "Footer Menu"
+msgstr ""
+
+#: functions.php:141
+msgid "Privacy Menu"
+msgstr ""
+
+#: functions.php:142
+msgid "Mobile Menu"
+msgstr ""
+
+#: functions.php:187
+#: sidebar.php:16
+msgid "Sidebar"
+msgstr ""
+
+#: functions.php:189
+msgid "Add widgets here."
+msgstr ""
+
+#: functions.php:197
+msgid "Footer Widget 1"
+msgstr ""
+
+#: functions.php:199
+msgid "First area"
+msgstr ""
+
+#: functions.php:207
+msgid "Footer Widget 2"
+msgstr ""
+
+#: functions.php:209
+msgid "Second area"
+msgstr ""
+
+#: functions.php:217
+msgid "Footer Widget 3"
+msgstr ""
+
+#: functions.php:219
+msgid "Third area"
+msgstr ""
+
+#: functions.php:227
+msgid "Footer Widget 4"
+msgstr ""
+
+#: functions.php:229
+msgid "Fourth area"
+msgstr ""
+
+#: header.php:22
+msgid "Skip to main content"
+msgstr ""
+
+#: header.php:33
+msgid "Main Navigation"
+msgstr ""
+
+#: inc/settings-pages/general.php:11
+msgid "General Settings"
+msgstr ""
+
+#: inc/settings-pages/general.php:19
+msgid "Logo"
+msgstr ""
+
+#: inc/settings-pages/general.php:28
+msgid "Header Button"
+msgstr ""
+
+#: inc/settings-pages/general.php:55
+msgid "Address"
+msgstr ""
+
+#: inc/settings-pages/general.php:64
+msgid "Footer Text"
+msgstr ""
+
+#: inc/settings-pages/general.php:73
+msgid "Copyright"
+msgstr ""
+
+#: inc/settings-pages/general.php:82
+msgid "Maintenance Mode"
+msgstr ""
+
+#: inc/settings-pages/general.php:91
+msgid "Custom Preloader"
+msgstr ""
+
+#: inc/settings-pages/general.php:115
+msgid "Default Logo"
+msgstr ""
+
+#: inc/settings-pages/general.php:120
+#: inc/__theme-options.php:137
+msgid "Change Logo"
+msgstr ""
+
+#: inc/settings-pages/general.php:120
+#: inc/__theme-options.php:138
+msgid "Upload Logo"
+msgstr ""
+
+#: inc/settings-pages/general.php:124
+#: inc/__theme-options.php:136
+msgid "Remove Logo"
+msgstr ""
+
+#: inc/settings-pages/general.php:129
+msgid "Upload your site logo. Recommended size: 200x60px."
+msgstr ""
+
+#: inc/settings-pages/general.php:130
+#: inc/settings-pages/general.php:181
+#: inc/settings-pages/general.php:197
+#: inc/settings-pages/general.php:212
+#: inc/settings-pages/general.php:227
+#: inc/settings-pages/general.php:243
+msgid "Shortcode:"
+msgstr ""
+
+#: inc/settings-pages/general.php:130
+#: inc/settings-pages/general.php:181
+#: inc/settings-pages/general.php:197
+#: inc/settings-pages/general.php:212
+#: inc/settings-pages/general.php:227
+#: inc/settings-pages/general.php:243
+msgid "or"
+msgstr ""
+
+#: inc/settings-pages/general.php:137
+#: inc/settings-pages/general.php:150
+msgid "Connect"
+msgstr ""
+
+#: inc/settings-pages/general.php:143
+msgid "Button Text"
+msgstr ""
+
+#: inc/settings-pages/general.php:154
+msgid "Button URL"
+msgstr ""
+
+#: inc/settings-pages/general.php:161
+msgid "https://example.com"
+msgstr ""
+
+#: inc/settings-pages/general.php:165
+msgid "Configure the header button that appears in the main navigation."
+msgstr ""
+
+#: inc/settings-pages/general.php:180
+msgid "Enter your phone number. It will be displayed as a clickable link."
+msgstr ""
+
+#: inc/settings-pages/general.php:194
+msgid "info@example.com"
+msgstr ""
+
+#: inc/settings-pages/general.php:196
+msgid "Enter your email address. It will be displayed as a clickable mailto link."
+msgstr ""
+
+#: inc/settings-pages/general.php:209
+msgid "Enter your business address"
+msgstr ""
+
+#: inc/settings-pages/general.php:211
+msgid "Enter your business address. Basic HTML is allowed."
+msgstr ""
+
+#: inc/settings-pages/general.php:224
+msgid "Enter your footer text content here..."
+msgstr ""
+
+#: inc/settings-pages/general.php:226
+msgid "Enter your footer text content. Basic HTML is allowed."
+msgstr ""
+
+#: inc/settings-pages/general.php:240
+msgid "© 2024 Your Company Name. All rights reserved."
+msgstr ""
+
+#: inc/settings-pages/general.php:242
+msgid "Enter your copyright notice."
+msgstr ""
+
+#: inc/settings-pages/general.php:261
+msgid "Enable maintenance mode (Site under construction)"
+msgstr ""
+
+#: inc/settings-pages/general.php:264
+msgid "When enabled, visitors will see a \"Site under construction\" page. Logged-in users and administrators can still access the site normally."
+msgstr ""
+
+#: inc/settings-pages/general.php:282
+msgid "Enable custom preloader"
+msgstr ""
+
+#: inc/settings-pages/general.php:285
+msgid "When enabled, a loading animation will be displayed while the page loads. You can also use the [theme_preloader] shortcode to display it manually."
+msgstr ""
+
+#: inc/settings-pages/general.php:294
+msgid "Theme General Settings"
+msgstr ""
+
+#: inc/settings-pages/general.php:295
+msgid "Configure your theme's general settings, logo, contact information, and more."
+msgstr ""
+
+#: inc/settings-pages/general.php:302
+msgid "You are editing translations for this language. Saving will update WPML String Translation entries for this language only."
+msgstr ""
+
+#: inc/settings-pages/general.php:314
+msgid "Save Settings"
+msgstr ""
+
+#: inc/settings-pages/scripts.php:42
+#: inc/settings-pages/scripts.php:145
+msgid "Scripts & Snippets"
+msgstr ""
+
+#: inc/settings-pages/scripts.php:50
+msgid "Head Scripts"
+msgstr ""
+
+#: inc/settings-pages/scripts.php:59
+msgid "Body Scripts"
+msgstr ""
+
+#: inc/settings-pages/scripts.php:68
+msgid "Footer Scripts"
+msgstr ""
+
+#: inc/settings-pages/scripts.php:77
+msgid "Add custom scripts and code snippets to different parts of your website."
+msgstr ""
+
+#: inc/settings-pages/scripts.php:89
+msgid "<!-- Google Analytics, Meta tags, etc. -->"
+msgstr ""
+
+#: inc/settings-pages/scripts.php:91
+msgid "Scripts added here will be included in the &lt;head&gt; section of your site. Useful for Google Analytics, meta tags, etc."
+msgstr ""
+
+#: inc/settings-pages/scripts.php:92
+#: inc/settings-pages/scripts.php:112
+#: inc/settings-pages/scripts.php:132
+msgid "Examples:"
+msgstr ""
+
+#: inc/settings-pages/scripts.php:109
+msgid "<!-- Custom body scripts, chat widgets, etc. -->"
+msgstr ""
+
+#: inc/settings-pages/scripts.php:111
+msgid "Scripts added here will be included right after the opening &lt;body&gt; tag. Useful for chat widgets, custom body scripts, etc."
+msgstr ""
+
+#: inc/settings-pages/scripts.php:129
+msgid "<!-- Facebook Pixel, Chat widgets, etc. -->"
+msgstr ""
+
+#: inc/settings-pages/scripts.php:131
+msgid "Scripts added here will be included before the closing &lt;/body&gt; tag. Useful for Facebook Pixel, chat widgets, etc."
+msgstr ""
+
+#: inc/settings-pages/scripts.php:146
+msgid "Add custom scripts and code snippets to different parts of your website. Be careful when adding scripts - incorrect code can break your site."
+msgstr ""
+
+#: inc/settings-pages/scripts.php:152
+msgid "Save Scripts"
+msgstr ""
+
+#: inc/utils/__404-helpers.php:307
+msgid "No archives available yet."
+msgstr ""
+
+#: inc/utils/__countries.php:24
+msgid "Aruba"
+msgstr ""
+
+#: inc/utils/__countries.php:33
+msgid "Afghanistan"
+msgstr ""
+
+#: inc/utils/__countries.php:42
+msgid "Angola"
+msgstr ""
+
+#: inc/utils/__countries.php:51
+msgid "Albania"
+msgstr ""
+
+#: inc/utils/__countries.php:60
+msgid "United Arab Emirates"
+msgstr ""
+
+#: inc/utils/__countries.php:69
+msgid "Argentina"
+msgstr ""
+
+#: inc/utils/__countries.php:78
+msgid "Armenia"
+msgstr ""
+
+#: inc/utils/__countries.php:96
+msgid "Austria"
+msgstr ""
+
+#: inc/utils/__countries.php:105
+msgid "Azerbaijan"
+msgstr ""
+
+#: inc/utils/__countries.php:114
+msgid "Burundi"
+msgstr ""
+
+#: inc/utils/__countries.php:123
+msgid "Belgium"
+msgstr ""
+
+#: inc/utils/__countries.php:132
+msgid "Benin"
+msgstr ""
+
+#: inc/utils/__countries.php:141
+msgid "Burkina Faso"
+msgstr ""
+
+#: inc/utils/__countries.php:150
+msgid "Bangladesh"
+msgstr ""
+
+#: inc/utils/__countries.php:159
+msgid "Bulgaria"
+msgstr ""
+
+#: inc/utils/__countries.php:168
+msgid "Bahrain"
+msgstr ""
+
+#: inc/utils/__countries.php:177
+msgid "Bosnia and Herzegovina"
+msgstr ""
+
+#: inc/utils/__countries.php:186
+msgid "Belarus"
+msgstr ""
+
+#: inc/utils/__countries.php:195
+msgid "Belize"
+msgstr ""
+
+#: inc/utils/__countries.php:204
+msgid "Brazil"
+msgstr ""
+
+#: inc/utils/__countries.php:213
+msgid "Bhutan"
+msgstr ""
+
+#: inc/utils/__countries.php:222
+msgid "Botswana"
+msgstr ""
+
+#: inc/utils/__countries.php:231
+msgid "Central African Republic"
+msgstr ""
+
+#: inc/utils/__countries.php:240
+msgid "Cocos (Keeling) Islands"
+msgstr ""
+
+#: inc/utils/__countries.php:249
+msgid "Switzerland"
+msgstr ""
+
+#: inc/utils/__countries.php:258
+msgid "Chile"
+msgstr ""
+
+#: inc/utils/__countries.php:276
+msgid "Cameroon"
+msgstr ""
+
+#: inc/utils/__countries.php:285
+msgid "Cook Islands"
+msgstr ""
+
+#: inc/utils/__countries.php:294
+msgid "Colombia"
+msgstr ""
+
+#: inc/utils/__countries.php:303
+msgid "Costa Rica"
+msgstr ""
+
+#: inc/utils/__countries.php:312
+msgid "Cuba"
+msgstr ""
+
+#: inc/utils/__countries.php:321
+msgid "Christmas Island"
+msgstr ""
+
+#: inc/utils/__countries.php:330
+msgid "Cyprus"
+msgstr ""
+
+#: inc/utils/__countries.php:348
+msgid "Djibouti"
+msgstr ""
+
+#: inc/utils/__countries.php:357
+msgid "Denmark"
+msgstr ""
+
+#: inc/utils/__countries.php:366
+msgid "Ecuador"
+msgstr ""
+
+#: inc/utils/__countries.php:375
+msgid "Egypt"
+msgstr ""
+
+#: inc/utils/__countries.php:384
+msgid "Eritrea"
+msgstr ""
+
+#: inc/utils/__countries.php:402
+msgid "Estonia"
+msgstr ""
+
+#: inc/utils/__countries.php:411
+msgid "Ethiopia"
+msgstr ""
+
+#: inc/utils/__countries.php:420
+msgid "Finland"
+msgstr ""
+
+#: inc/utils/__countries.php:429
+msgid "Fiji"
+msgstr ""
+
+#: inc/utils/__countries.php:447
+msgid "Faroe Islands"
+msgstr ""
+
+#: inc/utils/__countries.php:456
+msgid "Gabon"
+msgstr ""
+
+#: inc/utils/__countries.php:465
+msgid "Georgia"
+msgstr ""
+
+#: inc/utils/__countries.php:474
+msgid "Ghana"
+msgstr ""
+
+#: inc/utils/__countries.php:483
+msgid "Gibraltar"
+msgstr ""
+
+#: inc/utils/__countries.php:492
+msgid "Guinea"
+msgstr ""
+
+#: inc/utils/__countries.php:501
+msgid "Guadeloupe"
+msgstr ""
+
+#: inc/utils/__countries.php:510
+msgid "Greenland"
+msgstr ""
+
+#: inc/utils/__countries.php:519
+msgid "French Guiana"
+msgstr ""
+
+#: inc/utils/__countries.php:528
+msgid "Lebanon"
+msgstr ""
+
+#: inc/utils/__countries.php:537
+msgid "Libya"
+msgstr ""
+
+#: inc/utils/__countries.php:546
+msgid "Lesotho"
+msgstr ""
+
+#: inc/utils/__countries.php:555
+msgid "Lithuania"
+msgstr ""
+
+#: inc/utils/__countries.php:564
+msgid "Luxembourg"
+msgstr ""
+
+#: inc/utils/__countries.php:573
+msgid "Latvia"
+msgstr ""
+
+#: inc/utils/__countries.php:582
+msgid "Morocco"
+msgstr ""
+
+#: inc/utils/__countries.php:591
+msgid "Monaco"
+msgstr ""
+
+#: inc/utils/__countries.php:600
+msgid "Madagascar"
+msgstr ""
+
+#: inc/utils/__countries.php:609
+msgid "Maldives"
+msgstr ""
+
+#: inc/utils/__countries.php:618
+msgid "Mexico"
+msgstr ""
+
+#: inc/utils/__countries.php:627
+msgid "Marshall Islands"
+msgstr ""
+
+#: inc/utils/__countries.php:636
+msgid "Mali"
+msgstr ""
+
+#: inc/utils/__countries.php:645
+msgid "Malta"
+msgstr ""
+
+#: inc/utils/__countries.php:654
+msgid "Mongolia"
+msgstr ""
+
+#: inc/utils/__countries.php:663
+msgid "Mozambique"
+msgstr ""
+
+#: inc/utils/__countries.php:672
+msgid "Mauritania"
+msgstr ""
+
+#: inc/utils/__countries.php:681
+msgid "Martinique"
+msgstr ""
+
+#: inc/utils/__countries.php:690
+msgid "Mauritius"
+msgstr ""
+
+#: inc/utils/__countries.php:699
+msgid "Malawi"
+msgstr ""
+
+#: inc/utils/__countries.php:708
+msgid "Malaysia"
+msgstr ""
+
+#: inc/utils/__countries.php:717
+msgid "Mayotte"
+msgstr ""
+
+#: inc/utils/__countries.php:726
+msgid "Namibia"
+msgstr ""
+
+#: inc/utils/__countries.php:735
+msgid "New Caledonia"
+msgstr ""
+
+#: inc/utils/__countries.php:744
+msgid "Niger"
+msgstr ""
+
+#: inc/utils/__countries.php:753
+msgid "Norfolk Island"
+msgstr ""
+
+#: inc/utils/__countries.php:762
+msgid "Nigeria"
+msgstr ""
+
+#: inc/utils/__countries.php:771
+msgid "Nicaragua"
+msgstr ""
+
+#: inc/utils/__countries.php:780
+msgid "Niue"
+msgstr ""
+
+#: inc/utils/__countries.php:789
+msgid "Netherlands"
+msgstr ""
+
+#: inc/utils/__countries.php:798
+msgid "Norway"
+msgstr ""
+
+#: inc/utils/__countries.php:807
+msgid "Nepal"
+msgstr ""
+
+#: inc/utils/__countries.php:816
+msgid "Nauru"
+msgstr ""
+
+#: inc/utils/__countries.php:825
+msgid "New Zealand"
+msgstr ""
+
+#: inc/utils/__countries.php:834
+msgid "Oman"
+msgstr ""
+
+#: inc/utils/__countries.php:843
+msgid "Pakistan"
+msgstr ""
+
+#: inc/utils/__countries.php:852
+msgid "Panama"
+msgstr ""
+
+#: inc/utils/__countries.php:861
+msgid "Peru"
+msgstr ""
+
+#: inc/utils/__countries.php:870
+msgid "Philippines"
+msgstr ""
+
+#: inc/utils/__countries.php:879
+msgid "Palau"
+msgstr ""
+
+#: inc/utils/__countries.php:888
+msgid "Papua New Guinea"
+msgstr ""
+
+#: inc/utils/__countries.php:897
+msgid "Poland"
+msgstr ""
+
+#: inc/utils/__countries.php:906
+msgid "Portugal"
+msgstr ""
+
+#: inc/utils/__countries.php:915
+msgid "Paraguay"
+msgstr ""
+
+#: inc/utils/__countries.php:924
+msgid "French Polynesia"
+msgstr ""
+
+#: inc/utils/__countries.php:933
+msgid "Qatar"
+msgstr ""
+
+#: inc/utils/__countries.php:942
+msgid "Réunion"
+msgstr ""
+
+#: inc/utils/__countries.php:951
+msgid "Romania"
+msgstr ""
+
+#: inc/utils/__countries.php:960
+msgid "Russian Federation"
+msgstr ""
+
+#: inc/utils/__countries.php:969
+msgid "Rwanda"
+msgstr ""
+
+#: inc/utils/__countries.php:978
+msgid "Saudi Arabia"
+msgstr ""
+
+#: inc/utils/__countries.php:987
+msgid "Sudan"
+msgstr ""
+
+#: inc/utils/__countries.php:996
+msgid "Senegal"
+msgstr ""
+
+#: inc/utils/__countries.php:1005
+msgid "Singapore"
+msgstr ""
+
+#: inc/utils/__countries.php:1014
+msgid "Solomon Islands"
+msgstr ""
+
+#: inc/utils/__countries.php:1023
+msgid "Sierra Leone"
+msgstr ""
+
+#: inc/utils/__countries.php:1032
+msgid "El Salvador"
+msgstr ""
+
+#: inc/utils/__countries.php:1041
+msgid "San Marino"
+msgstr ""
+
+#: inc/utils/__countries.php:1050
+msgid "Somalia"
+msgstr ""
+
+#: inc/utils/__countries.php:1059
+msgid "Saint Pierre and Miquelon"
+msgstr ""
+
+#: inc/utils/__countries.php:1068
+msgid "Serbia"
+msgstr ""
+
+#: inc/utils/__countries.php:1077
+msgid "South Sudan"
+msgstr ""
+
+#: inc/utils/__countries.php:1086
+msgid "Suriname"
+msgstr ""
+
+#: inc/utils/__countries.php:1095
+msgid "Slovakia"
+msgstr ""
+
+#: inc/utils/__countries.php:1104
+msgid "Slovenia"
+msgstr ""
+
+#: inc/utils/__countries.php:1113
+msgid "Sweden"
+msgstr ""
+
+#: inc/utils/__countries.php:1122
+msgid "Seychelles"
+msgstr ""
+
+#: inc/utils/__countries.php:1131
+msgid "Syrian Arab Republic"
+msgstr ""
+
+#: inc/utils/__countries.php:1140
+msgid "Chad"
+msgstr ""
+
+#: inc/utils/__countries.php:1149
+msgid "Togo"
+msgstr ""
+
+#: inc/utils/__countries.php:1158
+msgid "Thailand"
+msgstr ""
+
+#: inc/utils/__countries.php:1167
+msgid "Tajikistan"
+msgstr ""
+
+#: inc/utils/__countries.php:1176
+msgid "Tokelau"
+msgstr ""
+
+#: inc/utils/__countries.php:1185
+msgid "Turkmenistan"
+msgstr ""
+
+#: inc/utils/__countries.php:1194
+msgid "Tonga"
+msgstr ""
+
+#: inc/utils/__countries.php:1203
+msgid "Tunisia"
+msgstr ""
+
+#: inc/utils/__countries.php:1212
+msgid "Turkey"
+msgstr ""
+
+#: inc/utils/__countries.php:1221
+msgid "Tuvalu"
+msgstr ""
+
+#: inc/utils/__countries.php:1230
+msgid "Uganda"
+msgstr ""
+
+#: inc/utils/__countries.php:1239
+msgid "Ukraine"
+msgstr ""
+
+#: inc/utils/__countries.php:1248
+msgid "Uruguay"
+msgstr ""
+
+#: inc/utils/__countries.php:1266
+msgid "Uzbekistan"
+msgstr ""
+
+#: inc/utils/__countries.php:1275
+msgid "Vanuatu"
+msgstr ""
+
+#: inc/utils/__countries.php:1284
+msgid "Wallis and Futuna"
+msgstr ""
+
+#: inc/utils/__countries.php:1293
+msgid "Samoa"
+msgstr ""
+
+#: inc/utils/__countries.php:1302
+msgid "Yemen"
+msgstr ""
+
+#: inc/utils/__countries.php:1311
+msgid "Zambia"
+msgstr ""
+
+#: inc/utils/__countries.php:1320
+msgid "Zimbabwe"
+msgstr ""
+
+#. translators: %s: Required number of digits
+#: inc/utils/__phone-validation.php:23
+#, php-format
+msgid "The phone number must contain %s digits for the selected country."
+msgstr ""
+
+#. translators: 1: Minimum number of digits, 2: Maximum number of digits
+#: inc/utils/__phone-validation.php:25
+#, php-format
+msgid "The phone number should be from %1$s to %2$s digits."
+msgstr ""
+
+#. translators: %s: Example phone number
+#: inc/utils/__phone-validation.php:27
+#, php-format
+msgid "Invalid phone format. Example: %s"
+msgstr ""
+
+#: inc/utils/__phone-validation.php:30
+#: inc/utils/__phone-validation.php:31
+msgid "Please enter the phone number."
+msgstr ""
+
+#: inc/utils/__phone-validation.php:34
+msgid "Internal pattern check failed for this country."
+msgstr ""
+
+#: inc/utils/__phone-validation.php:36
+msgid "Failed to get country list. Check get_all_countries()."
+msgstr ""
+
+#: inc/utils/__phone-validation.php:37
+msgid "Failed to generate an example phone number. Check generate_example_phone_number()."
+msgstr ""
+
+#: inc/utils/__phone-validation.php:38
+msgid "The phone number is valid."
+msgstr ""
+
+#: inc/utils/__search-form-helpers.php:45
+#: searchform.php:10
+msgid "Search by keyword..."
+msgstr ""
+
+#: inc/utils/__search-form-helpers.php:57
+#: searchform.php:14
+msgid "Search"
+msgstr ""
+
+#: inc/utils/__show-burger-menu.php:11
+msgid "Toggle navigation menu"
+msgstr ""
+
+#: inc/utils/__show-logo.php:9
+msgid "Go to homepage"
+msgstr ""
+
+#: inc/utils/__show-mobile-menu.php:22
+msgid "Close menu"
+msgstr ""
+
+#: inc/utils/__show-mobile-menu.php:29
+msgid "Mobile Navigation"
+msgstr ""
+
+#: inc/utils/__wpml-options.php:126
+msgid "Translations saved for this language via WPML String Translation."
+msgstr ""
+
+#. translators: %s: Category name
+#: inc/__accessibility.php:15
+#, php-format
+msgid "Posts in category: %s"
+msgstr ""
+
+#. translators: %s: Tag name
+#: inc/__accessibility.php:18
+#, php-format
+msgid "Posts tagged: %s"
+msgstr ""
+
+#. translators: %s: Author name
+#: inc/__accessibility.php:21
+#, php-format
+msgid "Posts by author: %s"
+msgstr ""
+
+#. translators: %s: Year
+#: inc/__accessibility.php:25
+#, php-format
+msgid "Posts from year: %s"
+msgstr ""
+
+#. translators: %s: Month and year
+#: inc/__accessibility.php:28
+#, php-format
+msgid "Posts from month: %s"
+msgstr ""
+
+#. translators: %s: Date
+#: inc/__accessibility.php:31
+#, php-format
+msgid "Posts from date: %s"
+msgstr ""
+
+#. translators: %s: Search query
+#: inc/__accessibility.php:35
+#: search.php:20
+#, php-format
+msgid "Search Results for: %s"
+msgstr ""
+
+#. translators: %d: Number of search results
+#: inc/__accessibility.php:50
+#: search.php:26
+#, php-format
+msgid "Found %d results"
+msgstr ""
+
+#: inc/__comments.php:25
+msgid "says:"
+msgstr ""
+
+#. translators: 1: Comment date, 2: Comment time
+#: inc/__comments.php:34
+#, php-format
+msgid "%1$s at %2$s"
+msgstr ""
+
+#: inc/__comments.php:41
+msgid "Edit"
+msgstr ""
+
+#: inc/__comments.php:46
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: inc/__custom-columns.php:40
+msgid "Review"
+msgstr ""
+
+#: inc/__custom-columns.php:45
+#: inc/__custom-columns.php:187
+msgid "Image"
+msgstr ""
+
+#: inc/__custom-columns.php:46
+msgid "Rating"
+msgstr ""
+
+#: inc/__custom-columns.php:47
+#: inc/__views-management.php:50
+msgid "Views"
+msgstr ""
+
+#: inc/__custom-columns.php:50
+msgid "Date"
+msgstr ""
+
+#: inc/__custom-columns.php:186
+msgid "Content Preview"
+msgstr ""
+
+#: inc/__custom-columns.php:234
+msgid "Answer Preview"
+msgstr ""
+
+#: inc/__custom-columns.php:260
+msgid "Set Rating to 5 Stars"
+msgstr ""
+
+#: inc/__custom-columns.php:261
+msgid "Set Rating to 4 Stars"
+msgstr ""
+
+#: inc/__custom-columns.php:262
+msgid "Set Rating to 3 Stars"
+msgstr ""
+
+#. translators: %s: Number of testimonials updated
+#: inc/__custom-columns.php:293
+#, php-format
+msgid "Rating updated for %s testimonial."
+msgid_plural "Rating updated for %s testimonials."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/__post-types.php:9
+msgctxt "Post type general name"
+msgid "How It Works"
+msgstr ""
+
+#: inc/__post-types.php:10
+msgctxt "Post type singular name"
+msgid "How It Works"
+msgstr ""
+
+#: inc/__post-types.php:11
+msgctxt "Admin Menu text"
+msgid "How It Works"
+msgstr ""
+
+#: inc/__post-types.php:12
+msgctxt "Add New on Toolbar"
+msgid "How It Works"
+msgstr ""
+
+#: inc/__post-types.php:13
+#: inc/__post-types.php:53
+#: inc/__post-types.php:93
+msgid "Add New"
+msgstr ""
+
+#: inc/__post-types.php:14
+msgid "Add New How It Works"
+msgstr ""
+
+#: inc/__post-types.php:15
+msgid "New How It Works"
+msgstr ""
+
+#: inc/__post-types.php:16
+msgid "Edit How It Works"
+msgstr ""
+
+#: inc/__post-types.php:17
+msgid "View How It Works"
+msgstr ""
+
+#: inc/__post-types.php:18
+msgid "How It Works"
+msgstr ""
+
+#: inc/__post-types.php:19
+msgid "Search How It Works"
+msgstr ""
+
+#: inc/__post-types.php:20
+msgid "Parent How It Works:"
+msgstr ""
+
+#: inc/__post-types.php:21
+msgid "No How It Works found."
+msgstr ""
+
+#: inc/__post-types.php:22
+msgid "No How It Works found in Trash."
+msgstr ""
+
+#: inc/__post-types.php:49
+msgctxt "Post type general name"
+msgid "Testimonials"
+msgstr ""
+
+#: inc/__post-types.php:50
+msgctxt "Post type singular name"
+msgid "Testimonial"
+msgstr ""
+
+#: inc/__post-types.php:51
+msgctxt "Admin Menu text"
+msgid "Testimonials"
+msgstr ""
+
+#: inc/__post-types.php:52
+msgctxt "Add New on Toolbar"
+msgid "Testimonial"
+msgstr ""
+
+#: inc/__post-types.php:54
+msgid "Add New Testimonial"
+msgstr ""
+
+#: inc/__post-types.php:55
+msgid "New Testimonial"
+msgstr ""
+
+#: inc/__post-types.php:56
+msgid "Edit Testimonial"
+msgstr ""
+
+#: inc/__post-types.php:57
+msgid "View Testimonial"
+msgstr ""
+
+#: inc/__post-types.php:58
+msgid "Testimonials"
+msgstr ""
+
+#: inc/__post-types.php:59
+msgid "Search Testimonials"
+msgstr ""
+
+#: inc/__post-types.php:60
+msgid "Parent Testimonials:"
+msgstr ""
+
+#: inc/__post-types.php:61
+msgid "No Testimonials found."
+msgstr ""
+
+#: inc/__post-types.php:62
+msgid "No Testimonials found in Trash."
+msgstr ""
+
+#: inc/__post-types.php:89
+msgctxt "Post type general name"
+msgid "FAQ"
+msgstr ""
+
+#: inc/__post-types.php:90
+msgctxt "Post type singular name"
+msgid "FAQ"
+msgstr ""
+
+#: inc/__post-types.php:91
+msgctxt "Admin Menu text"
+msgid "FAQ"
+msgstr ""
+
+#: inc/__post-types.php:92
+msgctxt "Add New on Toolbar"
+msgid "FAQ"
+msgstr ""
+
+#: inc/__post-types.php:94
+msgid "Add New FAQ"
+msgstr ""
+
+#: inc/__post-types.php:95
+msgid "New FAQ"
+msgstr ""
+
+#: inc/__post-types.php:96
+msgid "Edit FAQ"
+msgstr ""
+
+#: inc/__post-types.php:97
+msgid "View FAQ"
+msgstr ""
+
+#: inc/__post-types.php:98
+msgid "FAQ"
+msgstr ""
+
+#: inc/__post-types.php:99
+msgid "Search FAQ"
+msgstr ""
+
+#: inc/__post-types.php:100
+msgid "Parent FAQ:"
+msgstr ""
+
+#: inc/__post-types.php:101
+msgid "No FAQ found."
+msgstr ""
+
+#: inc/__post-types.php:102
+msgid "No FAQ found in Trash."
+msgstr ""
+
+#: inc/__theme-options.php:77
+msgid "⚠️ Maintenance Mode Active"
+msgstr ""
+
+#: inc/__theme-options.php:95
+msgid "Maintenance Mode Active"
+msgstr ""
+
+#: inc/__theme-options.php:96
+msgid "Your site is currently in maintenance mode. Visitors will see a \"Site under construction\" page."
+msgstr ""
+
+#: inc/__theme-options.php:97
+msgid "Manage Settings"
+msgstr ""
+
+#: inc/__theme-options.php:134
+msgid "Choose or Upload Logo"
+msgstr ""
+
+#: inc/__theme-options.php:135
+msgid "Use this logo"
+msgstr ""
+
+#. translators: %s: Archive title
+#: inc/__theme-options.php:188
+#, php-format
+msgid "Browse our collection of %s"
+msgstr ""
+
+#: inc/__views-management.php:190
+msgid "Reset Views"
+msgstr ""
+
+#. translators: %s: Number of posts
+#: inc/__views-management.php:235
+#, php-format
+msgid "Views reset for %s post."
+msgid_plural "Views reset for %s posts."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/__woocommerce.php:53
+msgid "Order #"
+msgstr ""
+
+#: index.php:25
+msgid "Latest posts from our blog"
+msgstr ""
+
+#: index.php:30
+msgid "Blog Posts"
+msgstr ""
+
+#: search.php:31
+msgid "Search Results"
+msgstr ""
+
+#: searchform.php:2
+msgid "Search by keyword"
+msgstr ""
+
+#: template-parts/content-none.php:14
+msgid "Nothing Found"
+msgstr ""
+
+#. translators: 1: link to WP admin new post page.
+#: template-parts/content-none.php:24
+#, php-format
+msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+
+#: template-parts/content-none.php:37
+msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
+msgstr ""
+
+#: template-parts/content-none.php:44
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
+msgstr ""
+
+#: template-parts/content-page.php:40
+#: template-parts/content.php:49
+#: template-parts/posts/content.php:29
+msgid "Pages:"
+msgstr ""
+
+#. translators: %s: Name of current post. Only visible to screen readers
+#: template-parts/content-page.php:54
+#, php-format
+msgid "Edit <span class=\"screen-reader-text\">%s</span>"
+msgstr ""
+
+#: template-parts/content-post.php:92
+msgid "More articles"
+msgstr ""
+
+#. translators: %s: Name of current post. Only visible to screen readers
+#: template-parts/content.php:36
+#: template-parts/posts/content.php:16
+#, php-format
+msgid "Continue reading<span class=\"screen-reader-text\"> \"%s\"</span>"
+msgstr ""
+
+#: template-parts/maintenance.php:19
+#: template-parts/maintenance.php:135
+msgid "Site Under Construction"
+msgstr ""
+
+#: template-parts/maintenance.php:139
+msgid "We're working hard to bring you something amazing! Our site is currently undergoing maintenance and improvements."
+msgstr ""
+
+#: template-parts/maintenance.php:152
+msgid "Need to get in touch?"
+msgstr ""
+
+#: template-parts/posts/content.php:42
+msgid "Tags:"
+msgstr ""
+
+#: template-parts/posts/content.php:63
+msgid "About"
+msgstr ""
+
+#: template-parts/posts/more-post.php:56
+msgid "Read more"
+msgstr ""
+
+#: template-parts/subscribe-form.php:3
+msgid "Enter your email"
+msgstr ""
+
+#: template-parts/subscribe-form.php:14
+msgid "Sign up"
+msgstr ""
+
+#: template-parts/testimonials.php:91
+msgid "Previous testimonial"
+msgstr ""
+
+#: template-parts/testimonials.php:98
+msgid "Next testimonial"
 msgstr ""
