@@ -257,6 +257,11 @@ function emptytheme_scripts() {
 		'site_url' => get_home_url(),
 		'nonce' => wp_create_nonce('emptytheme_nonce'),
 	]);
+
+	// No cache headers.
+	if (defined('DOING_AJAX') && DOING_AJAX) {
+		nocache_headers();
+	}
 }
 add_action( 'wp_enqueue_scripts', 'emptytheme_scripts' );
 
