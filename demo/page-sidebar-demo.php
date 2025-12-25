@@ -2,7 +2,7 @@
 /**
  * Template Name: Sidebar Demo
  *
- * Демонстрационная страница для показа различных виджетов сайдбара
+ * Demo page to show different sidebar widgets
  *
  * @package emptytheme
  */
@@ -15,9 +15,9 @@ get_header();
         <div class="page-wrapper">
             <header class="entry-header">
                 <div class="container">
-                    <h1 class="entry-title">Демонстрация виджетов сайдбара</h1>
+                    <h1 class="entry-title"><?php esc_html_e('Sidebar Widgets Demo', 'emptytheme'); ?></h1>
                     <div class="entry-excerpt">
-                        Красивые виджеты сайдбара, отображаемые внизу страницы
+                        <?php esc_html_e('Beautiful sidebar widgets displayed at the bottom of the page', 'emptytheme'); ?>
                     </div>
                 </div>
             </header>
@@ -25,19 +25,19 @@ get_header();
             <div class="entry-content">
                 <div class="container">
                     <div class="sidebar-demo-content">
-                        <h2>Основной контент страницы</h2>
-                        <p>Это демонстрационная страница для показа виджетов сайдбара. Сайдбар отображается внизу страницы в виде красивых карточек с различными виджетами.</p>
+                        <h2><?php esc_html_e('Main Page Content', 'emptytheme'); ?></h2>
+                        <p><?php esc_html_e('This is a demo page to show sidebar widgets. The sidebar is displayed at the bottom of the page in beautiful cards with various widgets.', 'emptytheme'); ?></p>
 
-                        <h3>Особенности дизайна:</h3>
+                        <h3><?php esc_html_e('Design Features:', 'emptytheme'); ?></h3>
                         <ul>
-                            <li>Сайдбар размещается внизу страницы</li>
-                            <li>Виджеты отображаются в виде карточек</li>
-                            <li>Адаптивная сетка для разных размеров экрана</li>
-                            <li>Красивые hover-эффекты</li>
-                            <li>Единый стиль для всех виджетов</li>
+                            <li><?php esc_html_e('Sidebar is displayed at the bottom of the page', 'emptytheme'); ?></li>
+                            <li><?php esc_html_e('Widgets are displayed in cards', 'emptytheme'); ?></li>
+                            <li><?php esc_html_e('Adaptive grid for different screen sizes', 'emptytheme'); ?></li>
+                            <li><?php esc_html_e('Beautiful hover effects', 'emptytheme'); ?></li>
+                            <li><?php esc_html_e('Uniform style for all widgets', 'emptytheme'); ?></li>
                         </ul>
 
-                        <p>Прокрутите вниз, чтобы увидеть виджеты сайдбара.</p>
+                        <p><?php esc_html_e('Scroll down to see the sidebar widgets.', 'emptytheme'); ?></p>
                     </div>
                 </div>
             </div>
