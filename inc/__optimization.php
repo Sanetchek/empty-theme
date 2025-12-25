@@ -58,22 +58,6 @@ function disable_wp_embed() {
 add_action('wp_footer', 'disable_wp_embed');
 
 /**
- * Filters the script tag to add the 'defer' attribute for non-admin scripts,
- * except for the 'jquery-core' script.
- *
- * @param string $tag    The HTML script tag to be filtered.
- * @param string $handle The script's registered handle.
- * @param string $src    The script's source URL.
- * @return string The modified or unmodified script tag.
- */
-
-function emptytheme_defer_scripts($tag, $handle, $src) {
-    if (is_admin() || $handle === 'jquery-core') return $tag;
-    return '<script src="' . esc_url($src) . '" defer></script>';
-}
-add_filter('script_loader_tag', 'emptytheme_defer_scripts', 10, 3);
-
-/**
  * Removes the query string parameter "ver" from script and style sources.
  *
  * @param string $src The source URL of the script or style.
