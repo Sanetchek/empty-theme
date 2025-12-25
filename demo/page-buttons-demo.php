@@ -2,7 +2,7 @@
 /**
  * Template Name: Form Buttons Demo
  *
- * Демонстрационная страница для показа различных стилей кнопок submit
+ * Demo page to show different styles of submit buttons
  *
  * @package emptytheme
  */
@@ -15,9 +15,9 @@ get_header();
         <div class="page-wrapper">
             <header class="entry-header">
                 <div class="container">
-                    <h1 class="entry-title">Демонстрация стилей кнопок Submit</h1>
+                    <h1 class="entry-title"><?php esc_html_e('Form Buttons Demo', 'emptytheme'); ?></h1>
                     <div class="entry-excerpt">
-                        Различные варианты стилизации кнопок input[type="submit"] и button[type="submit"]
+                        <?php esc_html_e('Different styles of submit buttons for various use cases', 'emptytheme'); ?>
                     </div>
                 </div>
             </header>
@@ -26,140 +26,140 @@ get_header();
                 <div class="container">
                     <div class="buttons-demo">
 
-                        <!-- Основные стили -->
+                        <!-- Basic Styles -->
                         <section class="demo-section">
-                            <h2>Основные стили</h2>
+                            <h2><?php esc_html_e('Basic Styles', 'emptytheme'); ?></h2>
                             <div class="demo-grid">
                                 <div class="demo-item">
-                                    <h3>Стандартная кнопка</h3>
+                                    <h3><?php esc_html_e('Standard Button', 'emptytheme'); ?></h3>
                                     <form>
-                                        <input type="submit" value="Отправить">
+                                        <input type="submit" value="<?php esc_html_e('Submit', 'emptytheme'); ?>">
                                     </form>
                                 </div>
 
                                 <div class="demo-item">
-                                    <h3>Button элемент</h3>
+                                    <h3><?php esc_html_e('Button Element', 'emptytheme'); ?></h3>
                                     <form>
-                                        <button type="submit">Отправить форму</button>
+                                        <button type="submit"><?php esc_html_e('Submit Form', 'emptytheme'); ?></button>
                                     </form>
                                 </div>
 
                                 <div class="demo-item">
-                                    <h3>С иконкой</h3>
+                                    <h3><?php esc_html_e('With Icon', 'emptytheme'); ?></h3>
                                     <form>
                                         <button type="submit">
                                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                                 <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                             </svg>
-                                            Отправить
+                                            <?php esc_html_e('Submit', 'emptytheme'); ?>
                                         </button>
                                     </form>
                                 </div>
                             </div>
                         </section>
 
-                        <!-- Альтернативные стили -->
+                        <!-- Alternative Styles -->
                         <section class="demo-section">
-                            <h2>Альтернативные стили</h2>
+                            <h2><?php esc_html_e('Alternative Styles', 'emptytheme'); ?></h2>
                             <div class="demo-grid">
                                 <div class="demo-item">
-                                    <h3>Outline стиль</h3>
+                                    <h3><?php esc_html_e('Outline Style', 'emptytheme'); ?></h3>
                                     <form>
-                                        <input type="submit" value="Outline кнопка" class="outline">
+                                        <input type="submit" value="<?php esc_html_e('Outline Button', 'emptytheme'); ?>" class="outline">
                                     </form>
                                 </div>
 
                                 <div class="demo-item">
-                                    <h3>Dark стиль</h3>
+                                    <h3><?php esc_html_e('Dark Style', 'emptytheme'); ?></h3>
                                     <form>
-                                        <input type="submit" value="Dark кнопка" class="dark">
+                                        <input type="submit" value="<?php esc_html_e('Dark Button', 'emptytheme'); ?>" class="dark">
                                     </form>
                                 </div>
 
                                 <div class="demo-item">
-                                    <h3>С классом form-submit-button</h3>
+                                    <h3><?php esc_html_e('With form-submit-button Class', 'emptytheme'); ?></h3>
                                     <form>
-                                        <input type="submit" value="С классом" class="form-submit-button">
+                                        <input type="submit" value="<?php esc_html_e('With form-submit-button Class', 'emptytheme'); ?>" class="form-submit-button">
                                     </form>
                                 </div>
                             </div>
                         </section>
 
-                        <!-- Размеры -->
+                        <!-- Sizes -->
                         <section class="demo-section">
-                            <h2>Размеры кнопок</h2>
+                            <h2><?php esc_html_e('Button Sizes', 'emptytheme'); ?></h2>
                             <div class="demo-grid">
                                 <div class="demo-item">
-                                    <h3>Маленькая</h3>
+                                    <h3><?php esc_html_e('Small', 'emptytheme'); ?></h3>
                                     <form>
                                         <input type="submit" value="Small" class="small">
                                     </form>
                                 </div>
 
                                 <div class="demo-item">
-                                    <h3>Стандартная</h3>
+                                    <h3><?php esc_html_e('Normal', 'emptytheme'); ?></h3>
                                     <form>
                                         <input type="submit" value="Normal">
                                     </form>
                                 </div>
 
                                 <div class="demo-item">
-                                    <h3>Большая</h3>
+                                    <h3><?php esc_html_e('Large', 'emptytheme'); ?></h3>
                                     <form>
-                                        <input type="submit" value="Large кнопка" class="large">
+                                        <input type="submit" value="<?php esc_html_e('Large Button', 'emptytheme'); ?>" class="large">
                                     </form>
                                 </div>
                             </div>
                         </section>
 
-                        <!-- Состояния -->
+                        <!-- States -->
                         <section class="demo-section">
-                            <h2>Состояния кнопок</h2>
+                            <h2><?php esc_html_e('Button States', 'emptytheme'); ?></h2>
                             <div class="demo-grid">
                                 <div class="demo-item">
-                                    <h3>Обычная</h3>
+                                    <h3><?php esc_html_e('Normal', 'emptytheme'); ?></h3>
                                     <form>
-                                        <input type="submit" value="Обычная">
+                                        <input type="submit" value="<?php esc_html_e('Normal', 'emptytheme'); ?>">
                                     </form>
                                 </div>
 
                                 <div class="demo-item">
-                                    <h3>Отключенная</h3>
+                                    <h3><?php esc_html_e('Disabled', 'emptytheme'); ?></h3>
                                     <form>
-                                        <input type="submit" value="Отключена" disabled>
+                                        <input type="submit" value="<?php esc_html_e('Disabled', 'emptytheme'); ?>" disabled>
                                     </form>
                                 </div>
 
                                 <div class="demo-item">
-                                    <h3>Загрузка</h3>
+                                    <h3><?php esc_html_e('Loading', 'emptytheme'); ?></h3>
                                     <form>
-                                        <button type="submit" class="loading">Загрузка...</button>
+                                        <button type="submit" class="loading"><?php esc_html_e('Loading...', 'emptytheme'); ?></button>
                                     </form>
                                 </div>
                             </div>
                         </section>
 
-                        <!-- Полная форма -->
+                        <!-- Full Form -->
                         <section class="demo-section">
-                            <h2>Пример полной формы</h2>
+                            <h2><?php esc_html_e('Full Form', 'emptytheme'); ?></h2>
                             <form class="demo-form">
                                 <div class="form-group">
-                                    <label for="name" class="form-label">Имя</label>
-                                    <input type="text" id="name" name="name" class="form-input" placeholder="Введите ваше имя">
+                                    <label for="name" class="form-label"><?php esc_html_e('Name', 'emptytheme'); ?></label>
+                                    <input type="text" id="name" name="name" class="form-input" placeholder="<?php esc_attr_e('Enter your name', 'emptytheme'); ?>">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input type="email" id="email" name="email" class="form-input" placeholder="your@email.com">
+                                    <label for="email" class="form-label"><?php esc_html_e('Email', 'emptytheme'); ?></label>
+                                    <input type="email" id="email" name="email" class="form-input" placeholder="<?php esc_attr_e('your@email.com', 'emptytheme'); ?>">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="message" class="form-label">Сообщение</label>
-                                    <textarea id="message" name="message" class="form-textarea" placeholder="Ваше сообщение"></textarea>
+                                    <label for="message" class="form-label"><?php esc_html_e('Message', 'emptytheme'); ?></label>
+                                    <textarea id="message" name="message" class="form-textarea" placeholder="<?php esc_attr_e('Your message', 'emptytheme'); ?>"></textarea>
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="submit" value="Отправить сообщение">
+                                    <input type="submit" value="<?php esc_html_e('Send Message', 'emptytheme'); ?>">
                                 </div>
                             </form>
                         </section>
