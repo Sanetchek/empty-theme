@@ -286,6 +286,16 @@ require get_template_directory() . '/inc/__ajax.php';
 require get_template_directory() . '/inc/__acf.php';
 
 /**
+ * Blocks Registration.
+ */
+require get_template_directory() . '/inc/__blocks-register.php';
+
+/**
+ * Breadcrumbs.
+ */
+require get_template_directory() . '/inc/__breadcrumbs.php';
+
+/**
  * Utils.
  */
 require get_template_directory() . '/inc/__utils.php';
