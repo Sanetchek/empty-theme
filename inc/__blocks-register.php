@@ -7,6 +7,52 @@
  */
 
 /**
+ * Finds CSS file with preference for minified version.
+ *
+ * @param string $block_folder Block folder path.
+ * @param string $filename Base filename (without extension).
+ * @return string|null Full path to CSS file or null if not found.
+ */
+function theme_find_block_css($block_folder, $filename) {
+    $minified = $block_folder . '/' . $filename . '.min.css';
+    $regular = $block_folder . '/' . $filename . '.css';
+
+    // Prefer minified version, fallback to regular
+    if (file_exists($minified)) {
+        return $minified;
+    }
+
+    if (file_exists($regular)) {
+        return $regular;
+    }
+
+    return null;
+}
+
+/**
+ * Finds RTL CSS file with preference for minified version.
+ *
+ * @param string $block_folder Block folder path.
+ * @param string $filename Base filename (without extension).
+ * @return string|null Full path to RTL CSS file or null if not found.
+ */
+function theme_find_block_css_rtl($block_folder, $filename) {
+    $minified_rtl = $block_folder . '/' . $filename . '-rtl.min.css';
+    $regular_rtl = $block_folder . '/' . $filename . '-rtl.css';
+
+    // Prefer minified RTL version, fallback to regular RTL
+    if (file_exists($minified_rtl)) {
+        return $minified_rtl;
+    }
+
+    if (file_exists($regular_rtl)) {
+        return $regular_rtl;
+    }
+
+    return null;
+}
+
+/**
  * Collects block information from the blocks directory structure.
  *
  * @param string $base_dir Base directory path for blocks.
@@ -65,13 +111,21 @@ function theme_collect_blocks($base_dir) {
                     }
                 }
 
+                // Find CSS files with preference for minified versions
+                $css_file = theme_find_block_css($block_folder, 'style');
+                $css_rtl_file = theme_find_block_css_rtl($block_folder, 'style');
+                $editor_css_file = theme_find_block_css($block_folder, 'editor');
+                $editor_css_rtl_file = theme_find_block_css_rtl($block_folder, 'editor');
+
                 $output[] = [
                     'category' => $category_name,
                     'slug'     => $slug,
                     'folder'   => $block_folder,
                     'php'      => $block_file,
-                    'css'      => $block_folder . '/style.css',
-                    'editor_css' => $block_folder . '/editor.css',
+                    'css'      => $css_file,
+                    'css_rtl'  => $css_rtl_file,
+                    'editor_css' => $editor_css_file,
+                    'editor_css_rtl' => $editor_css_rtl_file,
                     'js'       => $block_folder . '/script.js',
                     'screenshot' => $screenshot,
                 ];
@@ -145,8 +199,8 @@ add_action('wp_enqueue_scripts', function() {
     foreach ($blocks as $block) {
         $handle = "block-{$block['slug']}";
 
-        // Register CSS
-        if (file_exists($block['css'])) {
+        // Register CSS (minified preferred)
+        if (!empty($block['css']) && file_exists($block['css'])) {
             $css_path = str_replace($template_dir, '', $block['css']);
             wp_register_style(
                 $handle,
@@ -154,6 +208,12 @@ add_action('wp_enqueue_scripts', function() {
                 [],
                 filemtime($block['css'])
             );
+
+            // WordPress automatically detects RTL files with -rtl suffix,
+            // but we explicitly mark it for better compatibility
+            if (!empty($block['css_rtl']) && file_exists($block['css_rtl'])) {
+                wp_style_add_data($handle, 'rtl', 'replace');
+            }
         }
 
         // Register JavaScript
@@ -231,14 +291,34 @@ add_action('acf/init', function() {
         }
 
         // Add style handle if CSS exists
-        if (file_exists($block['css'])) {
+        if (!empty($block['css']) && file_exists($block['css'])) {
             $args['style'] = $handle;
         }
 
-        // Add editor style if exists
-        if (file_exists($block['editor_css'])) {
-            $args['enqueue_style'] = get_template_directory_uri() .
+        // Add editor style if exists (minified preferred)
+        if (!empty($block['editor_css']) && file_exists($block['editor_css'])) {
+            $editor_css_url = get_template_directory_uri() .
                 str_replace(get_template_directory(), '', $block['editor_css']);
+            $args['enqueue_style'] = $editor_css_url;
+
+            // Enqueue RTL editor style if exists and site is RTL
+            if (!empty($block['editor_css_rtl']) && file_exists($block['editor_css_rtl'])) {
+                $editor_css_rtl_url = get_template_directory_uri() .
+                    str_replace(get_template_directory(), '', $block['editor_css_rtl']);
+                $editor_css_rtl_path = $block['editor_css_rtl'];
+
+                // Hook to enqueue RTL editor style for RTL sites
+                add_action('enqueue_block_editor_assets', function() use ($slug, $editor_css_rtl_url, $editor_css_rtl_path) {
+                    if (is_rtl()) {
+                        wp_enqueue_style(
+                            "block-{$slug}-editor-rtl",
+                            $editor_css_rtl_url,
+                            [],
+                            filemtime($editor_css_rtl_path)
+                        );
+                    }
+                }, 20);
+            }
         }
 
         // Add script handle if JS exists
@@ -259,15 +339,17 @@ add_action('acf/init', function() {
                 $styles_added[$slug] = true;
                 ?>
                 <style>
-                    .editor-block-list-item-acf-<?php echo esc_attr($slug); ?> .block-editor-block-icon,
-                    .editor-block-list-item-acf-<?php echo esc_attr($slug); ?> .block-editor-block-icon .dashicon {
+                    .editor-block-list-item-acf-<?php echo esc_attr($slug); ?> .block-editor-block-types-list__item-icon {
+                        color: #1e1e1e;
+                        padding: 4px;
+                        height: 48px !important;
                         background-image: url('<?php echo esc_url($screenshot_url); ?>') !important;
                         background-size: contain !important;
                         background-repeat: no-repeat !important;
                         background-position: center !important;
-                        width: 24px !important;
-                        height: 24px !important;
-                        font-size: 0 !important;
+                    }
+                    .editor-block-list-item-acf-<?php echo esc_attr($slug); ?> .block-editor-block-icon .dashicon {
+                        background-image: none !important;
                     }
                     .editor-block-list-item-acf-<?php echo esc_attr($slug); ?> .block-editor-block-icon .dashicon::before {
                         display: none !important;

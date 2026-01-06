@@ -122,6 +122,38 @@ gulp.task('scss:rtl', function () {
 // Entry to compile both LTR and RTL from SCSS
 gulp.task('scss', gulp.series('scss:ltr', 'scss:rtl'));
 
+// Compile SCSS files from blocks folder to minified CSS (LTR) in the same directory
+gulp.task('blocks:scss:ltr', function () {
+  console.log('Starting blocks:scss:ltr task');
+  return gulp.src(['blocks/**/*.scss', '!blocks/**/_*.scss'], { base: 'blocks' })
+    .pipe(plumber())
+    .pipe(sass().on('error', sass.logError))
+    .pipe(postcss([autoprefixer()]))
+    .pipe(cleanCSS())
+    .pipe(rename(function (path) {
+      path.extname = '.min.css';
+    }))
+    .pipe(gulp.dest('blocks')); // Save in the same directory structure
+});
+
+// Compile SCSS files from blocks folder to minified CSS (RTL) in the same directory
+gulp.task('blocks:scss:rtl', function () {
+  console.log('Starting blocks:scss:rtl task');
+  return gulp.src(['blocks/**/*.scss', '!blocks/**/_*.scss'], { base: 'blocks' })
+    .pipe(plumber())
+    .pipe(sass().on('error', sass.logError))
+    .pipe(postcss([autoprefixer()]))
+    .pipe(rtlcss())
+    .pipe(cleanCSS())
+    .pipe(rename(function (path) {
+      path.extname = '-rtl.min.css';
+    }))
+    .pipe(gulp.dest('blocks')); // Save in the same directory structure
+});
+
+// Entry to compile both LTR and RTL from blocks SCSS
+gulp.task('blocks:scss', gulp.series('blocks:scss:ltr', 'blocks:scss:rtl'));
+
 // Generate fonts CSS with preload
 gulp.task('generate-fonts-css', (done) => {
   try {
@@ -209,6 +241,9 @@ gulp.task('fonts', gulp.series('generate-fonts-css'));
 // Task to compile styles (SCSS only)
 gulp.task('styles', gulp.series('scss'));
 
+// Task to compile blocks SCSS
+gulp.task('blocks', gulp.series('blocks:scss'));
+
 // Task to minify JavaScript
 gulp.task('js', gulp.series('minify-js'));
 
@@ -218,6 +253,7 @@ gulp.task('watch', function () {
   gulp.watch('assets/fonts/*', gulp.series('fonts', 'scss'));
   gulp.watch('assets/scss/**/*.scss', gulp.series('scss'));
   gulp.watch('assets/js/scripts/*.js', gulp.series('js'));
+  gulp.watch('blocks/**/*.scss', gulp.series('blocks:scss'));
 });
 
 // Default task to run watch
